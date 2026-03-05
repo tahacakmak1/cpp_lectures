@@ -25,9 +25,9 @@ void car_program(car::Car& ref) {
 }
 
 int main() {
-    car::Merdedes     m;
-    car::Aubi         a;
-    car::MerdedesA180 mA180;
+    car::Mercedes     m;
+    car::Audi         a;
+    car::MercedesA180 mA180;
 
     car_program(&m);     // will call the derived functions of the respective classes
     car_program(&a);     // will call the derived functions of the respective classes

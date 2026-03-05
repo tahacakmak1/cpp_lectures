@@ -14,40 +14,40 @@ std::ostream& operator<<(std::ostream& os, Car const* cPtr) {
     return os;
 }
 
-void Merdedes::start() { std::cout << "Merdedes::start()\n"; }
+void Mercedes::start() { std::cout << "Mercedes::start()\n"; }
 
-void Merdedes::run() { std::cout << "Merdedes::run()\n"; }
+void Mercedes::run() { std::cout << "Mercedes::run()\n"; }
 
-void Merdedes::stop() { std::cout << "Merdedes::stop()\n"; }
+void Mercedes::stop() { std::cout << "Mercedes::stop()\n"; }
 
-void Merdedes::lock() { std::cout << "Merdedes::lock()\n"; }
+void Mercedes::lock() { std::cout << "Mercedes::lock()\n"; }
 
-void Merdedes::print(std::ostream& os) const { os << "This is a Merdedes\n"; }
+void Mercedes::print(std::ostream& os) const { os << "This is a Mercedes\n"; }
 
-Merdedes* Merdedes::clone() { return new Merdedes(*this); }
+Mercedes* Mercedes::clone() { return new Mercedes(*this); }
 
-void MerdedesA180::start() { std::cout << "MerdedesA180::start()\n"; }
+void MercedesA180::start() { std::cout << "MercedesA180::start()\n"; }
 
-void MerdedesA180::run() { std::cout << "MerdedesA180::run()\n"; }
+void MercedesA180::run() { std::cout << "MercedesA180::run()\n"; }
 
-void MerdedesA180::stop() { std::cout << "MerdedesA180::stop()\n"; }
+void MercedesA180::stop() { std::cout << "MercedesA180::stop()\n"; }
 
-void MerdedesA180::lock() { std::cout << "MerdedesA180::lock()\n"; }
+void MercedesA180::lock() { std::cout << "MercedesA180::lock()\n"; }
 
-MerdedesA180* MerdedesA180::clone() { return new MerdedesA180(*this); }
+MercedesA180* MercedesA180::clone() { return new MercedesA180(*this); }
 
-void MerdedesA180::print(std::ostream& os) const { os << "This is a MerdedesA180\n"; }
+void MercedesA180::print(std::ostream& os) const { os << "This is a MercedesA180\n"; }
 
-void Aubi::start() { std::cout << "Aubi::start()\n"; }
+void Audi::start() { std::cout << "Audi::start()\n"; }
 
-void Aubi::run() { std::cout << "Aubi::run()\n"; }
+void Audi::run() { std::cout << "Audi::run()\n"; }
 
-void Aubi::lock() { std::cout << "Aubi::lock()\n"; }
+void Audi::lock() { std::cout << "Audi::lock()\n"; }
 
-void Aubi::stop() { std::cout << "Aubi::stop()\n"; }
+void Audi::stop() { std::cout << "Audi::stop()\n"; }
 
-Aubi* Aubi::clone() { return new Aubi(*this); }
+Audi* Audi::clone() { return new Audi(*this); }
 
-void Aubi::print(std::ostream& os) const { os << "This is a Aubi\n"; }
+void Audi::print(std::ostream& os) const { os << "This is a Audi\n"; }
 
 } // namespace car

@@ -19,35 +19,35 @@ private:
     virtual void print(std::ostream& os) const = 0;
 }; // class Car
 
-class Merdedes : public Car {
+class Mercedes : public Car {
 public:
     void      start() override;
     void      run() override;
     void      lock() override;
     void      stop() override;
-    Merdedes* clone() override;
+    Mercedes* clone() override;
     void      print(std::ostream& os) const override;
-}; // class Merdedes
+}; // class Mercedes
 
-class MerdedesA180 : public Merdedes {
+class MercedesA180 : public Mercedes {
 public:
     void          start() override;
     void          run() override;
     void          lock() override;
     void          stop() override;
-    MerdedesA180* clone() override;
+    MercedesA180* clone() override;
     void          print(std::ostream& os) const override;
-}; // class MerdedesA180
+}; // class MercedesA180
 
-class Aubi : public Car {
+class Audi : public Car {
 public:
     void  start() override;
     void  run() override;
     void  lock() override;
     void  stop() override;
-    Aubi* clone() override;
+    Audi* clone() override;
     void  print(std::ostream& os) const override;
-}; // class Aubi
+}; // class Audi
 
 } // namespace car
 #endif // GUARD_ED45D3BD_EA8B_4BE2_912B_AF36A9C23A2F
