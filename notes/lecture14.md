@@ -17,18 +17,18 @@ why they are usually referred to as elements of the class, instead of the instan
 ```cpp
 class Myclass {
 public:
-    static int _sta_x;
+    static int _x;
 }; // class Myclass
 
 int main() {
     Myclass  m1;
     Myclass* ptv_m1 = &m1;
-    m1._sta_x;      // Viable but misleading.
-    ptv_m1->_sta_x; // Viable but misleading.
+    m1._x;      // Viable but misleading.
+    ptv_m1->_x; // Viable but misleading.
     // Instead we use scope resolution operator(::)
-    Myclass::_sta_x;
+    Myclass::_x;
     // but we cannot assign a value to it inside the class.
-    // Because the line "static int _sta_x;" in class declaration is a non-defining
+    // Because the line "static int _x;" in class declaration is a non-defining
     // declaration.
     return 0;
 }
@@ -41,29 +41,29 @@ e.g. for .cpp definition
 // Myclass.h
 class Myclass {
 public:
-    static int _sta_x;
+    static int _x;
 }; // class Myclass
 
 // Myclass.cpp
 //#include "Myclass.h"
-int Myclass:_sta_x;
-int Myclass:_sta_x = 10;
-int Myclass:_sta_x(10);
-int Myclass:_sta_x{};
-int Myclass:_sta_x{10};
+int Myclass:_x;
+int Myclass:_x = 10;
+int Myclass:_x(10);
+int Myclass:_x{};
+int Myclass:_x{10};
 ```
 e.g. for global scope definition
 ```cpp
 // Myclass.h
 class Myclass {
 public:
-        static int _sta_x;
+        static int _x;
 }; // class Myclass
-int Myclass::_sta_x;
-int Myclass::_sta_x = 10;
-int Myclass::_sta_x(10);
-int Myclass::_sta_x{};
-int Myclass::_sta_x {10};
+int Myclass::_x;
+int Myclass::_x = 10;
+int Myclass::_x(10);
+int Myclass::_x{};
+int Myclass::_x {10};
 ```
 
 - `static` keyword has to be used in declaration but not in definition.
@@ -72,7 +72,7 @@ int Myclass::_sta_x {10};
     class Myclass1;         // Incomplete type
     class Myclass2 {
         Myclass1 _data1;    // This is a syntax error. non-static data members must be complete types.
-        static Myclass1 _sta_data2; // This is not a syntax error because static data members
+        static Myclass1 _data2; // This is not a syntax error because static data members
                                     // can be of an incomplete type.
     }; // class Myclass2
     ```
@@ -80,53 +80,53 @@ int Myclass::_sta_x {10};
     ```cpp
     class Myclass {
         Myclass        _x;      // This is a syntax error because Myclass is not complete.
-        static Myclass _sta_x;  // This is allowed, because static data members can be an incomplete type.
+        static Myclass _x;  // This is allowed, because static data members can be an incomplete type.
     }; // class Myclass
     ```
 - If the static data member is a const integral type then you can define it in the class definition (`enum`, `char`, `signed char`,
     `unsigned char`, `long, long long`, `bool` are also integral type).
     ```cpp
     class Myclass {
-        static int                 _sta_x1 = 5;     // INVALID not const.
-        static double const        _sta_x2 = 3.5;   // INVALID not an  integral type.
-        static int const           _sta_x3 = 5;     // VALID const and integral type.
-        static long const          _sta_x4 = 7;     // VALID const and integral type.
-        static long long const     _sta_x5 = 8;     // VALID const and integral type.
-        static char const          _sta_x6 = 0;     // VALID const and integral type.
-        static signed char const   _sta_x7 = 9;     // VALID const and integral type.
-        static unsigned char const _sta_x8 = 9;     // VALID const and integral type.
+        static int                 _x1 = 5;     // INVALID not const.
+        static double const        _x2 = 3.5;   // INVALID not an  integral type.
+        static int const           _x3 = 5;     // VALID const and integral type.
+        static long const          _x4 = 7;     // VALID const and integral type.
+        static long long const     _x5 = 8;     // VALID const and integral type.
+        static char const          _x6 = 0;     // VALID const and integral type.
+        static signed char const   _x7 = 9;     // VALID const and integral type.
+        static unsigned char const _x8 = 9;     // VALID const and integral type.
     }; // class Myclass
     ```
 - Static data members and global variables can be defined with `inline` keyword. (C++17)
     Inline variable:
     ```cpp
-    inline int _sta_x = 5;  // This guarantees that in the link phase there will only be one _sta_x.
+    inline int _x = 5;  // This guarantees that in the link phase there will only be one _x.
     // file1.cpp
-    inline int _sta_x = 6;
+    inline int _x = 6;
     // file2.cpp
-    inline int _sta_x = 6;
+    inline int _x = 6;
     // file3.cpp
-    inline int _sta_x = 6;
-    // There will only be one _sta_x. This is about ODR.
+    inline int _x = 6;
+    // There will only be one _x. This is about ODR.
     ```
     ```cpp
     // Myclass.h
     class Myclass {
     public:
-        inline static int    _sta_x1 = 5;   // If inline keyword is used, const and integral type rule
-        inline static double _sta_x2 = 5.3; // is not necessary. So both are valid now.
+        inline static int    _x1 = 5;   // If inline keyword is used, const and integral type rule
+        inline static double _x2 = 5.3; // is not necessary. So both are valid now.
     }; // class Myclass
     ```
 - Since static data members not actually part of the instances, they cannot be initialized with constructors.
     ```cpp
     class Myclass {
         int _x, _y;
-        static int _sta_ival;
+        static int _ival;
     public:
         Myclass(){}
         Myclass(int x, int y) : _x{x}, _y{y} {}                         // VALID
-        Myclass(int x, int y, int z) : _x{x}, _y{y}, _sta_ival{z} {}    // INVALID
-        Myclass() : _x{10}, _y{20}, _sta_ival{30} {}                    // INVALID
+        Myclass(int x, int y, int z) : _x{x}, _y{y}, _ival{z} {}    // INVALID
+        Myclass() : _x{10}, _y{20}, _ival{30} {}                    // INVALID
     }; // class Myclass
     ```
 
@@ -170,19 +170,22 @@ public:
 > public:
 >     static int foo() { return 777; }
 >
->     static int _sta_x;
+>     static int _x;
 > }; // class Myclass
 >
 > int foo() { return 5; }
 >
-> int Myclass::_sta_x = foo();   // This line will call the foo in class  scope.
-> Myclass::_sta_x     = ::foo(); // This line will call the foo in global scope.
+> int Myclass::_x = foo(); // This line will call the foo in class  scope.
 >
 > int main() {
->     std::cout << "_sta_x = " << _sta_x
->               << '\n'; // Will have the output "_sta_x = 777". Because the name
->                        // in the expression that's  initializing the static data member
->                        // will be searched in class scope first.
+>     std::cout << "_x = " << Myclass::_x << '\n';
+>     Myclass::_x = foo();
+>     std::cout << "_x = " << Myclass::_x << '\n';
+>     // Because the name in the expression that's initializing the static data member
+>     // will be searched in class scope first.
+>     // The output will be;
+>     // _x = 777
+>     // _x = 5
 > }
 > ```
 
@@ -220,16 +223,16 @@ Friend declaration can be used to;
     ```cpp
     class Myclass {
         void foo();
-        int  _sta_x;
+        int  _x;
     public:
         friend void func(Myclass);
     }; // class Myclass
     void func(Myclass pm) {
         Myclass m;
         pm.foo();   // Without the friend declaration, would be an access control error.
-        pm._sta_x;  // Without the friend declaration, would be an access control error.
+        pm._x;  // Without the friend declaration, would be an access control error.
         m.foo();    // Without the friend declaration, would be an access control error.
-        m._sta_x;   // Without the friend declaration, would be an access control error.
+        m._x;   // Without the friend declaration, would be an access control error.
     }
     ```
 2. Grant private member access to a member function of a different class.
@@ -265,10 +268,10 @@ Friend declaration can be used to;
 > ```cpp
 > class Myclass {
 >     void foo();
->     int _sta_x;
+>     int _x;
 > public:
 >     // This functions is still a global funtion, so it can be called without a class instance.
->     friend void func(Myclass x) { return x._sta_x; }
+>     friend void func(Myclass x) { return x._x; }
 > }; // class Myclass
 > ```
 > ##### ###REMARK###

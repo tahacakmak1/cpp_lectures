@@ -9,14 +9,14 @@ public:
     friend int get_mx(Myclass mc) { return mc._x; }
 
     void print() const& {
-        std::cout << "mx = " << _x << " my = " << _y << " _x = " << _sta_x << " this = " << this
+        std::cout << "mx = " << _x << " my = " << _y << " _x = " << _x << " this = " << this
                   << '\n';
     }
 
     Myclass(int x, int y) : _x{x}, _y{y} {}
 
     // inline static int x = 5; // ==> this is available with C++17
-    static int _sta_x;
+    static int _x;
 
     static int foo() { return 777; }
 
@@ -24,7 +24,7 @@ private:
     int _x, _y;
 }; // class Myclass
 
-int Myclass::_sta_x{};
+int Myclass::_x{};
 
 int get_mx() {
     Myclass x{3, 5};
@@ -55,9 +55,9 @@ class B {
 
 int main() {
     Myclass m1{10, 20};
-    m1._sta_x;
+    m1._x;
     Myclass m2{11, 21};
-    m1._sta_x = ::foo();
+    m1._x = ::foo();
     m1.print();
     m1.print();
     // Myclass::x = 7;

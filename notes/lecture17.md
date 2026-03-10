@@ -439,7 +439,7 @@ class Myclass {
     ```cpp
     class Myclass {
     public:
-        static inline int _sta_x = foo(); // INVALID, it would be VALID if foo were to be defined before _sta_x.
+        static inline int _x = foo(); // INVALID, it would be VALID if foo were to be defined before _x.
 
         static int foo() { return 5; }
     }; // class Myclass
