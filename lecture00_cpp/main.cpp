@@ -17,4 +17,4 @@ public:
     static int foo() { return 5; }
 }; // class Myclass
 
-int main(){}
+int main() {}

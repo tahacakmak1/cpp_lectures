@@ -1,10 +1,12 @@
 // Lecture 22
-#include "Car.h"
+#include "Audi.h"
+#include "Mercedes.h"
+#include "MercedesA180.h"
 
 #include <cstdint>
 #include <iostream>
 
-void car_program(car::Car* const ptr) {
+void car_program(car::ICar* const ptr) {
     std::cout << "car_program_ptr\n";
     ptr->start();
     ptr->run();
@@ -14,7 +16,7 @@ void car_program(car::Car* const ptr) {
     std::cout << '\n';
 }
 
-void car_program(car::Car& ref) {
+void car_program(car::ICar& ref) {
     std::cout << "car_program_ref\n";
     ref.start();
     ref.run();

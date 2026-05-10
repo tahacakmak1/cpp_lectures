@@ -154,3 +154,15 @@
         - Coveriance
         - Virtual Constructor Idiom (Clone Idiom)
         - Virtual Destructor
+
+## Lecture 23
+- Inheritence
+    - Virtual Dispatch
+    - `final` Keyword
+    - `private` Inheritance
+        - Comparison Between Contianment and `private` Inheritance
+        - Reasons to Choose `private` Inheritance over Containment
+        - Empty Base Optiomization (EBO)
+        - Restricted Polymorphism
+    - `protected` Inheritance
+    - Multiple Inheritance

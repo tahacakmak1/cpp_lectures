@@ -1,14 +1,11 @@
-out: main.o Mercedes.o MercedesA180.o Audi.o
-	g++ -std=c++17 -Wpedantic main.o Mercedes.o MercedesA180.o Audi.o -o out
+out: main.o Audi.o Mercedes.o
+	g++ -std=c++17 -Wpedantic main.o Audi.o Mercedes.o -o out
 
-main.o: main.cpp
+main.o: ICar.h main.cpp
 	g++ -std=c++17 -Wpedantic -c main.cpp
 
 Mercedes.o: ICar.h Mercedes.h Mercedes.cpp
 	g++ -std=c++17 -Wpedantic -c Mercedes.cpp
-
-MercedesA180.o: ICar.h MercedesA180.h MercedesA180.cpp
-	g++ -std=c++17 -Wpedantic -c MercedesA180.cpp
 
 Audi.o: ICar.h Audi.h Audi.cpp
 	g++ -std=c++17 -Wpedantic -c Audi.cpp
