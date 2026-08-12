@@ -1,4 +1,6 @@
 **/*.o
 **/*.s
 **/out
+build/
+build-*/
 .vscode

@@ -1,12 +1,8 @@
+SOURCES := $(shell find lecture* -type f \( -name '*.cpp' -o -name '*.h' -o -name '*.c' \) -print)
+
 format:
-	clang-format -i -style=file **/*.cpp **/*.h **/*.c
+	clang-format -i -style=file $(SOURCES)
 
 cleanup:
-	rm -f **/*.o **/*.s **/out
-	clang-format -i -style=file **/*.cpp **/*.h **/*.c
-
-push:
-	clang-format -i -style=file **/*.cpp **/*.h **/*.c
-	git add .
-	git commit -m "$m"
-	git push origin master
+	find lecture* -type f \( -name '*.o' -o -name '*.s' -o -name 'out' \) -delete
+	rm -rf build build-*
