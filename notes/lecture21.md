@@ -1,10 +1,14 @@
 # LECTURE 21
+
 ## Inheritance
+
 The term inheritance means more in C++ than it does in OOP.
 
 ### `public` Inheritance
+
 This is the 'is a' relationship inheritance from OOP, e.g. a Merdedes 'is a' Car. So Car is the base
 class and Merdedes is the derived class.
+
 ```cpp
 class Base {
 public:
@@ -30,13 +34,15 @@ public:
     void f3();
 }; // class Derived3
 ```
+
 - Base `class` must be a complete type.
 - If the type of derivation is not specified the default type for derivation is `private`, if the
-derived type is a `class`.<br>If the derived type is `struct` then the default type for derivation
+derived type is a `class`.  If the derived type is `struct` then the default type for derivation
 is `public`.
 - Type of the inheritance does not mean that only members in that section of the base `class` will
 be inherited. All the members of the base `class` will be inherited. But this does not allow the
-derived `class` to access to the private members<br>of the base `class`.
+derived `class` to access to the private members  of the base `class`.
+
 ```cpp
 class Base {
 public:
@@ -55,11 +61,14 @@ int main() {
     myder.Base::foo(12);// this is how we access foo inside the Base class
 }
 ```
+
 ##### ###REMARK###
+
 > - `public` members of a class is accessible to everyone.
 > - `protected` members of a class is accessible to derived classes and the class itself.
 > - `private` members of a class is accessible only to the class itself, if there are no `friend`
-declarations.
+>   declarations.
+>
 > ```cpp
 > class Base {
 > public:
@@ -81,11 +90,14 @@ declarations.
 > ```
 
 ### Upcasting
-Castings that are done from derived class to the base class are called upcasting (also called slicing).
-Slicing is where you assign an object of a derived class to an instance of a base class, thereby
-losing part of the information. Some of it is sliced away.<br>
-When object slicing (upcasting) is done, compiler uses the base class that is inside the derived class.
-This means, a function that takes an instance of a base class, can also take an instance of the derived class.
+
+Castings that are done from derived class to the base class are called upcasting (also called
+slicing). Slicing is where you assign an object of a derived class to an instance of a base class,
+thereby losing part of the information. Some of it is sliced away.  
+When object slicing (upcasting) is done, compiler uses the base class that is inside the derived
+class. This means, a function that takes an instance of a base class, can also take an instance of
+the derived class.
+
 ```cpp
 class Base {}; // class Base
 
@@ -124,6 +136,7 @@ int main() {
 > Downcasting is the opposite of upcasting. It is the casting from a base class to a derived class.
 
 - When initializing a derived class instance, base class of that class will be initialized first.
+
 ```cpp
 class Base {
 public:
@@ -146,14 +159,15 @@ int main() {
     std::cout << "\n";
 }
 ```
+
 Will have the output of
 > Base default ctor called
 >
-> Base default ctor called<br>
+> Base default ctor called  
 > Der default ctor called
 >
-> Der dtor called<br>
-> Base dtor called<br>
+> Der dtor called  
+> Base dtor called  
 > Base dtor called
 
 - Even if the default constructor of the base class is not called inside the default constructor of
@@ -162,6 +176,7 @@ the derived class, the compiler will automatically do so.
     1. Default constructor of the base class
     2. Default constructor of the member class
     3. Default constructor of the derived class
+
     ```cpp
     class Member {
     public:
@@ -191,18 +206,21 @@ the derived class, the compiler will automatically do so.
         std::cout << "\n";
     }
     ```
+
     Will have the following output;
-    > Base default ctor<br>
-    > Member default ctor<br>
+    > Base default ctor  
+    > Member default ctor  
     > Der default ctor
     >
-    > Der dtor<br>
-    > Member dtor<br>
+    > Der dtor  
+    > Member dtor  
     > Base dtor
 
 #### What Happens if the base class does not have a default constructor?
+
 Calling the available constructors of the base class with values from the default constructor of the
 derived class fixes this.
+
 ```cpp
 class Base {
 public:
@@ -220,20 +238,23 @@ public:
 
 int main() { Der myder; }
 ```
+
 Will have the following outpu;
-> Base(int x) x = 0<br>
-> Member default ctor<br>
+> Base(int x) x = 0  
+> Member default ctor  
 > Der default ctor
 >
-> Der dtor<br>
-> Member dtor<br>
+> Der dtor  
+> Member dtor  
 > Base dtor
 
 ##### ###REMARK###
+
 > - Having member variables in the derived class to initialize the members of the base class is a
-> common pattern.
+>   common pattern.
 > - Derived classes can call the constructors of their direct base class, but not the constructors
-> of their indirect base class(es).
+>   of their indirect base class(es).
+>
 >    ```cpp
 >    class Base {}; // class Base
 >
@@ -253,6 +274,7 @@ Will have the following outpu;
 ### Special Member Functions in Inheritance
 
 #### Copy Constructor
+
 Since derived classes can call the special members of their direct base classes, Copy Constructor
 will do the same.
 
@@ -302,20 +324,24 @@ int main() {
     Der d2 = d1;
 }
 ```
+
 The code block above will have the following output
-> Base default ctor<br>
-> Der default ctor<br>
-> Der copy ctor<br>
+> Base default ctor  
+> Der default ctor  
+> Der copy ctor  
 > Base copy ctor
 
 This behaviour wil be observed with all of the special member functions (Copy Members, Move Members).
 
 ##### ###REMARK###
-> This behaviour will also be observed if the functions are defined by the compiler.<br>
+
+> This behaviour will also be observed if the functions are defined by the compiler.  
 
 ### `using` Declarations Inside a Class
+
 In a scenario where there are two member functions with the same name, one in the base class the
 other in the derived class, how do we make sure we call the one from the base class?
+
 ```cpp
 class Base {
 public:
@@ -337,6 +363,7 @@ int main() {
 In the code above, both calls will go to the ```void Der::func(double)``` inside the `Der` class.
 To make sure that the `d.func(12);` calls the `void Base::func(int)`, we can either use scope
 resolution operator `::` or we can inject the name `Base::func` inside the derived class.
+
 ```cpp
 class Base {
 public:
@@ -355,11 +382,13 @@ int main() {
     d.func(12.5);
 }
 ```
+
 Now `d.func(12)` will call the `void Base::func(int)` and `d.func(12.5)` will call the
 `void Der::func(double)`
 
 This kind of `using` declaration can also be used to access protected members of the base class via
 client code of the derived class.
+
 ```cpp
 class Base {
 public:
@@ -388,6 +417,7 @@ This `using` declaration feature existed before the modern C++, but with modern 
 important addition, Inherited Constructor.
 
 #### Inherited Constructor
+
 ```cpp
 class Base {
 public:
@@ -404,17 +434,20 @@ public:
 ```
 
 ##### ###REMARK###
+
 > `using` declaration can be used for data members as well.
 
 ### Runtime Polymorphism
-Member functions of a base class can have one of the three possible categories.<br>
-1. Said function can provide the derived classes with both an interface and an implementation.<br>
+
+Member functions of a base class can have one of the three possible categories.
+
+1. Said function can provide the derived classes with both an interface and an implementation.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-2. Said function can provide the derived classes with both an interface and a default
-implementation.<br>
+2. Said function can provide the derived classes with both an interface and a default implementation.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
-3. Said function can provide the derived classes only with an interface.<br>
+3. Said function can provide the derived classes only with an interface.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
+
 ```cpp
 class Airplane {
 public:

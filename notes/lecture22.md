@@ -1,16 +1,19 @@
 # LECTURE 22
+
 ### Runtime Polymorphism
 
 ##### ###REMARK###
+
 > - If a `class` has a `virtual` or a pure `virtual` function, it's a polymorphic class.
 > - If a `class` has or inherits a pure `virtual` function but does not define an implementation for
 it, then that class is an abstract `class`. If a `class` is not abstract, then it is a concrete `class`.
 Difference between abstract and concrete classes is that creating an instance from an abstract `class`
 is not permitted. Trying to do so is a syntax error.
 
-
 ##### ###REMARK###
+
 > For a function to be overridden both the overriding and the overridden fuction must have the same;
+>
 > 1. Return Type
 > 2. Name
 > 3. Signature
@@ -32,11 +35,12 @@ public:
 }; // class Der
 ```
 
-Virtual functions are member functions whose behavior can be overridden in derived classes. As opposed
-to non-virtual functions, the overriding behavior is preserved even if there is no compile-time information
-about the actual type of the class. That is to say, if a derived class is handled using pointer or
-reference to the base class, a call to an overridden virtual function would invoke the behaviour
-defined in the derived class. Such a function call is known as virtual function call or virtual call.
+Virtual functions are member functions whose behavior can be overridden in derived classes. As
+opposed to non-virtual functions, the overriding behavior is preserved even if there is no
+compile-time information about the actual type of the class. That is to say, if a derived class is
+handled using pointer or reference to the base class, a call to an overridden virtual function would
+invoke the behaviour defined in the derived class. Such a function call is known as virtual function
+call or virtual call.  
 Virtual function call is suppressed if the function is selected using qualified name lookup
 (that is, if the function's name appears to the right of the scope resolution operator `::`)
 
@@ -82,6 +86,7 @@ int main() {
 ```
 
 ##### ###REMARK###
+
 > - In a member function declaration or definition, `override` specifier ensures that the function is
 >   `virtual` and is overriding a `virtual` function from a base class. The program is ill-formed
 >   (a compile-time error is generated) if this is not true.
@@ -109,10 +114,10 @@ public:
 > instance NVI (Non-Virtual Interface).
 
 ##### ###REMARK###
-> Function Overriding doesn't get affected by access modifiers. Meaning a derived `class` can override
-> a `private` or a `protected` `virtual` function of it's base `class`. This is because access control
-> is a compile time mechanism. As an addition, from Assembly perspective, access control doesn't exist.
-
+> Function Overriding doesn't get affected by access modifiers. Meaning a derived `class` can
+> override a `private` or a `protected` `virtual` function of it's base `class`. This is because
+> access control is a compile time mechanism. As an addition, from Assembly perspective, access
+> control doesn't exist.
 
 ```cpp
 class Base {
@@ -135,23 +140,25 @@ int main() {
 ```
 
 ##### ###REMARK###
+
 > If the call that would normally trigger a Virtual Dispatch is made from the ctor of the base `class`
 > then that call will be calling the funtion from the base `class`. This happens because of the way
-> derived `class` instances created in C++. First the base `class` inside the derived `class` is created.
-> Then the derived `class` will be created. Since the derived `class` instance doesn't exist yet, it's
-> functions cannot be called. Compiler deliberately blocks this from happening as it would create a
-> runtime error. Same rule and reason applies for the dtors as well.
-
+> derived `class` instances created in C++. First the base `class` inside the derived `class` is
+> created. Then the derived `class` will be created. Since the derived `class` instance doesn't
+> exist yet, it's functions cannot be called. Compiler deliberately blocks this from happening as it
+> would create a runtime error. Same rule and reason applies for the dtors as well.
 
 #### Covariance
+
 As stated before, for function override, both the overriding and the overridden functions must have;
+
 1. Same return type
 2. Same name
 3. Same signature
 
 For the return type, there is an exception. Overriding function can return a pointer to the derived
 `class` instead of a pointer to the base `class`. Same rule applies for references as well.
-e.g.
+
 ```cpp
 class Base {
 public:
@@ -165,12 +172,14 @@ public:
     Der& bar() override; // valid, even though return types don't match with the overridden function
 }; // class Der
 ```
+
 #### Virtual Constructor Idiom (Clone Idiom)
+
 There are three functions that cannot be `virtual`
+
 1. Global Functions
 2. Static Member Functions
 3. Constructors
-
 
 ```cpp
 class Car {
@@ -189,6 +198,7 @@ by passing `*this` to the copy ctor. If we just want a new object without copyin
 would be enough. The name clone implies that it's identical copy is needed.
 
 #### Virtual Destructor
+
 ```cpp
 class Base {
 public:
@@ -206,8 +216,10 @@ int main() {
     delete baseptr;
 }
 ```
+
 Becase `~Base()` is NOT overridden, this code snippet will have the following output
 > Base dtor
+
 ```cpp
 class Base {
 public:
@@ -225,19 +237,22 @@ int main() {
     delete baseptr;
 }
 ```
+
 Because `~Base()` is overridden, this code snippet will have the following output
-> Der dtor<br>
+> Der dtor  
 > Base dtor
 
 ##### ###REMARK###
-> On the subject of destructors of polymorphic classes.<br>
+
+> On the subject of destructors of polymorphic classes.  
 > They are either;
+
 > 1. public and virtual
 > 2. protected and non-virtual
 
-To override a global function, a function inside the base `class` with global parameters can be declared
-and overridden.
-e.g.
+To override a global function, a function inside the base `class` with global parameters can be
+declared and overridden.
+
 ```cpp
 #include <iostream>
 

@@ -5,9 +5,11 @@
 When a polymorphic class is defined, compiler creates an array with it's elements pointing to it's
 virtual functions. This array is called `Virtual Function Table Pointer`, commonly shortened to
 `Virtual Pointer` or `vpointer`.
+
 - This pointer is initialized during runtime.
 - Vpointer of a class will be shared among instances.
 - Vpointer of a derived class will point to the corresponding function of the derived class.
+
 ```cpp
 struct ICar {
     virtual void start();
@@ -19,17 +21,22 @@ struct Audi : public ICar {
     void stop() override {}
 }; // struct Audi
 ```
-Vpointer of `ICar` class will have the pointers to the `ICar::start()` and `ICar::stop()` functions.<br>
+
+Vpointer of `ICar` class will have the pointers to the `ICar::start()` and `ICar::stop()` functions.  
 Vpointer of `Audi` class will have the pointers to the `Audi::start()` and `Audi::stop()` functions.
+
 ##### ###REMARK###
+
 > These two vpointers will have something in common, the order of the elements. The function being
 > pointed by the pointer with 0 index of the table will be pointing to the same respective function
 > from each class.
 
 ##### ###REMARK###
+
 > There is a way to access the vpointer of the class. Since it is a pointer, it can be used to
 > invoke calls to the member functions. Order of the elements are decided by the declaration order
 > of the Base class.
+>
 > ```cpp
 > Audi a1;
 > void** vptr_a1 = *(void***)&a1;
@@ -37,20 +44,25 @@ Vpointer of `Audi` class will have the pointers to the `Audi::start()` and `Audi
 > ```
 
 ## `final` Keyword
+
 Can be used in two different ways.
-1. final class<br>
+
+1. final class  
     Prevents the class being used as a parent class in inheritence.
-```cpp
-struct Base {};
 
-struct Der final : public Base {};
+    ```cpp
+    struct Base {};
 
-struct Dez : public Der {}; // INVALID. Der is a final class, cannot be inherited from.
+    struct Der final : public Base {};
 
-struct Random final {}; // VALID Can also be used in this way.
-```
-2. final override<br>
+    struct Dez : public Der {}; // INVALID. Der is a final class, cannot be inherited from.
+
+    struct Random final {}; // VALID Can also be used in this way.
+    ```
+
+2. final override  
     Prevents the member function of a base class being overridden by a derived class.
+
 ```cpp
 struct Base {
     virtual void foo();
@@ -64,13 +76,15 @@ struct Der : public Base {
 ```
 
 ## `private` Inheritance
+
 In `public` inheritance, the public interface of the base class is inherited to the public interface
 of the derived class, same for the protected interface. In `private` inheritance, they are inherited
-to the private interface of the derived class.<br>
+to the private interface of the derived class.  
 There are some important properties of `private` inheritance
 
 1. Since the is-a relationship is not directly possible, upcasting is only possible in a member
-function of the derived class, or in a function that is a `friend` of the derived class.
+    function of the derived class, or in a function that is a `friend` of the derived class.
+
 ```cpp
 class Base {};
 
@@ -94,9 +108,11 @@ int main() {
     Base& baseref = myder;  // INVALID
 }
 ```
+
 Yes the `private` inheritance does not exactly represent a is-a relationship like `public` inheritance
-but, there still exists a base `class` inside the derived `class`.<br>
+but, there still exists a base `class` inside the derived `class`.  
 So, `private` inheritance is more similar to a containment.
+
 ```cpp
 class Base {
 public:
@@ -110,7 +126,9 @@ public:
     }
 }; // class Der
 ```
+
 ### Comparison of Containment and `private` Inheritance
+
 ```cpp
 class Base {
 protected:
@@ -147,24 +165,28 @@ private:
     Base _b;
 }; // class Myclass
 ```
+
 1. With `private` inheritance not every Der is a Base but some may be. With containment, no Myclass
-can be a Base.
-2. With containment, Myclass can have multiple instances of Base, but with `private` inheritance there
-can only be one.
+    can be a Base.
+2. With containment, Myclass can have multiple instances of Base, but with `private` inheritance
+    there can only be one.
 3. If Base has a `protected` section, Der can access it but Myclass cannot.
 4. If Base has `virtual` functions, Der can have overriding member functions but Myclass cannot.
 
 ### Reasons to Choose `private` Inheritance over Containment
+
 1. To access the `protected` members of the base `class`.
 2. To `override` the `virtual` member functions of the base `class`.
 3. Because an abstract `class` cannot be instantiated, therefore cannot be used as a member of a `class`.
 4. To have restricted polymorphism.
 5. To have the advantages of Empty Base Optimization (EBO). EBO is an idiom and will be studied during
-this course.
+    this course.
 
 ### Empty Base Optiomization (EBO)
+
 When an empty class used as a member, storage needs are increased. With `private` inheritance this
 does not happen.
+
 ```cpp
 class Base {};
 
@@ -177,11 +199,14 @@ class Myclass {
     Base _y;
 };
 ```
-Depending on the system and compiler settings, size of these `class`es may vary, but Myclass will have
-a higher storage need then Der. This extra need for storage happens due to alignment rules.
+
+Depending on the system and compiler settings, size of these `class`es may vary, but Myclass will
+have a higher storage need then Der. This extra need for storage happens due to alignment rules.
 
 ### Restricted Polymorphism
+
 This is the idiom of having only selected functions to have upcasting for the derived `class`.
+
 ```cpp
 class Base {
 
@@ -207,9 +232,11 @@ int main() {
 ```
 
 ## `protected` Inheritance
-The logic for use of `protected` Inheritance is exactly the same except instead of adding the inherited
-members to the `private` interface of the derived `class`, they are added to the `protected` interface
-of the derived `class`. This is usually used in multi-level inheritance.
+
+The logic for use of `protected` Inheritance is exactly the same except instead of adding the
+inherited members to the `private` interface of the derived `class`, they are added to the
+`protected` interface of the derived `class`. This is usually used in multi-level inheritance.
+
 ```cpp
 class Base {
 protected:
@@ -228,6 +255,7 @@ class Dez : public Der {
     }
 }; // class Dez
 ```
+
 ## Multiple Inheritance
 
 2:21:31

@@ -1,6 +1,9 @@
 # LECTURE 08
+
 ### Exceptions to the overload resolution(function scope resolution)
+
 1.
+
 ```cpp
 void f(bool);
 void f(void*);
@@ -10,6 +13,7 @@ f(&x);  // Ambiguity error is expected since both overloads require conversion B
 ```
 
 2.
+
 ```cpp
 void func(int const&);
 void func(int&&);
@@ -18,6 +22,7 @@ f(10);  // Ambiguity error is expected since both overloads are viable BUT func(
 ```
 
 3.
+
 ```cpp
 void f(int&);
 void f(int const&);
@@ -32,6 +37,7 @@ f(cx);  // Calls f(int const&).
 ```
 
 4.
+
 ```cpp
 void bar(int&) { std::cout << 3 << '\n'; }
 
@@ -51,13 +57,17 @@ foo(10);    // IMPORTANT. foo(10) calls foo(int&&) but bar(x) calls bar(int&) be
 ```
 
 ##### ###REMARK###
+
 > `const` keyword with `typealiases` create top level `const`.
+>
 > ```cpp
 > using iptr = int*;
 > int        x{};
 > iptr const ptr = &x;  // Here iptr const means int* const ptr = &x;
 > ```
+>
 > Same also goes for C style `typealiases`
+>
 > ```cpp
 > typedef int* iptr;
 > int        x{};
@@ -65,9 +75,11 @@ foo(10);    // IMPORTANT. foo(10) calls foo(int&&) but bar(x) calls bar(int&) be
 > ```
 
 ##### ###REMARK###
-> For function overloads with multiple parameters, the rule is;<br>
+
+> For function overloads with multiple parameters, the rule is;  
 > It must have at least one parameter better than the other overloads, and the remaining parameters cannot be worse than the
 > other functions.
+>
 > ```cpp
 > void f(int, double, long);
 > void f(char, int, double);
@@ -79,13 +91,17 @@ foo(10);    // IMPORTANT. foo(10) calls foo(int&&) but bar(x) calls bar(int&) be
 > ```
 
 ## One Definition Rule (ODR)
-Only one definition of any variable, function, class type, enumeration type, concept or template is allowed in any one translation
-unit (some of these may have multiple declarations, but only one definition is allowed).<br>
+
+Only one definition of any variable, function, class type, enumeration type, concept or template
+allowed in any one translation unit (some of these may have multiple declarations, but only one
+definition is allowed).  
 Programs in violation of ODR are ill-formed.
 
 ##### ###REMARK###
-> Some objects do not defy the ODR when defined in different header files if and only if they are defined exactly the same
-> token-by-token;
+
+> Some objects do not defy the ODR when defined in different header files if and only if they are
+> defined exactly the same token-by-token;
+>
 > - `class` Definitions
 > - Inline Function Definitions
 > - Inline Variable Definitions (C++17 Feature)
@@ -95,6 +111,7 @@ Programs in violation of ODR are ill-formed.
 > - Functions Templates
 
 ## Inline Functions
+
 - Inline function and inline expansion are two different things and must not be confused.
 - Inline expansion is the act done by the compiler which consists of switching the body of the function with it's call place.
 
@@ -106,6 +123,7 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
 ```
 
 ##### ###REMARK###
+
 > - Inline functions and inlined functions are different things.
 > - `inline` keyword lets us define the function in the header file.
 > - `inline` keyword requests this function to be inlined by the compiler, but compiler does not have to comply.
@@ -115,7 +133,9 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
 > - Member functions are inline functions even if the keyword is not used.
 
 ##### ###REMARK###
+
 > Things that are in the header file but do not defile the ODR;
+>
 > - `inline` Functions
 > - `constexpr` Functions
 > - `class` Definitions
@@ -126,10 +146,13 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
 >   - Variable Templates
 
 ##### ###REMARK###
+
 > When used in global scope, `static` keyword creates internal linkage.
 
 ##### ###REMARK###
+
 > ###### Incomplete Types
+>
 > ```cpp
 > struct Tah;
 > 

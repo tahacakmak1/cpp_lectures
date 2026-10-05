@@ -1,7 +1,11 @@
 # LECTURE 11
+
 ## Classes
+
 ### Const Member Functions
+
 #### `mutable` Keyword
+
 ```cpp
 class Myclass {
 public:
@@ -24,11 +28,15 @@ int main() {
     return 0;
 }
 ```
+
 ##### ###REMARK###
+
 > Non-static data members of a `class` may not be directly related to the observable state of the instance.
 
 ## Constructor (ctor) and Destructor (dtor)
+
 Constructors
+
 - Their names must be the same with the class name.
 - They do not have a return type.
 - They are non-static member functions of the class, meaning they can and do use `this` pointer.
@@ -38,8 +46,12 @@ Constructors
 - Can be overloaded.
 - Does not have to be a public member function of the class, can be private or protected.
 - `.` or `->` cannot be used to call a constructor.
+- A constructor is the default constructor if either of the following are true;
+    1. it does not have any parameters
+    2. every parameter of the constructor have default values
 
 Destructors
+
 - Their names must be the same with the class name, but with one addition `~`.
 - They do not have a return type.
 - They are non-static member functions of the class, meaning they can and do use `this` pointer.
@@ -51,18 +63,17 @@ Destructors
 - Does not have to be a public member function of the class, can be private or protected.
 - `.` or `->` can be used to call a destructor but must be very careful when doing so.
 
-    Default Constructor
-        For a constructor to be a default constructor, either it must not have any parameters,
-        or every parameter of that constructor must have default values.
-
 ### Special Member Functions
-Definitions of these functions can be written by the compiler under certain circumstances (called defaulting).<br>
+
+Definitions of these functions can be written by the compiler under certain circumstances (called defaulting).  
 
 Can happen in two different ways;
+
 1. According to the rules of C++, compiler can (implicitly) declare these functions and can define them.
-2. We can declare them and expect compiler to write their code.
+2. Can be user declared and defined by the compiler.
 
 There are 6 special member functions;
+
 - Default constructor
 - Destructor
 - Copy constructor
@@ -70,21 +81,24 @@ There are 6 special member functions;
 - Copy Assignment
 - Move Assignment       (added with C++11)
 - Copy Members
-    - Copy constructor
-    - Copy Assignment
+  - Copy constructor
+  - Copy Assignment
 - Move Members
-    - Move constructor
-    - Move Assignment
+  - Move constructor
+  - Move Assignment
 
 ##### ###REMARK###
+
 > - Global objects are constructed before the main function and destroyed after the main function.
->     If the number of global objects is  more than one, then they are constructed by their 
->     declaration order. The first object to be constructed is the last object to be destroyed.
+>       If the number of global objects is  more than one, then they are constructed by their
+    >   declaration order. The first object to be constructed is the last object to be destroyed.
 > - Order of construction of global object instances from different source files is compiler dependent.
-> - Static local class instances will not be constructed if the function is not called. Therefore will not be destroyed either.
->   They will be constructed when the function is called and will be destroyed after the main ends.
->     ##### ###REMARK### about static local object instances
->     > Only the first call to that function will result with instance creation, following calls will not create it again.
+> - Static local class instances will not be constructed if the function is not called. Therefore will
+>       not be destroyed either. They will be constructed when the function is called and will be
+>       destroyed after the main ends.
+>      ##### ###REMARK### about static local object instances
+>     > Only the first call to that function will result with instance creation, following calls will
+>     > not create it again.
 > - Non-static local variables are constructed when their scope begins, and are destroyed at the end of their scope.
 > - Initializing a reference to an object instance does not call the constructor.
 >
@@ -102,10 +116,11 @@ There are 6 special member functions;
 > }
 > ```
 
-Construction of the elements of a class array is ordered by the array order.<br>
+Construction of the elements of a class array is ordered by the array order.  
 First element will be constructed first but destroyed last, and last element will be constructed last but destroyed first.
 
 ##### ###REMARK###
+
 ```cpp
 class Myclass {
 public:
@@ -123,23 +138,27 @@ int main() {
 ```
 
 ##### ###REMARK###
+
 > A class does not have to have a default constructor.
 
 ##### ###REMARK###
+
 > - Automatic storage duration objects are located in stack.
 > - Static storage duration objects
 > - Dynamic storage duration objects are located in free store (in C free store is called heap).
 
 ##### ###REMARK###
-> - What does `new` operator do?<br>
->   `new` operator is used to create dynamic objects.<br>
->   `new` operator and `operator new()` are different from each other. <br>
->   `operator new()` is the C++ counterpart of `malloc()` in C.<br>
+
+> - What does `new` operator do?  
+>   `new` operator is used to create dynamic objects.  
+>   `new` operator and `operator new()` are different from each other.   
+>   `operator new()` is the C++ counterpart of `malloc()` in C.  
 >   `operator new()` and `malloc()` allocate a space in the memmory and return the address with one difference, if `malloc()` fails to
 >   allocate the space it returns `NULL`, if `operator new()` fails to allocate the space it throws an exception.
 >
 >   `new` operator uses `operator new()` to allocate a space on the memmory and then type casts
 >   the returned value from `operator new()`, and calls the constructor of that class.
+>
 >   ```cpp
 >   struct Myclass;
 >   Myclass* m1 = new Myclass;
@@ -149,10 +168,11 @@ int main() {
 >   // this to explain what compiler does. This code would be invalid if it were to be written by a developer.
 >   ```
 >
-> - How to delete a dynamic object?<br>
->   `delete` operator takes the address of an instance and calls the destructor.<br>
->   `delete` operator and `operator delete()` are different from each other.<br>
+> - How to delete a dynamic object?  
+>   `delete` operator takes the address of an instance and calls the destructor.  
+>   `delete` operator and `operator delete()` are different from each other.  
 >   `operator delete()` is the C++ counterpart of `free()` in C.
+>
 >   ```cpp
 >   delete m1;
 >   // This line actually does the following
@@ -163,17 +183,20 @@ int main() {
 > This was just a small peak at the dynamic instances.
 
 ##### ###REMARK###
+
 > Special member functions can have one of the following states;
+>
 > 1. Not  Declared
 > 2. User Declared
->     1. User Declared - Defined
->     2. User Declared - Defaulted
->     3. User Declared - Deleted
+>    1. User Declared - Defined
+>    2. User Declared - Defaulted
+>    3. User Declared - Deleted
 > 3. Implicitly Declared                    // Defined by the compiler.
->     1. Implicitly Declared - Defaulted
->     2. Implicitly Declared - Deleted
+>    1. Implicitly Declared - Defaulted
+>    2. Implicitly Declared - Deleted
 
 Constructor Initializer List (Member Initializer List)
+
 1. Can only be used for ctors.
 2. A constructor initializes the non-static data members of the instance it's going to construct.
 3. Construction order of data members of a class, is always in the order of definition in the class.
@@ -191,9 +214,11 @@ private:
 ```
 
 ##### ###REMARK###
+
 > If there are members that are initialized in the Initializer List and some members that are not initilized then those members
 > will be default initialized. This may cause syntax errors in some scenarios (e.g. `const` data members, reference data
 > members, etc.).
+>
 > ```cpp
 > class Myclass {
 > public:
@@ -204,16 +229,19 @@ private:
 > ```
 
 ##### ###REMARK###
+
 > - Using Initializer List and assigning the values inside of the constructor is different.
 > - Initializer List initializes the members, but assigning their values inside the constructor is initializing them with default
 >   values and then assigning the values to them.
 > - That's why first choice must always be the constructor initializer list.
 
 #### ###REMARK###
+
 > - Data members of a class will always be initialized in the declaration order.
 > - Initializer List order does not effect the member initialization order.
 
 ### Default Member Initializer (In-Class Initializer) ==> Not Actually an Initializer
+
 ```cpp
 class Myclass {
 public:
@@ -225,5 +253,7 @@ private:
     int _y;
 }; // class Myclass
 ```
+
 ##### ###REMARK###
+
 > Constructor Initializer List overrides the Default Member Initializer.

@@ -1,20 +1,27 @@
 # LECTURE 13
 
 ## Classes
+
 ### Special Member Functions
+
 #### Move Members
+
 - A class can be open to copy and open to move.
 - A class can be closed to copy and open to move.
 - A class can be closed to copy and closed to move.
 
-Move members must leave the object they steal the resource from, in a valid state. An object whose resource is stolen, can be
-reused in an assignment to it.
+Move members must leave the object they steal the resource from, in a valid state. An object whose
+resource is stolen, can be reused in an assignment to it.
 
 ##### ###REMARK###
-> Resource of a `const` object cannot be stolen (rules of the language prohibits this), nor you should try to steal it.
+
+> Resource of a `const` object cannot be stolen (rules of the language prohibits this), nor should
+> you try to steal it.
 
 ##### ###REMARK###
-> `std::move()` is a `const` qualified function. So when the argument of move is a const, it also returns `const`.
+> `std::move()` is a `const` qualified function. So when the argument of move is a const, it also
+> returns `const`.
+>
 > ```cpp
 > class Myclass {
 > public:
@@ -37,15 +44,19 @@ reused in an assignment to it.
 > ```
 
 ##### ###REMARK###
-> CHECK THE `Special Member Functions.jgp` BEFORE DEFINING SPECIAL MEMBER FUNCTIONS.<br>
+
+> CHECK THE `Special Member Functions.jgp` BEFORE DEFINING SPECIAL MEMBER FUNCTIONS.  
 > To summarize;
+>
 > - If any of the destructor / copy constructor / copy assignment is declared, then move members are not declared.
 > - There are no scenarios destructor does not exist.
 > - Default constructor either defaulted or not declared.
 > - If either of the move members is declared then copy members are deleted.
 
 ### placement `new`
+
 > Constructors cannot be called by their names.
+>
 > ```cpp
 > class Myclass;
 > Myclass x;
@@ -53,8 +64,10 @@ reused in an assignment to it.
 > x.Myclass();                // Always a syntax error.
 > ptr->Myclass();             // Always a syntax error.
 > ```
-> Destructors can be called by their names, but must not. There is only one exception to this rule, placement new operator,<br>
+>
+> Destructors can be called by their names, but must not. There is only one exception to this rule, placement new operator,  
 > a topic for later.
+>
 > ```cpp
 > class Myclass;
 > Myclass x;
@@ -64,10 +77,13 @@ reused in an assignment to it.
 > ```
 
 #### ###REMARK####
+
 > WHEN DEFINING COPY OR MOVE ASSIGNMENT, ALWAYS CHECK FOR SELF ASSIGNMENT, TO PREVENT DANGLING POINTERS.
 
 ### Delegating Constructor
-    Is the constructor that calls another constructor.
+
+Is the constructor that calls another constructor.
+
 ```cpp
 class Myclass {
 public:
@@ -77,12 +93,16 @@ private:
     int _x, _y, _z;
 }; // class Myclass
 ```
+
 ##### ###REMARK###
-> Constructor Initializer List cannot be used in a delegating constructor.<br>
+
+> Constructor Initializer List cannot be used in a delegating constructor.  
 > Calling a constructor must be the only thing that delegating constructor should do.
 
 ### Temporary Objects
+
 Life of a temporary object ends after the enclosing expression that contains the expression that creates the temporary object.
+
 ```cpp
 class Myclass {
 public:
@@ -111,14 +131,16 @@ int main() {
     return 0;
 }
 ```
+
 This code snippet will have the following output;
-> main starts here<br>
-> default constructor this =    // address goes here<br>
-> Myclass foo() this =          // same address as before goes here<br>
-> destructor this =             // same address as before goes here<br>
+> main starts here  
+> default constructor this =    // address goes here  
+> Myclass foo() this =          // same address as before goes here  
+> destructor this =             // same address as before goes here  
 > main continues
 
 BUT, binding it to an r value expression like,
+
 ```cpp
 int main() {
     std::cout << "main starts here\n";
@@ -127,17 +149,20 @@ int main() {
     return 0;
 }
 ```
+
 Would have the following output;
-> main starts here<br>
-> a = 3 b = 5 this =        // address<br>
-> main continues<br>
+> main starts here  
+> a = 3 b = 5 this =        // address  
+> main continues  
 > destructor this =         // same address as before
 
-So binding a temp object to an r value expression extends the life of that temp object, untill the end of that reference's scope.<br>
+So binding a temp object to an r value expression extends the life of that temp object, untill the end of that reference's scope.  
 This is called life extension.
 
 ### Reference Qualifiers
+
 Non-static member functions can be called with L and R val. expr. class instances.
+
 ```cpp
 class Myclass {
 public:
@@ -156,6 +181,7 @@ int main() {
 ```
 
 BUT there are such cases;
+
 1. We want to disable the calling of functions for R value expression class instances.
 2. We want to disable the calling of functions for R value expression and L value expression class instances.
 3. We want to define different implementations.
@@ -178,10 +204,13 @@ std::move(x).bar();             // VALID
 ```
 
 ##### ###REMARK###
+
 > Member functions can be overloaded with reference qualifiers.
 
 ##### Why Do We Need Reference Qualifiers?
+
 To prevent problems like assigning a value to an r value expression.
+
 ```cpp
 Myclass x;
 Myclass{} = x;  // This is not a syntax error, but it is illogical. To turn this into a syntax error,
@@ -190,11 +219,13 @@ Myclass{} = x;  // This is not a syntax error, but it is illogical. To turn this
 Myclass& Myclass::operator=(Myclass const&) & = default;
 ```
 
-###REMARK###
+##### ###REMARK###
+
 > If one of the overloads of a member function is reference qualified, then all overloads of that function must be
 > qualified.
 
 ### Conversion Constructors
+
 ```cpp
 class Myclass {
 public:
@@ -208,13 +239,16 @@ x = 5;              // Implicit Conversion
 ```
 
 ##### ###REMARK###
-> This type of conversion is called User-Defined Conversion(UDC).<br>
+
+> This type of conversion is called User-Defined Conversion(UDC).  
 > Compiler can perform an implicit conversion in two ways;
-> 1. Standard Conversion + User-Defined Conversion
-> 2. User-Defined Conversion + Standard Conversion<br>
 >
-> Both are implicit conversions, but compiler cannot perform an implicit conversion in the form of;<br>
+> 1. Standard Conversion + User-Defined Conversion
+> 2. User-Defined Conversion + Standard Conversion  
+>
+> Both are implicit conversions, but compiler cannot perform an implicit conversion in the form of;  
 > User-Defined Conversion + User-Defined Conversion.
+>
 > ```cpp
 > class A {};
 > 
@@ -237,47 +271,58 @@ x = 5;              // Implicit Conversion
 >
 > To prevent the compiler performing an implicit conversion, we use `explicit` keyword in constructor definition. Means that
 > constructor does not allow implicit conversion, only explicit conversion.
-> ```cpp
-> class Myclass {
-> public:
->     Myclass();
->     explicit Myclass(T);
-> }; // class Myclass
-> ```
-> Some important rules about `explicit`;
-> 1. If it's defined in class definition (inline definition), `explicit` keyword does not have to be in the definition.
-> ```cpp
-> class Myclass {
-> public:
->     Myclass();
->     explicit Myclass(T);
-> }; // class Myclass
 >
-> Myclass::Myclass(T x){}                 // This is the correct way.
-> explicit Myclass::Myclass(T x){}        // This is the wrong way.
-> ```
-> 2. If copy initialization requires an implicit conversion, explicit conversion constructor will cause a syntax error.
 > ```cpp
 > class Myclass {
 > public:
 >     Myclass();
->     explicit Myclass(int);
+>     explicit Myclass(T);
 > }; // class Myclass
-> int main() {
->     Myclass m = 10;                 // This is a syntax error.
-> }
 > ```
+>
+> Some important rules about `explicit`;
+>
+> 1. If it's defined in class definition (inline definition), `explicit` keyword does not have to be
+> in the definition.
+>
+>    ```cpp
+>    class Myclass {
+>    public:
+>        Myclass();
+>        explicit Myclass(T);
+>    }; // class Myclass
+>
+>    Myclass::Myclass(T x){}                 // This is the correct way.
+>    explicit Myclass::Myclass(T x){}        // This is the wrong way.
+>    ```
+>
+> 2. If copy initialization requires an implicit conversion, explicit conversion constructor will
+> cause a syntax error.
+>
+>    ```cpp
+>    class Myclass {
+>    public:
+>        Myclass();
+>        explicit Myclass(int);
+>    }; // class Myclass
+>    int main() {
+>        Myclass m = 10;                 // This is a syntax error.
+>    }
+>    ```
+>
 > 3. Explicit functions are omitted from viable functions list in function overloading resolution.
 > 4. Conversion constructors can have more than 1 parameters, but in practice this is rare.
 
-
 ##### ###REMARK###
-> 99% of the time we want conversion ctors to be `explicit`.
+
+> 99% of the time we want conversion constructors to be `explicit`.
 
 ### Copy Elision
-Not performing the copying, or escaping from the copying. Sometimes referred to as copy elimination. There is a copy performing
-code but compiler produces a code that does not copy, hence the naming. With the C++17, some of the copy elision scenarios are
-switched from optional (usually called optimization) to mandatory.
+
+Not performing the copying, or escaping from the copying. Sometimes referred to as copy elimination.
+There is a copy performing code but compiler produces a code that does not copy, hence the naming.
+With the C++17, some of the copy elision scenarios are switched from optional (usually called
+optimization) to mandatory.
 
 ```cpp
 class Myclass {
@@ -305,18 +350,20 @@ int main() {
     return 0;
 }
 ```
+
 Expected output for this code snippet is
-> Myclass default constructor<br>
-> Myclass copyctor<br>
-> Myclass default constructor<br>
+> Myclass default constructor  
+> Myclass copyctor  
+> Myclass default constructor  
 > Myclass copyctor
 
 BUT it actually is
-> Myclass default constructor<br>
+> Myclass default constructor  
 > Myclass default constructor
 
-Copy constructor is not called because compiler decides that since the temp object is not gonna be used, instead of creating that
-temp object in `main()` and pass it to the `func(Myclass)` by value, it creates the temp object in the scope of `func(Myclass)`.<br>
-In other words compiler elides copying, hence the name Copy Elision.<br>
-This exact example was considered as optimization but with C++17 it is mandatory. So if copy constructor to be deleted, it would be a
-syntax error on standarts before C++17.
+Copy constructor is not called because compiler decides that since the temp object is not gonna be
+used, instead of creating that temp object in `main()` and pass it to the `func(Myclass)` by value,
+it creates the temp object in the scope of `func(Myclass)`.  
+In other words compiler elides copying, hence the name Copy Elision.  
+This exact example was considered as optimization but with C++17 it is mandatory. So if copy
+constructor to be deleted, it would be a syntax error on standarts before C++17.

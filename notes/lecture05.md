@@ -1,17 +1,20 @@
 # LECTURE 05
+
 ## Reference Semantics
 
-On language level, a reference and a pointer are the same thing, only difference is on the syntax level.<br>
+On language level, a reference and a pointer are the same thing, only difference is on the syntax level.  
 
 There are three types of references.
+
 1. L Value Reference
-2. R Value Reference<br>
+2. R Value Reference  
     used for
     - Move Semantics
     - Perfect Forwarding(is a tool related to generic programming)
 3. Forwarding Reference (Universal Reference)
 
 ### How to use references and pointers on arrays?
+
 ```cpp
 int  a[5]{0, 1, 2, 3, 4};
 int& r1     = a[0]; // Here r1 is a reference to the first element of a.
@@ -22,17 +25,21 @@ int(*p2)[5] = &a; // Here p2 points to the array itself.
 ```
 
 ##### ###REMARK###
+
 > ```cpp
 > int  a   = 5;
 > int& r_a = a;           // Data type of r_a is int& but the type of expression "r_a" is int.
 > ```
 
 ### Why Do We Use L Value Reference?
+
 For the %99 of the time;
+
 - To pass an object to a function as call by reference
 - bir fonksiyonun kendisini �a��ran koda bir nesnenin kendisini g�ndermesi
 
 ##### ###REMARK###
+
 > ```cpp
 > int* g;
 > int* foo() {
@@ -46,6 +53,7 @@ For the %99 of the time;
 > ```
 
 ##### ###REMARK###
+
 > Returning the address of an automatic lifetime variable is an undefined behaviour.
 
 ```cpp
@@ -54,6 +62,7 @@ void func2(T const* x);  // getter-accessor
 ```
 
 ##### ###REMARK###
+
 > ```cpp
 > int           x  = 10;
 > int&          r1 = x;     // VALID
@@ -76,25 +85,31 @@ void func2(T const* x);  // getter-accessor
 |Can point to a different object         |Cannot be bound to a different object (std::reference_wrapper allows this)|
 
 ##### ###REMARK###
+
 > ```cpp
 > int&  r1;     // L value reference
 > int&& r2;     // R value reference
 > ```
 
 ## Type Deduction
+
 There are four different type deductions mechanisms;
+
 1. `auto`
 2. `decltype()`
 3. `decltype(auto)`
 4. &nbsp;template
 
 ##### ###REMARK###
+
 > Type deduction happens in compile time, it has nothing to do with run time.
 
 ### `auto` Type Deduction
+
 - Variables defined with auto keyword must be initialized.
-- Type deduction happens for auto keyword, not the type of variable. Meaning compiler determines what's written instead of
-the `auto` keyword.
+- Type deduction happens for auto keyword, not the type of variable. Meaning compiler determines
+what's written instead of the `auto` keyword.
+
 > ```cpp
 > auto      x  = 5;     // Here compiler reads this line as if it was int x = 5, so `auto` = `int`.
 > auto      p1 = &x;    // Here compiler reads this line as if it was int* p = &x, so auto = int*.
@@ -106,49 +121,56 @@ the `auto` keyword.
 > int&      r  = x;
 > auto      y  = r;     // Here & is lost, so the compiler reads this line as if it was int y = r not int& y = r.
 > ```
+
 ##### ###REMARK###
+
 If pointers are used in `auto` initializations, low level `const` is not lost but top level `const` is lost.
--   ```cpp
-    int const x[] = {0, 1, 2, 3, 4};
-    auto      y   = x;      // As if it is int const* y = x, so auto = int const*.
-    ```
--   ```cpp
-    int const x = 5;
-    auto      y = &x;       // As if it is int const * y = &x, so auto = int const*.
-    ```
 
--   ```cpp
-    int const x = 5;
-    auto*     y = &x;       // As if it is int const* y = &x, so auto = int const.
-    ```
+- ```cpp
+  int const x[] = {0, 1, 2, 3, 4};
+  auto      y   = x;      // As if it is int const* y = x, so auto = int const*.
+  ```
 
--   ```cpp
-    int const x = 5;
-    auto&     y = x;        // As if it is int cosnt& y = x, so auto = int const.
-    ```
+- ```cpp
+  int const x = 5;
+  auto      y = &x;       // As if it is int const * y = &x, so auto = int const*.
+  ```
 
--   ```cpp
-    int const x[5]{};
-    auto      y = &x;       // As if it is int const(*y)[5] = &x, so auto = int const(*)[5].
-    ```
+- ```cpp
+  int const x = 5;
+  auto*     y = &x;       // As if it is int const* y = &x, so auto = int const.
+  ```
 
--   ```cpp
-    int const x[5]{};
-    auto&     y = x;        // As if it is int const(&y)[5] = x, so auto = int const[5].
-    ```
+- ```cpp
+  int const x = 5;
+  auto&     y = x;        // As if it is int cosnt& y = x, so auto = int const.
+  ```
 
--   ```cpp
-    auto& y = "michael";    // As if it is char const(&y)[8] = "michael", so auto = char const[8].
-    ```
-    > All in the above examples, y is a const.
+- ```cpp
+  int const x[5]{};
+  auto      y = &x;       // As if it is int const(*y)[5] = &x, so auto = int const(*)[5].
+  ```
 
--   ```cpp
-    int* const ptr{};
-    auto       p = ptr;     // As if it is int* p = ptr, so auto = int*.
-    ```
+- ```cpp
+  int const x[5]{};
+  auto&     y = x;        // As if it is int const(&y)[5] = x, so auto = int const[5].
+  ```
+
+- ```cpp
+  auto& y = "michael";    // As if it is char const(&y)[8] = "michael", so auto = char const[8].
+  ```
+
+  > All in the above examples, y is a const.
+
+- ```cpp
+  int* const ptr{};
+  auto       p = ptr;     // As if it is int* p = ptr, so auto = int*.
+  ```
 
 ##### ###REMARK###
+
 - Can also be for function pointers.
+
     > ```cpp
     > int foo(int);
     > 
@@ -168,6 +190,7 @@ If pointers are used in `auto` initializations, low level `const` is not lost bu
 |T&    |&&  |T&      |L-val-ref to an R-val-ref collapses to an L-val-ref|
 |T&&   |&   |T&      |R-val-ref to an L-val-ref collapses to an L-val-ref|
 |T&&   |&&  |T&&     |R-val-ref to an R-val-ref collapses to an R-val-ref|
+
 > ```cpp
 > using lref = int&;
 > using rref = int&&;
@@ -180,8 +203,10 @@ If pointers are used in `auto` initializations, low level `const` is not lost bu
 > ```
 
 ### Universal Reference (Forwarding Reference) (`auto&& name = expression`)
+
 - If the `expression` is L value expression then, auto = T&.
 - If the `expression` is R value expression then, auto = T.
+
 ```cpp
 int    x  = 10;
 auto&& r1 = x;      // As if it is int&  r1 = x, so auto = int&.
@@ -189,7 +214,9 @@ auto&& r2 = 10;     // As if it is int&& r2 = 10, so auto = int.
 ```
 
 ##### ###REMARK###
+
 `auto` keyword can be used in comma seprated list declarations but deduction for `auto` for all the variables must be the same.
+
 ```cpp
 auto  x = 10,  y = 5;   // As if it is int x = 10, y = 5, so auto = int.
 auto *z = &x,  t = y;   // This is legal because for both variables auto is deduced to int.
