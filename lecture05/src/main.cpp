@@ -42,10 +42,10 @@ int main() {
               << "x " << x << "\n";
 
     int arr1[4]{1, 2, 3, 4};
-    int (&r_arr1)[4] = arr1;
-    int& ra1         = arr1[0];
-    int* pa1         = arr1;
-    int (*pa2)[4]    = &arr1;
+    int(&r_arr1)[4] = arr1;
+    int& ra1        = arr1[0];
+    int* pa1        = arr1;
+    int(*pa2)[4]    = &arr1;
 
     int&       r_x1   = x;
     int const* cp     = &x;
@@ -70,11 +70,11 @@ int main() {
               << "*::pptr " << *::pptr << "\n";
 
     int a[5][10];
-    int (*p11)[10] = &a[1];
-    int (&ra)[10]  = a[1];
+    int(*p11)[10] = &a[1];
+    int(&ra)[10]  = a[1];
 
     int b[5][10][20];
-    int (&p2)[20] = b[1][2];
+    int(&p2)[20] = b[1][2];
 
     int           ival1 = 10;
     double const& dref  = ival1;
