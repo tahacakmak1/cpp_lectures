@@ -15,7 +15,8 @@ auto&& r2 = 10;     // As if it is int&& r2 = 10, so auto = int.
 
 ### `decltype(x)` Type Deduction
 
-`auto` can only be used in variable declarations, but `decltype` can be used anywhere to specify a type.
+`auto` can only be used in variable declarations, but `decltype` can be used anywhere to specify a
+type.
 
 `decltype()` works in two different ways;
 
@@ -123,12 +124,12 @@ Argument  (Actual Parameter)
 ##### ###REMARK###
 
 > ```cpp
-> int func(int, int = 5, int);    // Syntax error. Every following argument after a default argument  must also have a
->                                 // default argument. But there is an exception to this.
+> int func(int, int = 5, int);    // Syntax error. Every following argument after a default argument
+>                          // must also have a default argument. But there is an exception to this.
 > int func(int, int, int = 10);
-> int func(int, int = 5, int);    // Since the 3rd parameter already has a default value, redeclaring it as
->                                 // int func(int, int = 5, int = 10) would be a syntax error.
->                                 // So calling func as func(1) would mean func(1, 5, 10).
+> int func(int, int = 5, int);  // Since the 3rd parameter already has a default value, redeclaring
+>                               // it as int func(int, int = 5, int = 10) would be a syntax error.
+>                               // So calling func as func(1) would mean func(1, 5, 10).
 > ```
 
 ##### ###REMARK###
@@ -143,7 +144,8 @@ Argument  (Actual Parameter)
 
 ##### ###REMARK###
 
-> Declaration of default arguments both in the function declaration and in the function definition causes syntax error.
+> Declaration of default arguments both in the function declaration and in the function definition
+> causes syntax error.
 >
 > ```cpp
 > int func(int x = 5);
@@ -181,8 +183,9 @@ Argument  (Actual Parameter)
 > int func(int, int = 5, int);            // Is well-formed.
 > ```
 >
-> This style is especially useful if you are using a function from a header file that does not belong to you. Instead of changing
-> the function in the header file, you can redeclare it in your own program.
+> This style is especially useful if you are using a function from a header file that does not
+> belong to you. Instead of changing the function in the header file, you can redeclare it in your
+> own program.
 >
 > ```cpp
 > void func(int x, int y = x);            // Is a syntax error.
@@ -190,8 +193,8 @@ Argument  (Actual Parameter)
 
 ## Enumerators
 
-There are two different enum types in C++ enum and scoped enum(usually called enum class by developers but correct name is
-scoped enum).
+There are two different enum types in C++ enum and scoped enum(usually called enum class by
+developers but correct name is scoped enum).
 
 ### Old Enum
 
@@ -200,9 +203,9 @@ enum Colour1 { RED, GREEN, BLUE }; // enum Colour1
 enum Colour2 : unsigned char { RED, GREEN, BLUE }; // enum Colour2
 ```
 
-- `underlying_type` is determined by the compiler. In C, `underlying_type` has to be `int`. In C++ it
-is dependent on `int`, it defaults to `int` but if `int` is not enough then it is chosen accordingly
-by the compiler. Can also be specified explicitly in C++.
+- `underlying_type` is determined by the compiler. In C, `underlying_type` has to be `int`. In C++
+    it is dependent on `int`, it defaults to `int` but if `int` is not enough then it is chosen
+    accordingly by the compiler. Can also be specified explicitly in C++.
 
 ```cpp
 enum Colour1 : unsigned char;
@@ -211,13 +214,15 @@ enum Colour2 : unsigned int { GREY, BLACK, MAGENTA }; // enum Colour2
 
 #### Problems of the Old Enum
 
-- Old enumerators cannot be used as an incomplete type, because `underlying_type` is dependent on the compiler.
+- Old enumerators cannot be used as an incomplete type, because `underlying_type` is dependent on
+    the compiler.
 - `underlying_type` cannot be specified by developer.
-- Implicit type casting from arithmetic types to enum type does not exist but it does from enum to arithmetic types.  
-THIS IS A HUGE PROBLEM. ONE OF THE MAIN REASONS THAT SCOPED ENUM EXISTS.
+- Implicit type casting from arithmetic types to enum type does not exist but it does from enum to
+    arithmetic types. THIS IS A HUGE PROBLEM. ONE OF THE MAIN REASONS THAT SCOPED ENUM EXISTS.
 - Implicit type casting between two different enum's also does not exist.
-- THEY DO NOT HAVE SCOPE. ONE OF THE MAIN REASONS THAT SCOPED ENUM EXISTS. When defined globally, components of
-different enum's with same names would clash(called name clashing / name masking / name hiding).
+- THEY DO NOT HAVE SCOPE. ONE OF THE MAIN REASONS THAT SCOPED ENUM EXISTS. When defined globally,
+    components of different enum's with same names would clash
+    (called name clashing / name masking / name hiding).
 
 ```cpp
 enum TrafficLight { RED, YELLOW, GREEN };
@@ -253,27 +258,28 @@ enum class Colour2 : unsigned char { WHITE, GREY, BLACK, GREEN };   // enum clas
     ```cpp
     enum class Colour { RED, GREEN, BLUE }; // enum class Colour
     Colour mycolour{Colour::red};
-    int x = mycolour;           // Is a syntax error because implicit type casting does not exist for scoped enums.
+    int x = mycolour;       // Is a syntax error because implicit type casting does not exist for
+                            // scoped enums.
     int x = static_cast<int>(mycolour);  // Is correct, because the casting is done explicitly.
     ```
 
 ##### ###REMARK###
 
-> Using enum declaration can grant access to the elements of a scoped enum without scope resolution operator. This is available
-> with C++20.
+> Using enum declaration can grant access to the elements of a scoped enum without scope resolution
+> operator. This is available with C++20.
 >
 > ```cpp
 > enum class Colour { RED, GREEN, BLUE }; // enum class Colour
-> using enum Colour;    // By using this, in the scope of this declaration, you can access the elements of Colour
->                       // without using scope resolution operator.
+> using enum Colour;    // By using this, in the scope of this declaration, you can access the
+>                       // elements of Colour without using scope resolution operator.
 > auto   c1 = RED;
 > Colour c2 = GREEN;
 > ```
 
 ##### ###REMARK###
 
-> If you use two "`using enum`" declarations in the same scope, you would create an error if those two scoped enums have a name
-> clash. Compiler checks this on the compile time.
+> If you use two "`using enum`" declarations in the same scope, you would create an error if those
+> two scoped enums have a name clash. Compiler checks this on the compile time.
 
 ##### ###REMARK###
 
@@ -283,7 +289,8 @@ enum class Colour2 : unsigned char { WHITE, GREY, BLACK, GREEN };   // enum clas
 > enum class Colour { RED, GREEN, BLUE }; // enum class Colour
 > using Colour::red;
 > Colour c1 = RED;  // Is valid because of the "using Colour::RED".
-> Colour c2 = BLUE; // Is invalid because blue is undefined in this scope. It has to be Colour c2 = Colour::BLUE.
+> Colour c2 = BLUE; // Is invalid because blue is undefined in this scope.
+>                   // It has to be Colour c2 = Colour::BLUE.
 > 
 > using Colour::RED, Colour::BLUE;
 > Colour c1 = RED;  // Is valid because of the "using Colour::RED".

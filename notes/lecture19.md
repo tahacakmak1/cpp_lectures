@@ -113,7 +113,8 @@
     > ```
 
 - range Constructor (pos1, pos2)
-    Requires two positions, they don't have to be pointers. First position is inclusive, second is not.
+    Requires two positions, they don't have to be pointers. First position is inclusive, second is
+    not.
 
 - `std::string` Constructor (`std::string`)
 

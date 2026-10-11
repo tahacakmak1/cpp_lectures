@@ -131,7 +131,7 @@ There are two types of operator functions;
     class T;
     T + 5;  // Can be achieved by member operator overloading.
     5 + T;  // Cannot be achieved by member operator functions. To do this
-            // we use global operator functions, and we call global operator functions by their names.
+        // we use global operator functions, and we call global operator functions by their names.
     ```
 
 2. For scenarios such that we have to use two different class types as operands.
@@ -284,7 +284,8 @@ There are two types of operator functions;
     }
     ```
 
-6. Suffix/postfix and prefix increment and decrement operators have the same syntax, how to differentiate them in operator function?
+6. Suffix/postfix and prefix increment and decrement operators have the same syntax, how to
+    differentiate them in operator function?
 
     ```cpp
     class T {
@@ -319,9 +320,10 @@ These operator functions will be studied separately.
 
 ##### ###REMARK###
 
-> For Array-Like Classes there are two overloads of `[]` operator. One for `const` objects and one for non-const objects.  
-> `const` overload will return a `T const&` and non-const overload will return `T&`. This way trying to change an element of a `const
-> object will cause a syntax error.
+> For Array-Like Classes there are two overloads of `[]` operator. One for `const` objects and one
+> for non-const objects.  
+> `const` overload will return a `T const&` and non-const overload will return `T&`. This way trying
+> to change an element of a `const` object will cause a syntax error.
 >
 > ```cpp
 > class Name

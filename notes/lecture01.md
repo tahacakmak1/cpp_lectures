@@ -12,7 +12,8 @@
     - Implementation Defined
 
 In C there is name shadowing, in C++ it does not exist.  
-In C, `int func()` and `func()` (without an explicit data type declaration) are the same, but in C++ this does not happen.
+In C, `int func()` and `func()` (without an explicit data type declaration) are the same, but in C++
+this does not happen.
 
 ## Diffrences About Types and Type Castings
 
@@ -62,8 +63,10 @@ Data2 i;
 ## Const Semantics
 
 - In C constant variables do not have to be initialized, but in C++ they have to.
-- In C constant variables cannot be used in declarations like `int a[x]`. Applies if variable length array is not used by the compiler.
-- In C++ constant variables can be used in declarations like `int a[x]`. Applies if variable length array is not used by the compiler.
+- In C constant variables cannot be used in declarations like `int a[x]`. Applies if variable length
+    array is not used by the compiler.
+- In C++ constant variables can be used in declarations like `int a[x]`. Applies if variable length
+    array is not used by the compiler.
 
     ```cpp
     int get_size() { return 100; }
@@ -81,8 +84,8 @@ Data2 i;
 - In C there is implicit conversion from `T const*` to `T*` but in C++ this is illegal.
 
     ```cpp
-    int* const ptr1;        // Top-level const, also called the right const because const is on the right of *.
-    int const* ptr2;        // Low-level const, also called the left  const because const is on the left  of *.
+    int* const ptr1;    // Top-level const, also called the right const because const is on the right of *.
+    int const* ptr2;    // Low-level const, also called the left  const because const is on the left  of *.
 
     void foo(T* p);         // mutator or out param
     void foo(T const* p);   // in param

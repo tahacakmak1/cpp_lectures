@@ -30,8 +30,9 @@ function of the class.
 > ```
 >
 > Here default constructor is `deleted`, because `int const` cannot be default initialized.  
-> Note that, this `class` definition is not a syntax error but, creating an instance of Myclass with default initialization would
-> cause a syntax error, because Myclass does not have a default constructor.
+> Note that, this `class` definition is not a syntax error but, creating an instance of Myclass with
+> default initialization would cause a syntax error, because Myclass does not have a default
+> constructor.
 >
 > ```cpp
 > class Foo {
@@ -48,11 +49,13 @@ function of the class.
 > }
 > ```
 >
-> Here default constructor of Foo is private, so default initializing of a Foo instance would cause a syntax error.
+> Here default constructor of Foo is private, so default initializing of a Foo instance would cause
+> a syntax error.
 
 #### Copy constructor
 
-When a class instance is initiated with the value of another instance of the same class, copy constructor is called.
+When a class instance is initiated with the value of another instance of the same class, copy
+constructor is called.
 
 ```cpp
 Student mike;               // Calls default constructor.
@@ -71,8 +74,8 @@ function of the class.
 
 ##### ###REMARK###
 
-> If the special member function that's been defined by the compiler is working for you, let the compiler define it. This is called
-> rule of zero.
+> If the special member function that's been defined by the compiler is working for you, let the
+> compiler define it. This is called rule of zero.
 >
 > ##### So when should the copy constructor be user declared?
 >
@@ -103,9 +106,9 @@ function of the class.
 >     }
 >
 >     String& operator=(String const& other) {
->         if (this == &other) { // Removal of this control mechanism, creates a dangling handle problem caused by
->                               // self assignment. There is an alternative to this, 
->             return *this;     // Copy & Swap Idiom, a topic for later.
+>         if (this == &other) { // Removal of this control mechanism, creates a dangling handle
+>                               // problem caused by self assignment. There is an alternative to
+>             return *this;     //  this, Copy & Swap Idiom, a topic for later.
 >         }
 >         std::free(_p);
 >         _len = other._len;
@@ -147,7 +150,8 @@ function of the class.
 >
 > So, deep copy is necessary when a class contains a handle (pointer or reference).  
 > There are classes that have pointers in them but, for those classes deep copy constructor is not
-> necessary to be defined explicitly, because those classes already have built-in deep copy constructor.
+> necessary to be defined explicitly, because those classes already have built-in deep copy
+> constructor.
 
 Three possible statuses for copy constructor;
 
@@ -170,8 +174,8 @@ should also define the others.
 
 #### Copy Assignment
 
-Unlike copy constructor, in copy assignment, there are no instances being created. It works on already
-existing instances. It must be named as `operator=`.
+Unlike copy constructor, in copy assignment, there are no instances being created. It works on
+already existing instances. It must be named as `operator=`.
 
 ```cpp
 class Myclass

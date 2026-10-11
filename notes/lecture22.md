@@ -6,9 +6,9 @@
 
 > - If a `class` has a `virtual` or a pure `virtual` function, it's a polymorphic class.
 > - If a `class` has or inherits a pure `virtual` function but does not define an implementation for
-it, then that class is an abstract `class`. If a `class` is not abstract, then it is a concrete `class`.
-Difference between abstract and concrete classes is that creating an instance from an abstract `class`
-is not permitted. Trying to do so is a syntax error.
+it, then that class is an abstract `class`. If a `class` is not abstract, then it is a concrete
+`class`. Difference between abstract and concrete classes is that creating an instance from an
+abstract `class` is not permitted. Trying to do so is a syntax error.
 
 ##### ###REMARK###
 
@@ -87,8 +87,8 @@ int main() {
 
 ##### ###REMARK###
 
-> - In a member function declaration or definition, `override` specifier ensures that the function is
->   `virtual` and is overriding a `virtual` function from a base class. The program is ill-formed
+> - In a member function declaration or definition, `override` specifier ensures that the function
+>   is `virtual` and is overriding a `virtual` function from a base class. The program is ill-formed
 >   (a compile-time error is generated) if this is not true.
 > - An overriding function that has the `override` specifier is itself also a `virtual` function.
 
@@ -135,18 +135,18 @@ int main() {
     Base& ref = myder;
 
     ref.func(); // will call the Der::func but will use the default argument of Base::func. This is
-                // is because default argument does not relate to dynamic type, it is about static type.
+            // is because default argument does not relate to dynamic type, it is about static type.
 }
 ```
 
 ##### ###REMARK###
 
-> If the call that would normally trigger a Virtual Dispatch is made from the ctor of the base `class`
-> then that call will be calling the funtion from the base `class`. This happens because of the way
-> derived `class` instances created in C++. First the base `class` inside the derived `class` is
-> created. Then the derived `class` will be created. Since the derived `class` instance doesn't
-> exist yet, it's functions cannot be called. Compiler deliberately blocks this from happening as it
-> would create a runtime error. Same rule and reason applies for the dtors as well.
+> If the call that would normally trigger a Virtual Dispatch is made from the ctor of the base
+> `class` then that call will be calling the funtion from the base `class`. This happens because of
+> the way derived `class` instances created in C++. First the base `class` inside the derived
+> `class` is created. Then the derived `class` will be created. Since the derived `class` instance
+> doesn't exist yet, it's functions cannot be called. Compiler deliberately blocks this from
+> happening as it would create a runtime error. Same rule and reason applies for the dtors as well.
 
 #### Covariance
 
@@ -194,8 +194,8 @@ public:
 ```
 
 To make the new instance of the `class` identical to the existing one, we call the copy constructor
-by passing `*this` to the copy ctor. If we just want a new object without copying `return new Merdedes;`
-would be enough. The name clone implies that it's identical copy is needed.
+by passing `*this` to the copy ctor. If we just want a new object without copying
+`return new Merdedes;` would be enough. The name clone implies that it's identical copy is needed.
 
 #### Virtual Destructor
 
@@ -246,7 +246,7 @@ Because `~Base()` is overridden, this code snippet will have the following outpu
 
 > On the subject of destructors of polymorphic classes.  
 > They are either;
-
+>
 > 1. public and virtual
 > 2. protected and non-virtual
 

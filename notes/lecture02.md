@@ -3,16 +3,18 @@
 In C char constants are 4 bytes, but in C++(they are named character literals) they are 1 byte.  
 In C `"jack"` is `char[5]`, 5 because it ends with `'\0'`, but in C++ it is `char const[5]`.  
 
-_*Array decay - array to pointer conversion*_: meaning array names act as pointers, except in `sizeof()` in C.  
+_*Array decay - array to pointer conversion*_: meaning array names act as pointers, except in
+`sizeof()` in C.  
 _*Unevaluated context*_, in C only happens in `sizeof`, but in C++ there are 7-8 instances.
 
 For int `a[10]`;  
-&nbsp;&nbsp;&nbsp;&nbsp;`a` &nbsp;&nbsp;has the type `int[10]` (also there is pointer decay)  
-&nbsp;&nbsp;&nbsp;&nbsp;`&a` has the type `int (*)[10]`.
 
-C++ also uses pointers but, compared to their usage in C it is much more sparse. Because C++ uses reference semantics, and we
-use `smart_pointer`'s to control dynamic sizes. In some cases instead of using pointers, we use containers like
-`vector<int>::iterator`.
+- `a` has the type `int[10]` (also there is pointer decay)  
+- `&a` has the type `int (*)[10]`.
+
+C++ also uses pointers but, compared to their usage in C it is much more sparse. Because C++ uses
+reference semantics, and we use `smart_pointer`'s to control dynamic sizes. In some cases instead of
+using pointers, we use containers like `vector<int>::iterator`.
 
 In C char `str[4] = "jack"` is perfectly legal but does not have null character at the end.  
 In C++ this is a syntax error, must be char `str[5] = "jack"`.
@@ -32,10 +34,10 @@ f(x) > g(x)
 x * x + y * y + z * z // in here x * x is named as subexpression.
 ```
 
-In C++ every expression has a data type and a value category(L value expr., R value expr.).
-Knowing the value category is critically important.
+In C++ every expression has a data type and a value category(L value expr., R value expr.). Knowing
+the value category is critically important.
 
-L value expressions point to an object
+L value expressions point to an object.
 
 ```cpp
 int* p = &x;
@@ -120,8 +122,9 @@ int x{};    // Value    Initialization
 
 > ```cpp
 > double dval = 5.6;
-> int    ival = dval; // This assignment has a data loss and an implicit type conversion (from double to int).
->                     // Conversions that cause data loss are called Narrowing Conversion.
+> int    ival = dval;   // This assignment has a data loss and an implicit type conversion (from
+>                       // double to int). Conversions that cause data loss are called Narrowing
+>                       // Conversion.
 > ```
 
 ##### ###REMARK.4###
@@ -143,8 +146,8 @@ int x{};    // Value    Initialization
 
 ```cpp
 int* ptr;
-ptr = 0;                    // Implicit conversion from 0 to nullptr.
-if(ptr == 0)                // Implicit conversion from 0 to nullptr. So it's the same as if(ptr == nullptr)
+ptr = 0;        // Implicit conversion from 0 to nullptr.
+if(ptr == 0)    // Implicit conversion from 0 to nullptr. So it's the same as if(ptr == nullptr)
     std::cout << "true\n";  // true is the output.
 ```
 

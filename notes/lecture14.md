@@ -91,7 +91,7 @@ int Myclass::_x {10};
 
     ```cpp
     class Myclass {
-        Myclass        _x;      // This is a syntax error because Myclass is not complete.
+        Myclass        _x;  // This is a syntax error because Myclass is not complete.
         static Myclass _x;  // This is allowed, because static data members can be an incomplete type.
     }; // class Myclass
     ```

@@ -109,8 +109,8 @@ int main() {
 }
 ```
 
-Yes the `private` inheritance does not exactly represent a is-a relationship like `public` inheritance
-but, there still exists a base `class` inside the derived `class`.  
+Yes the `private` inheritance does not exactly represent a is-a relationship like `public`
+inheritance but, there still exists a base `class` inside the derived `class`.  
 So, `private` inheritance is more similar to a containment.
 
 ```cpp
@@ -177,10 +177,11 @@ private:
 
 1. To access the `protected` members of the base `class`.
 2. To `override` the `virtual` member functions of the base `class`.
-3. Because an abstract `class` cannot be instantiated, therefore cannot be used as a member of a `class`.
+3. Because an abstract `class` cannot be instantiated, therefore cannot be used as a member of a
+    `class`.
 4. To have restricted polymorphism.
-5. To have the advantages of Empty Base Optimization (EBO). EBO is an idiom and will be studied during
-    this course.
+5. To have the advantages of Empty Base Optimization (EBO). EBO is an idiom and will be studied
+    during this course.
 
 ### Empty Base Optiomization (EBO)
 

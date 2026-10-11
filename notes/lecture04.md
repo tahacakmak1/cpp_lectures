@@ -37,7 +37,8 @@ Compiler tries to produce longest tokens.
 
 ##### ###REMARK###
 
-> After declaration of an array, `a[5]` and `int 5[a]` are the same thing, because `[]` is a pointer operator.  
+> After declaration of an array, `a[5]` and `int 5[a]` are the same thing, because `[]` is a pointer
+> operator.  
 > The `[]` operator sums the left operand and the operand between `[]` and deferences the sum.
 >
 > ```c
@@ -54,8 +55,8 @@ Compiler tries to produce longest tokens.
 
 - `T*` is the type of address of `T` data type. e.g. `int*`, `double*`, etc.
 - Pointers can be L value or R value. Pointer variable name can be used for L value type pointer.
-- Every object pointer no matter the data type it points to, has the same size, but function pointer and object pointer does
-not have to have the same size.
+- Every object pointer no matter the data type it points to, has the same size, but function pointer
+    and object pointer does not have to have the same size.
 
 ```c
 int* p;     // pointer to int or p points to 'insert variable name here'
@@ -79,13 +80,13 @@ int* p = &a[5];         // Is a VALID pointer. The end of an array is always a V
     > int main(void) {
     >     int* p1 = nullptr;    // Is a VALID pointer
     >     int* p2;
-    >     p2;                   // Here p2 is a WILD pointer.
+    >     p2;           // Here p2 is a WILD pointer.
     >     if (true) {
     >         int x = 10;
     >         p2    = &x;
-    >         p2;               // Here p2 is a VALID pointer.
+    >         p2;       // Here p2 is a VALID pointer.
     >     }
-    >     p2;                   // Here p2 is a dangling pointer. Dangling pointers are INVALID pointers.
+    >     p2;   // Here p2 is a dangling pointer. Dangling pointers are INVALID pointers.
     > }
     > ```
 

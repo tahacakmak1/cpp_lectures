@@ -4,7 +4,8 @@
 
 ##### ###REMARK###
 
-> - TYPE CASTING DOES NOT CHANGE THE VARIABLE'S ACTUAL TYPE BUT CREATES A TEMPORARY OBJECT IN THAT TYPE TO USE.
+> - TYPE CASTING DOES NOT CHANGE THE VARIABLE'S ACTUAL TYPE BUT CREATES A TEMPORARY OBJECT IN THAT
+>   TYPE TO USE.
 > - EVERY TYPE CAST IS A POTENTIAL ERROR. MUST BE VERY CAREFUL IN EVERY WAY.
 
 In C there is only one way to do explicit type cast. `(target type)expression`.  
@@ -30,8 +31,8 @@ In C++ there are several ways, all differ from each other.
         int ival = static_cast<int>(dval);
         enum class Pos { ON, OFF, HOLD }; // enum class Pos
         Pos mypos = Pos::OFF;
-        ival = mypos;           // This will cause an error, because implicit cast from scoped enums to
-                                // arithmetic types does not exist.
+        ival = mypos;           // This will cause an error, because implicit cast from scoped enums
+                                // to arithmetic types does not exist.
         ival = static_cast<int>(mypos)
         ```
 
@@ -39,11 +40,11 @@ In C++ there are several ways, all differ from each other.
         `const_cast` only takes pointers and references as it's operand.
 
         ```cpp
-        char* mystrchr(char const* p, int c) {      // Here first parameter is left const because this function
-            while (*p) {                            // is not gonna change the variable. But the return type is not
-                if (*p == c) {                      // const because the original variable may or may not be const.
-                    return p;                       // This is an error because function's return type is char* but
-                    return const_cast<char*>(p);    // p is char const*, to overcome this we use const_cast.
+        char* mystrchr(char const* p, int c) {  // Here first parameter is left const because this function
+            while (*p) {                        // is not gonna change the variable. But the return type is not
+                if (*p == c) {                  // const because the original variable may or may not be const.
+                    return p;                   // This is an error because function's return type is char* but
+                    return const_cast<char*>(p);// p is char const*, to overcome this we use const_cast.
                 }
                 ++p;
             }
@@ -71,7 +72,8 @@ Three necessities for function overloading;
 
 1. Names  must be the same
 2. Scopes must be the same
-3. Function signatures must be different (Function Signature: number of parameters and the type of parameters of a function)
+3. Function signatures must be different (Function Signature: number of parameters and the type of
+    parameters of a function)
 
 ##### ###REMARK###
 
@@ -92,8 +94,8 @@ Three necessities for function overloading;
 >   int func(int const);
 >   ```
 >
-> - Low level `const` does cause different signatures. It's also one of the most used function overloading
-> scenarios. It is frequently called `const overloading` (not an official term).
+> - Low level `const` does cause different signatures. It's also one of the most used function
+>   overloading scenarios. It is frequently called `const overloading` (not an official term).
 >
 >   ```cpp
 >   int func(int*);
@@ -169,13 +171,14 @@ Three necessities for function overloading;
 It happens in three steps;
 
 1. Candidate Functions
-    In this step, compiler finds all the functions with the same name in the call. These functions are called
-    candidate functions.
+    In this step, compiler finds all the functions with the same name in the call. These functions
+    are called candidate functions.
 2. Viable Functions
-    Compiler checks the candidate functions if they would be viable to use if they were the only one to exist.  
+    Compiler checks the candidate functions if they would be viable to use if they were the only one
+    to exist.  
     If there are no viable functions, then no match error.  
-    If there are more than one viable function to call but no criteria for the compiler to choose between the viable functions, then
-    ambiguity error.
+    If there are more than one viable function to call but no criteria for the compiler to choose
+    between the viable functions, then ambiguity error.
 
     ```cpp
     // e.g. for no match
@@ -185,9 +188,9 @@ It happens in three steps;
     // e.g. for ambiguity
     int bar(int);
     int bar(double);
-    bar(2U);        // Function call, ambiguity error,
-                    // Because there are no criterias for the compiler to choose between bar(int) and bar(double).
-                    // Because they both are viable for 2U.
+    bar(2U);    // Function call, ambiguity error,
+                // Because there are no criterias for the compiler to choose between bar(int) and bar(double).
+                // Because they both are viable for 2U.
     ```
 
 3. Preference Order

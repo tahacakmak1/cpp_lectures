@@ -36,10 +36,10 @@ resource is stolen, can be reused in an assignment to it.
 >
 > int main() {
 >     Myclass x;
->     Myclass y = std::move(x);       // This line will call the move constructor.
->     Myclass const z;                // Since Myclass has no data members, this initialization is VALID.
->     Myclass t = std::move(z);       // This line will call the copy constructor, because resource of a
->     return 0;                       // const variable cannot be stolen.
+>     Myclass y = std::move(x); // This line will call the move constructor.
+>     Myclass const z;          // Since Myclass has no data members, this initialization is VALID.
+>     Myclass t = std::move(z); // This line will call the copy constructor, because resource of a
+>     return 0;                 // const variable cannot be stolen.
 > }
 > ```
 
@@ -48,7 +48,8 @@ resource is stolen, can be reused in an assignment to it.
 > CHECK THE `Special Member Functions.jgp` BEFORE DEFINING SPECIAL MEMBER FUNCTIONS.  
 > To summarize;
 >
-> - If any of the destructor / copy constructor / copy assignment is declared, then move members are not declared.
+> - If any of the destructor / copy constructor / copy assignment is declared, then move members are
+>   not declared.
 > - There are no scenarios destructor does not exist.
 > - Default constructor either defaulted or not declared.
 > - If either of the move members is declared then copy members are deleted.
@@ -65,8 +66,8 @@ resource is stolen, can be reused in an assignment to it.
 > ptr->Myclass();             // Always a syntax error.
 > ```
 >
-> Destructors can be called by their names, but must not. There is only one exception to this rule, placement new operator,  
-> a topic for later.
+> Destructors can be called by their names, but must not. There is only one exception to this rule,
+> placement new operator, a topic for later.
 >
 > ```cpp
 > class Myclass;
@@ -78,7 +79,8 @@ resource is stolen, can be reused in an assignment to it.
 
 #### ###REMARK####
 
-> WHEN DEFINING COPY OR MOVE ASSIGNMENT, ALWAYS CHECK FOR SELF ASSIGNMENT, TO PREVENT DANGLING POINTERS.
+> WHEN DEFINING COPY OR MOVE ASSIGNMENT, ALWAYS CHECK FOR SELF ASSIGNMENT, TO PREVENT DANGLING
+> POINTERS.
 
 ### Delegating Constructor
 
@@ -101,7 +103,8 @@ private:
 
 ### Temporary Objects
 
-Life of a temporary object ends after the enclosing expression that contains the expression that creates the temporary object.
+Life of a temporary object ends after the enclosing expression that contains the expression that
+creates the temporary object.
 
 ```cpp
 class Myclass {
@@ -156,8 +159,8 @@ Would have the following output;
 > main continues  
 > destructor this =         // same address as before
 
-So binding a temp object to an r value expression extends the life of that temp object, untill the end of that reference's scope.  
-This is called life extension.
+So binding a temp object to an r value expression extends the life of that temp object, untill the
+end of that reference's scope. This is called life extension.
 
 ### Reference Qualifiers
 
@@ -183,7 +186,8 @@ int main() {
 BUT there are such cases;
 
 1. We want to disable the calling of functions for R value expression class instances.
-2. We want to disable the calling of functions for R value expression and L value expression class instances.
+2. We want to disable the calling of functions for R value expression and L value expression class
+    instances.
 3. We want to define different implementations.
 
 ```cpp
@@ -221,8 +225,8 @@ Myclass& Myclass::operator=(Myclass const&) & = default;
 
 ##### ###REMARK###
 
-> If one of the overloads of a member function is reference qualified, then all overloads of that function must be
-> qualified.
+> If one of the overloads of a member function is reference qualified, then all overloads of that
+> function must be qualified.
 
 ### Conversion Constructors
 
@@ -269,8 +273,9 @@ x = 5;              // Implicit Conversion
 > C cx1 = static_cast<B>(ax); // VALID, compiler performs a standard conversion.
 > ```
 >
-> To prevent the compiler performing an implicit conversion, we use `explicit` keyword in constructor definition. Means that
-> constructor does not allow implicit conversion, only explicit conversion.
+> To prevent the compiler performing an implicit conversion, we use `explicit` keyword in
+> constructor definition. Means that constructor does not allow implicit conversion, only explicit
+> conversion.
 >
 > ```cpp
 > class Myclass {

@@ -29,9 +29,9 @@ If you want to see if a member function's access modifier then you can use user 
 #define PRIVATE
 #define PROTECTED
 
-PUBLIC void Myclass::foo(){}    // When a macro is declared without initialization, preprocessor reads it,
-                                // but compiler does not. So from compiler's viewpoint, this line is exactly
-                                // the same with void Myclass::foo(){}.
+PUBLIC void Myclass::foo(){}    // When a macro is declared without initialization, preprocessor
+                                // reads it, but compiler does not. So from compiler's viewpoint,
+                                // this line is exactly the same with void Myclass::foo(){}.
 ```
 
 ##### ###REMARK###
@@ -44,7 +44,8 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 > 3. Enclosing scope  
 >    After all the enclosing scopes ended
 > 4. Class scope  
->    This is the only difference between searching in a member function and searching in a global function.
+>    This is the only difference between searching in a member function and searching in a global
+>    function.
 >
 >    ##### ###REMARK###
 >
@@ -52,7 +53,7 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 >    > class scope. This is about inheritance.
 > 5. Namespace scope
 >
-> #### Name lookup happens only once, if the identifier is not found, compiler does not repeat the name lookup.
+> #### Name lookup happens only once, if the identifier is not found, compiler does not repeat the name lookup
 
 ##### ###REMARK###
 
@@ -96,7 +97,7 @@ public:
 int main() {
     Myclass m;
     m.f1().f2().f3();   // This is called chaining.
-                        // This works because f1 returns the Myclass instance used to call it, and so do f2 and f3.
+        // This works because f1 returns the Myclass instance used to call it, and so do f2 and f3.
     return 0;
 }
 ```
@@ -144,7 +145,8 @@ void foo(T* p);         // Function is called mutator,  parameter is called out 
 void bar(T const* p);   // Function is called accessor, parameter is called in  parameter.
 ```
 
-Special case; if the function first takes the argument, uses it and then sets it, then it's argument is called in-out parameter.
+Special case; if the function first takes the argument, uses it and then sets it, then it's argument
+is called in-out parameter.
 
 #### How to send the pointer to the instance of a class as `const` to a member function?
 

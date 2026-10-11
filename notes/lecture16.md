@@ -183,12 +183,12 @@ func();
 
 Here `func` can be one of the following;
 
-|                                                                    |C           |C++|
-|---|:-:|:-:|
-|`func` can be a function name                                         |yes         |yes|
-|`func` can be a function pointer                                      |yes         |yes|
-|`func` can be a functional macro(almost never used in C++)            |yes         |yes|
-|`func` can be an object instance which overloaded the () operator     |no          |yes|
+|                                                                 |C  |C++|
+|-----------------------------------------------------------------|:-:|:-:|
+|`func` can be a function name                                    |yes|yes|
+|`func` can be a function pointer                                 |yes|yes|
+|`func` can be a functional macro(almost never used in C++)       |yes|yes|
+|`func` can be an object instance which overloaded the () operator|no |yes|
 
 Classes that have overloded the `()` operator are called
 
@@ -246,7 +246,8 @@ private:
     int x = m.operator int();
     ```
 
-- It provides conversion from the class to a specified type. Not the other way around, that is achieved with conversion constructors.
+- It provides conversion from the class to a specified type. Not the other way around, that is
+    achieved with conversion constructors.
 
 ##### ###REMARK###
 
@@ -351,7 +352,8 @@ int main() {
     int b = ns::x;  // This is VALID.
     ```
 
-- It is not neccessary to use qualified expressions to acces to a name inside of a namespace, from that same namespace.
+- It is not neccessary to use qualified expressions to acces to a name inside of a namespace, from
+    that same namespace.
 
     ```cpp
     namespace ns {

@@ -7,17 +7,19 @@ Another use for `std::string::npos` is for the substring functions.
 ##### `std::string& some_function(std::string str, size_t idx, size_t n);`  
 
 This function returns the substring of `n` many characters starting from `idx` in `str`.  
-If `n` is greater then the remaining length of the `str`, then it includes all thecharacters in `str`.  
+If `n` is greater then the remaining length of the `str`, then it includes all the characters in
+`str`.  
 If the aim is to return the substring starting from `idx` till the end, then `n` must be equal or
 greater then the number of remaining characters. To ensure this `std::string::npos` can be used.
 
 - `std::string::reserve()`
-    This function reserves the space for the string, it doesn't increase it's size, but it's capacity.
+    This function reserves the space for the string, it doesn't increase it's size, but it's
+    capacity.
 
 ##### ###REMARK###
 
-> - Just because it is reserved, it doesn't mean that a position that lies in that capacity is accessible.  
->   This also applies for `std::vector` as well.
+> - Just because it is reserved, it doesn't mean that a position that lies in that capacity is
+>   accessible. This applies for `std::vector` as well.
 >
 >   ```cpp
 >   std::string str{"string with a size of 24"};

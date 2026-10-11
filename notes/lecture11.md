@@ -31,7 +31,8 @@ int main() {
 
 ##### ###REMARK###
 
-> Non-static data members of a `class` may not be directly related to the observable state of the instance.
+> Non-static data members of a `class` may not be directly related to the observable state of the
+> instance.
 
 ## Constructor (ctor) and Destructor (dtor)
 
@@ -93,13 +94,14 @@ There are 6 special member functions;
 >       If the number of global objects is  more than one, then they are constructed by their
     >   declaration order. The first object to be constructed is the last object to be destroyed.
 > - Order of construction of global object instances from different source files is compiler dependent.
-> - Static local class instances will not be constructed if the function is not called. Therefore will
->       not be destroyed either. They will be constructed when the function is called and will be
->       destroyed after the main ends.
+> - Static local class instances will not be constructed if the function is not called. Therefore
+>   will not be destroyed either. They will be constructed when the function is called and will be
+>   destroyed after the main ends.
 >      ##### ###REMARK### about static local object instances
->     > Only the first call to that function will result with instance creation, following calls will
->     > not create it again.
-> - Non-static local variables are constructed when their scope begins, and are destroyed at the end of their scope.
+>     > Only the first call to that function will result with instance creation, following calls
+>     > will not create it again.
+> - Non-static local variables are constructed when their scope begins, and are destroyed at the end
+>   of their scope.
 > - Initializing a reference to an object instance does not call the constructor.
 >
 > ```cpp
@@ -117,7 +119,8 @@ There are 6 special member functions;
 > ```
 
 Construction of the elements of a class array is ordered by the array order.  
-First element will be constructed first but destroyed last, and last element will be constructed last but destroyed first.
+First element will be constructed first but destroyed last, and last element will be constructed
+last but destroyed first.
 
 ##### ###REMARK###
 
@@ -151,10 +154,11 @@ int main() {
 
 > - What does `new` operator do?  
 >   `new` operator is used to create dynamic objects.  
->   `new` operator and `operator new()` are different from each other.   
+>   `new` operator and `operator new()` are different from each other.  
 >   `operator new()` is the C++ counterpart of `malloc()` in C.  
->   `operator new()` and `malloc()` allocate a space in the memmory and return the address with one difference, if `malloc()` fails to
->   allocate the space it returns `NULL`, if `operator new()` fails to allocate the space it throws an exception.
+>   `operator new()` and `malloc()` allocate a space in the memmory and return the address with one
+>   difference, if `malloc()` fails to allocate the space it returns `NULL`, if `operator new()`
+>   fails to allocate the space it throws an exception.
 >
 >   `new` operator uses `operator new()` to allocate a space on the memmory and then type casts
 >   the returned value from `operator new()`, and calls the constructor of that class.
@@ -165,7 +169,8 @@ int main() {
 >   // This line actually does the following
 >   static_cast<Myclass*>(operator new(sizeof(Myclass)))->Myclass();
 >   // Constructors cannot be called by using . or -> operators. This demonstration is written like
->   // this to explain what compiler does. This code would be invalid if it were to be written by a developer.
+>   // this to explain what compiler does. This code would be invalid if it were to be written by a
+>   // developer.
 >   ```
 >
 > - How to delete a dynamic object?  
@@ -215,9 +220,9 @@ private:
 
 ##### ###REMARK###
 
-> If there are members that are initialized in the Initializer List and some members that are not initilized then those members
-> will be default initialized. This may cause syntax errors in some scenarios (e.g. `const` data members, reference data
-> members, etc.).
+> If there are members that are initialized in the Initializer List and some members that are not
+> initilized then those members will be default initialized. This may cause syntax errors in some
+> scenarios (e.g. `const` data members, reference data members, etc.).
 >
 > ```cpp
 > class Myclass {
@@ -231,8 +236,8 @@ private:
 ##### ###REMARK###
 
 > - Using Initializer List and assigning the values inside of the constructor is different.
-> - Initializer List initializes the members, but assigning their values inside the constructor is initializing them with default
->   values and then assigning the values to them.
+> - Initializer List initializes the members, but assigning their values inside the constructor is
+>   initializing them with default values and then assigning the values to them.
 > - That's why first choice must always be the constructor initializer list.
 
 #### ###REMARK###
@@ -245,11 +250,11 @@ private:
 ```cpp
 class Myclass {
 public:
-    Myclass() : _y{10} {}       // _x is not initialized here but since it has a Default Member Initializer,
-                                // it will be initialized with 20.
+    Myclass() : _y{10} {}   // _x is not initialized here but since it has a Default Member Initializer,
+                            // it will be initialized with 20.
 private:
-    int _x {20};                // Default Member Initializer. Could also be used with "="
-                                // (e.g. int _x = 20) but () cannot be used.
+    int _x {20};            // Default Member Initializer. Could also be used with "="
+                            // (e.g. int _x = 20) but () cannot be used.
     int _y;
 }; // class Myclass
 ```

@@ -161,7 +161,7 @@ There are three ways to use a name in the namespace without qualifying.
         using namespace ns2;
     
         int main() {
-            ++x;        // This causes ambiguity error because there are two viable names. One in ns1, one in ns2.
+            ++x;    // This causes ambiguity error because there are two viable names.One in ns1, one in ns2.
             return 0;
         }
         ```
@@ -264,9 +264,9 @@ int main() {
 #include <vector>
 int main() {
     std::vector<int> ivec(100);
-    sort(begin(ivec), end(ivec));   // All three of the names in this line is unqualified but it is VALID.
-                    // This happens because ivec has a type that was declared in std, and the return
-                    // types of begin() and end() functions are again declared inside of the
+    sort(begin(ivec), end(ivec));   // All three of the names in this line is unqualified but it is
+                    // VALID. This happens because ivec has a type that was declared in std, and the
+                    // return types of begin() and end() functions are again declared inside of the
                     // std namespace. That's why this line is VALID.
     return 0;
 }
