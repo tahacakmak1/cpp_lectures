@@ -16,15 +16,11 @@ public:
     Myclass(int x, int y) : _x{x}, _y{y} {}
 
     // inline static int x = 5; // ==> this is available with C++17
-    static int _x;
 
     static int foo() { return 777; }
 
-private:
     int _x, _y;
 }; // class Myclass
-
-int Myclass::_x{};
 
 int get_mx() {
     Myclass x{3, 5};

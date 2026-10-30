@@ -6,8 +6,8 @@ The term inheritance means more in C++ than it does in OOP.
 
 ### `public` Inheritance
 
-This is the 'is a' relationship inheritance from OOP, e.g. a Merdedes 'is a' Car. So Car is the base
-class and Merdedes is the derived class.
+This is the 'is a' relationship inheritance from OOP, e.g. a Mercedes 'is a' Car. So Car is the base
+class and Mercedes is the derived class.
 
 ```cpp
 class Base {
@@ -133,6 +133,7 @@ int main() {
 ```
 
 ##### ###REMARK###
+
 > Downcasting is the opposite of upcasting. It is the casting from a base class to a derived class.
 
 - When initializing a derived class instance, base class of that class will be initialized first.

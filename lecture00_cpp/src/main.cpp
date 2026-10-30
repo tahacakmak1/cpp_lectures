@@ -1,20 +1,33 @@
-#include <cstdint>
 #include <iostream>
 
-// class Myclass {
-// public:
-//     static int foo() { return 777; }
-
-//     static int _x;
-// }; // class Myclass
-
-int foo() { return 5; }
-
-class Myclass {
+class Base {
 public:
-    static inline int _x = foo(); // INVALID, it would be VALID if foo were to be defined before _x.
+    Base(char const* c) { std::cout << "Base(char const* c), c = " << c << '\n'; }
+}; // class Base
 
-    static int foo() { return 5; }
-}; // class Myclass
+class Der1 : virtual public Base {
+public:
+    Der1() : Base("Der1") {}
+}; // class Der1
 
-int main() {}
+class Der2 : virtual public Base {
+public:
+    Der2() : Base("Der2") {}
+}; // class Der2
+
+class MDer
+: public Der1
+, public Der2 {
+public:
+    MDer() : Base("MDer") {}
+}; // class MDer
+
+class MDez : public MDer {
+public:
+    MDez() : Base("MDez") {}
+}; // class MDez
+
+int main() {
+    MDer myder;
+    MDez mydez;
+}

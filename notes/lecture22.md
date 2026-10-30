@@ -187,15 +187,15 @@ public:
     virtual Car* clone() = 0;
 }; // class Car
 
-class Merdedes : public Car {
+class Mercedes : public Car {
 public:
-    Merdedes* clone() override { return new Merdedes(*this); }
-}; // class Merdedes
+    Mercedes* clone() override { return new Mercedes(*this); }
+}; // class Mercedes
 ```
 
 To make the new instance of the `class` identical to the existing one, we call the copy constructor
 by passing `*this` to the copy ctor. If we just want a new object without copying
-`return new Merdedes;` would be enough. The name clone implies that it's identical copy is needed.
+`return new Mercedes;` would be enough. The name clone implies that it's identical copy is needed.
 
 #### Virtual Destructor
 
@@ -273,8 +273,8 @@ std::ostream& operator<<(std::ostream& os, Car const& car) {
 
 class Audi : public Car {
 public:
-    void start() override { std::cout << "Aubi started\n"; }
+    void start() override { std::cout << "Audi started\n"; }
 
-    void print(std::ostream& os) const override { os << "This is an Aubi\n"; }
-}; // class Aubi
+    void print(std::ostream& os) const override { os << "This is an Audi\n"; }
+}; // class Audi
 ```
