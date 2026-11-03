@@ -85,47 +85,47 @@ There are some important properties of `private` inheritance
 1. Since the is-a relationship is not directly possible, upcasting is only possible in a member
     function of the derived class, or in a `friend` functions of the derived class.
 
-```cpp
-class Base {}; // class Base
+    ```cpp
+    class Base {}; // class Base
 
-class Der : private Base {
-    void foo() {
+    class Der : private Base {
+        void foo() {
+            Der myder;
+            Base* baseptr = &myder; // VALID
+            Base& baseref = myder;  // VALID
+        }
+
+        friend void bar() {
+            Der myder;
+            Base* baseptr = &myder; // VALID
+            Base& baseref = myder;  // VALID
+        }
+    }; // class Der
+
+    int main() {
         Der myder;
-        Base* baseptr = &myder; // VALID
-        Base& baseref = myder;  // VALID
+        Base* baseptr = &myder; // INVALID
+        Base& baseref = myder;  // INVALID
     }
+    ```
 
-    friend void bar() {
-        Der myder;
-        Base* baseptr = &myder; // VALID
-        Base& baseref = myder;  // VALID
-    }
-}; // class Der
+2. `private` inheritance does not exactly represent a is-a relationship like `public` inheritance but,
+there still exists a base `class` inside the derived `class`. So, `private` inheritance is more
+similar to containment.
 
-int main() {
-    Der myder;
-    Base* baseptr = &myder; // INVALID
-    Base& baseref = myder;  // INVALID
-}
-```
+    ```cpp
+    class Base {
+    public:
+        void foo();
+    }; // class Base
 
-`private` inheritance does not exactly represent a is-a relationship like `public` inheritance but,
-there still exists a base `class` inside the derived `class`.  
-So, `private` inheritance is more similar to a containment.
-
-```cpp
-class Base {
-public:
-    void foo();
-}; // class Base
-
-class Der : private Base {
-public:
-    void func() {
-        foo();
-    }
-}; // class Der
-```
+    class Der : private Base {
+    public:
+        void func() {
+            foo();
+        }
+    }; // class Der
+    ```
 
 ### Comparison of Containment and `private` Inheritance
 
@@ -180,8 +180,7 @@ private:
 3. Because an abstract `class` cannot be instantiated, therefore cannot be used as a member of a
     `class`.
 4. To have restricted polymorphism.
-5. To have the advantages of Empty Base Optimization (EBO). EBO is an idiom and will be studied
-    during this course.
+5. To have the advantages of Empty Base Optimization (EBO).
 
 ### Empty Base Optiomization (EBO)
 
@@ -212,7 +211,7 @@ This is the idiom of having only selected functions to have upcasting for the de
 class Base {}; // class Base
 
 class Der : private Base {
-    friend foo(Base&) {
+    friend void foo(Base&) {
         Der myder;
         Base& baseref = myder; // VALID
     }

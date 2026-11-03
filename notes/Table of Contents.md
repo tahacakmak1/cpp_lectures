@@ -189,3 +189,5 @@
     - Restricted Polymorphism
   - `protected` Inheritance
   - Multiple Inheritance
+    - Diamond Formation
+    - Virtual Inheritance
