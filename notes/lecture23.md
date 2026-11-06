@@ -387,7 +387,7 @@ int main() {
 ```
 
 The above piece of code will output
-> A ctor
+> A ctor  
 > B ctor
 
 This is because the initialization of the inherited classes are defined by the inheritence order.

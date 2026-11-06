@@ -278,12 +278,12 @@ Friend declaration can be used to;
         int _x;
     }; // class Myclass
 
-    std::ostream& operator<<(std::ostream& out, Myclass const&) { return out << _x; }
+    std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
 
     // OR
 
     class Myclass {
-        friend std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << _x; }
+        friend std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
 
         int _x;
     }; // class Myclass
@@ -309,7 +309,7 @@ Friend declaration can be used to;
 >     void foo();
 >     int _x;
 > public:
->     // This functions is still a global funtion, so it can be called without a class instance.
+>     // This functions is still a global funtion.
 >     friend void func(Myclass x) { return x._x; }
 > }; // class Myclass
 > ```

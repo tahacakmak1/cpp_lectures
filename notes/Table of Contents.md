@@ -191,3 +191,10 @@
   - Multiple Inheritance
     - Diamond Formation
     - Virtual Inheritance
+
+## Lecture 24
+
+- Exception Handling
+  - `throw` Statement
+  - `try` Block
+  - `catch` Block
