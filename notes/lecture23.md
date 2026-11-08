@@ -25,13 +25,13 @@ struct Audi : public ICar {
 Vpointer of `ICar` class will have the pointers to the `ICar::start()` and `ICar::stop()` functions.  
 Vpointer of `Audi` class will have the pointers to the `Audi::start()` and `Audi::stop()` functions.
 
-##### ###REMARK###
+##### ###REMARK.127###
 
 > These two vpointers will have something in common, the order of the elements. The function being
 > pointed by the pointer with 0 index of the table will be pointing to the same respective function
 > from each class.
 
-##### ###REMARK###
+##### ###REMARK.128###
 
 > There is a way to access the vpointer of the class. Since it is a pointer, it can be used to
 > invoke calls to the member functions. Order of the elements are decided by the declaration order

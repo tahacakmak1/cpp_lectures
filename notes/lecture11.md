@@ -29,7 +29,7 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.61###
 
 > Non-static data members of a `class` may not be directly related to the observable state of the
 > instance.
@@ -88,7 +88,7 @@ There are 6 special member functions;
   - Move constructor
   - Move Assignment
 
-##### ###REMARK###
+##### ###REMARK.62###
 
 > - Global objects are constructed before the main function and destroyed after the main function.
 >       If the number of global objects is  more than one, then they are constructed by their
@@ -97,7 +97,7 @@ There are 6 special member functions;
 > - Static local class instances will not be constructed if the function is not called. Therefore
 >   will not be destroyed either. They will be constructed when the function is called and will be
 >   destroyed after the main ends.
->      ##### ###REMARK### about static local object instances
+>      ##### ###REMARK.63### about static local object instances
 >     > Only the first call to that function will result with instance creation, following calls
 >     > will not create it again.
 > - Non-static local variables are constructed when their scope begins, and are destroyed at the end
@@ -122,7 +122,7 @@ Construction of the elements of a class array is ordered by the array order.
 First element will be constructed first but destroyed last, and last element will be constructed
 last but destroyed first.
 
-##### ###REMARK###
+##### ###REMARK.64###
 
 ```cpp
 class Myclass {
@@ -140,17 +140,17 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.65###
 
 > A class does not have to have a default constructor.
 
-##### ###REMARK###
+##### ###REMARK.66###
 
 > - Automatic storage duration objects are located in stack.
 > - Static storage duration objects
 > - Dynamic storage duration objects are located in free store (in C free store is called heap).
 
-##### ###REMARK###
+##### ###REMARK.67###
 
 > - What does `new` operator do?  
 >   `new` operator is used to create dynamic objects.  
@@ -187,7 +187,7 @@ int main() {
 >
 > This was just a small peak at the dynamic instances.
 
-##### ###REMARK###
+##### ###REMARK.68###
 
 > Special member functions can have one of the following states;
 >
@@ -218,7 +218,7 @@ private:
 }; // class Myclass
 ```
 
-##### ###REMARK###
+##### ###REMARK.69###
 
 > If there are members that are initialized in the Initializer List and some members that are not
 > initilized then those members will be default initialized. This may cause syntax errors in some
@@ -233,14 +233,14 @@ private:
 > }; // class Myclass
 > ```
 
-##### ###REMARK###
+##### ###REMARK.70###
 
 > - Using Initializer List and assigning the values inside of the constructor is different.
 > - Initializer List initializes the members, but assigning their values inside the constructor is
 >   initializing them with default values and then assigning the values to them.
 > - That's why first choice must always be the constructor initializer list.
 
-#### ###REMARK###
+#### ###REMARK.71###
 
 > - Data members of a class will always be initialized in the declaration order.
 > - Initializer List order does not effect the member initialization order.
@@ -259,6 +259,6 @@ private:
 }; // class Myclass
 ```
 
-##### ###REMARK###
+##### ###REMARK.72###
 
 > Constructor Initializer List overrides the Default Member Initializer.

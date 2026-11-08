@@ -9,7 +9,7 @@ Default constructor that has been defaulted by the compiler is the;
 - Inline  
 function of the class.
 
-##### ###REMARK###
+##### ###REMARK.73###
 
 > If defaulting of a special member function by a compiler breaks a rule of the language, then
 > instead of a syntax error, compiler deletes that function.
@@ -72,7 +72,7 @@ Default copy constructor that defaulted by the compiler is the
 
 function of the class.
 
-##### ###REMARK###
+##### ###REMARK.74###
 
 > If the special member function that's been defined by the compiler is working for you, let the
 > compiler define it. This is called rule of zero.
@@ -205,7 +205,7 @@ If copy assignment operator is implicitly defined by the compiler, then it is
 
 function of the class.
 
-##### ###REMARK###
+##### ###REMARK.75###
 
 > Self Assignment
 >

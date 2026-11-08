@@ -2,7 +2,7 @@
 
 ### Runtime Polymorphism
 
-##### ###REMARK###
+##### ###REMARK.120###
 
 > - If a `class` has a `virtual` or a pure `virtual` function, it's a polymorphic class.
 > - If a `class` has or inherits a pure `virtual` function but does not define an implementation for
@@ -10,7 +10,7 @@ it, then that class is an abstract `class`. If a `class` is not abstract, then i
 `class`. Difference between abstract and concrete classes is that creating an instance from an
 abstract `class` is not permitted. Trying to do so is a syntax error.
 
-##### ###REMARK###
+##### ###REMARK.121###
 
 > For a function to be overridden both the overriding and the overridden fuction must have the same;
 >
@@ -85,7 +85,7 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.122###
 
 > - In a member function declaration or definition, `override` specifier ensures that the function
 >   is `virtual` and is overriding a `virtual` function from a base class. The program is ill-formed
@@ -109,11 +109,11 @@ public:
 }; // class Dez
 ```
 
-##### ###REMARK###
+##### ###REMARK.123###
 > C++ is a statically typed language but it also supports dynamic typing to a certain extent, for
 > instance NVI (Non-Virtual Interface).
 
-##### ###REMARK###
+##### ###REMARK.124###
 > Function Overriding doesn't get affected by access modifiers. Meaning a derived `class` can
 > override a `private` or a `protected` `virtual` function of it's base `class`. This is because
 > access control is a compile time mechanism. As an addition, from Assembly perspective, access
@@ -139,7 +139,7 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.125###
 
 > If the call that would normally trigger a Virtual Dispatch is made from the ctor of the base
 > `class` then that call will be calling the funtion from the base `class`. This happens because of
@@ -242,7 +242,7 @@ Because `~Base()` is overridden, this code snippet will have the following outpu
 > Der dtor  
 > Base dtor
 
-##### ###REMARK###
+##### ###REMARK.126###
 
 > On the subject of destructors of polymorphic classes.  
 > They are either;

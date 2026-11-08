@@ -15,7 +15,7 @@
 - `long long`
 - `unsigned long long`
 
-##### ###REMARK###6
+##### ###REMARK.6###
 
 > `sizeof(short)` <= `sizeof(int)` <= `sizeof(long)` <= `sizeof(long long)`
 
@@ -34,7 +34,7 @@
 |unsigned long           |UL  or LU                                                                |
 |unsigned long long      |ULL or LLU                                                               |
 
-##### REMARK#7
+##### ###REMARK.7###
 
 > - When `signed` or `unsigned` used without any type keywords like `signed x` or `unsigned x`, it
 >     automatically becomes `signed int x` and `unsigned int x` respectively.
@@ -64,7 +64,7 @@ ival * 1000  int operation
 ival * 1000L long operation (typecasting)
 ```
 
-##### REMARK#8
+##### ###REMARK.8###
 
 > Variable types are critically important for function overloading.
 
@@ -94,14 +94,14 @@ If you put a `;` at the end of an expression it becomes an expression statement.
 Every expression has a data type(int, double, ...) and a value category (PR, X, L (primary val cats)
 or R, GL (secondary val cats)).
 
-##### REMARK#9
+##### ###REMARK.9###
 
 > Priority operator does not change the value category.  
 >`x = 9;` and `(((((((((x))))))))) = 9;` are the same thing.
 
 ## constexpr
 
-##### REMARK#10
+##### ###REMARK.10###
 
 > constant (`const`) and constant expression (`constexpr`) are different from each other.
 >
@@ -177,7 +177,7 @@ For more details check
 |16|`a ? b : c`[^5]<br>`throw`<br>`co_yield`<br>`a = b`[^6]<br>`a += b` `a -= b`<br>`a *= b` `a /= b` `a %= b`<br>`a <<= b` `a >>= b`<br>`a &= b` `a ^= b` `a \|= b`|Ternary conditional<br>`throw operator`<br>`yield expression`(C++20)<br>Direct assignment<br>Compound assignment by sum and difference<br>Compound assignment by product, quotient, and remainder<br>Compound assignment by bitwise left shift and right shift<br>Compound assignment by bitwise `AND`, `XOR`, and `OR`|Right-to-left|
 |17|`,`[^7]|Comma operator|Left-to-right|
 
-##### REMARK#11
+##### ###REMARK.11###
 
 > Yielded value, generated value, return value are the same thing.
 
@@ -204,7 +204,7 @@ int x = 5, y = ++x, z = y + x;  // Comma separator creates a sequence point, the
 f1() + f2() * 5;    // f1 will be evaluated first, then f2, then multiplication and finally addition
 ```
 
-##### REMARK#12
+##### ###REMARK.12###
 
 > Token
 >
@@ -213,11 +213,11 @@ f1() + f2() * 5;    // f1 will be evaluated first, then f2, then multiplication 
 > - String Literal (e.g. "mike")
 > - Keywords
 
-##### REMARK#13
+##### ###REMARK.13###
 
 > Do not compare two real numbers.
 
-##### QUESTION#1
+##### ###QUESTION.1###
 
 ```c
 #include <stdio.h>

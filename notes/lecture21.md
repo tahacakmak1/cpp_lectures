@@ -62,7 +62,7 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.115###
 
 > - `public` members of a class is accessible to everyone.
 > - `protected` members of a class is accessible to derived classes and the class itself.
@@ -132,7 +132,7 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.116###
 
 > Downcasting is the opposite of upcasting. It is the casting from a base class to a derived class.
 
@@ -249,7 +249,7 @@ Will have the following outpu;
 > Member dtor  
 > Base dtor
 
-##### ###REMARK###
+##### ###REMARK.117###
 
 > - Having member variables in the derived class to initialize the members of the base class is a
 >   common pattern.
@@ -334,7 +334,7 @@ The code block above will have the following output
 
 This behaviour wil be observed with all of the special member functions (Copy Members, Move Members).
 
-##### ###REMARK###
+##### ###REMARK.118###
 
 > This behaviour will also be observed if the functions are defined by the compiler.  
 
@@ -434,7 +434,7 @@ public:
 }; // class Der
 ```
 
-##### ###REMARK###
+##### ###REMARK.119###
 
 > `using` declaration can be used for data members as well.
 

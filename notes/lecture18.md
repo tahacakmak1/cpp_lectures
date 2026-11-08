@@ -2,7 +2,7 @@
 
 ## Nested Types
 
-##### ###REMARK###
+##### ###REMARK.100###
 
 > Member functions of a nested type can be defined inside of the class declaration, or can be
 > declared in the class declaration and defined outside of the enclosing class. Notice the
@@ -166,7 +166,7 @@
 A class having another class or classess as it's member or members. Broadly speaking,
 composition models a "has-a" relationship between two objects, e.g. a car "has-a" transmission.
 
-##### ###REMARK###
+##### ###REMARK.101###
 
 > Public interface of the member class is not part of the enclosing class.
 >
@@ -224,7 +224,7 @@ composition models a "has-a" relationship between two objects, e.g. a car "has-a
 > }
 > ```
 >
-> ##### ###REMARK###
+> ##### ###REMARK.102###
 > >
 > > - Members of a class instance is created before the constructors block.
 > > - If the default constructor of a class is defaulted(defined by the compiler) then the data

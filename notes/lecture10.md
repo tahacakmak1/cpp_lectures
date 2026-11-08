@@ -34,7 +34,7 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
                                 // this line is exactly the same with void Myclass::foo(){}.
 ```
 
-##### ###REMARK###
+##### ###REMARK.54###
 
 > If an identifier used in a member function without declaration then it is searched in this
 > order;
@@ -47,7 +47,7 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 >    This is the only difference between searching in a member function and searching in a global
 >    function.
 >
->    ##### ###REMARK###
+>    ##### ###REMARK#.55##
 >
 >    > If the class is a derived class, before moving to namespace scope, it will move to base base
 >    > class scope. This is about inheritance.
@@ -55,7 +55,7 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 >
 > #### Name lookup happens only once, if the identifier is not found, compiler does not repeat the name lookup
 
-##### ###REMARK###
+##### ###REMARK.56###
 
 > Member functions cannot be re-declared.
 
@@ -65,7 +65,7 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 - Using it inside of a static member function is a syntax error.
 - `this` is not the instance itself, rather it's the address of the instance.
 
-##### ###REMARK###
+##### ###REMARK.57###
 
 > In some languages `this` correspondents are the object itself.  
 > In C++ `this` is a pointer, `*this` is the object.
@@ -133,7 +133,7 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.58###
 
 > Public interface of a `class` consists of the public members of the `class` and the global
 > functions defined in the `class` header file.
@@ -170,7 +170,7 @@ Non-static member functions can belong to one of the two categories;
 1. `const` Member Functions
 2. Non-`const` Member Functions
 
-##### ###REMARK###
+##### ###REMARK.59###
 
 > ```cpp
 > class Myclass {
@@ -185,7 +185,7 @@ Non-static member functions can belong to one of the two categories;
 > }; // class Myclass
 > ```
 
-##### ###REMARK###
+##### ###REMARK.60###
 
 > - `const` member functions cannot call non-`const` member functions, but non-`const` member
 functions can call `const` member functions.

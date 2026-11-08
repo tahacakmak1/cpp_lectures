@@ -15,7 +15,7 @@
 - A string literal that is known at the compile time, which also has a `null` character at the end,
     e.g. "thisi_a_string_literal"
 
-##### ###REMARK###
+##### ###REMARK.103###
 
 > There is a thing called Small String Optimization. Because allocating and reallocating dynamic
 > arrays are expensive operations, if the contents of the string is too small, compiler decides to
@@ -33,7 +33,7 @@
 
 - It has the nested type of `size_type`.
 
-    ##### ###REMARK###
+    ##### ###REMARK.104###
 
     > `std::string::size_type` is not always `size_t` but for `char` specialization of
     > `std::string`, it's always `size_t`.
@@ -55,7 +55,7 @@
 - `capacity()`
     Returns the capacity of the string. It's return type is `size_type`.
 
-##### ###REMARK###
+##### ###REMARK.105###
 
 > REALLOCATION TAKES TIME.  
 > REALLOCATION INVALIDATES POINTERS.
@@ -92,7 +92,7 @@
     std::cout << '|' << str << '|'; // Outputs |abc|
     ```
 
-    ##### ###REMARK###
+    ##### ###REMARK.106###
 
     > e.g. for initializer_list Constructor
     >
@@ -140,7 +140,7 @@
     std::cout << '|' << str2 << '|'; // Outputs |cak|
     ```
 
-##### ###REMARK###
+##### ###REMARK.107###
 
 > `std::string` does not have a char Constructor.
 >
@@ -149,7 +149,7 @@
 > std::string s2 = 'A'; // Invalid
 > ```
 
-##### ###REMARK###
+##### ###REMARK.108###
 
 > `std::string` has a `static constexpr` variable called `npos`. It stores the highest possible
 > value for `size()` function of string. This variable is used as to denote a failure.  

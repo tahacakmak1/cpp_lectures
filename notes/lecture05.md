@@ -25,7 +25,7 @@ int* p1     = a; // Here p1 points to the first element of a.
 int(*p2)[5] = &a; // Here p2 points to the array itself.
 ```
 
-##### ###REMARK###
+##### ###REMARK.17###
 
 > ```cpp
 > int  a   = 5;
@@ -39,7 +39,7 @@ For the %99 of the time;
 - To pass an object to a function as call by reference
 - bir fonksiyonun kendisini �a��ran koda bir nesnenin kendisini g�ndermesi
 
-##### ###REMARK###
+##### ###REMARK.18###
 
 > ```cpp
 > int* g;
@@ -53,7 +53,7 @@ For the %99 of the time;
 > }
 > ```
 
-##### ###REMARK###
+##### ###REMARK.19###
 
 > Returning the address of an automatic lifetime variable is an undefined behaviour.
 
@@ -62,7 +62,7 @@ void func1(T* x);        // setter-mutator
 void func2(T const* x);  // getter-accessor
 ```
 
-##### ###REMARK###
+##### ###REMARK.20###
 
 > ```cpp
 > int           x  = 10;
@@ -85,7 +85,7 @@ void func2(T const* x);  // getter-accessor
 |Can be nullptr                          |No null reference                                                         |
 |Can point to a different object         |Cannot be bound to a different object (std::reference_wrapper allows this)|
 
-##### ###REMARK###
+##### ###REMARK.21###
 
 > ```cpp
 > int&  r1;     // L value reference
@@ -101,7 +101,7 @@ There are four different type deductions mechanisms;
 3. `decltype(auto)`
 4. &nbsp;template
 
-##### ###REMARK###
+##### ###REMARK.21###
 
 > Type deduction happens in compile time, it has nothing to do with run time.
 
@@ -124,7 +124,7 @@ what's written instead of the `auto` keyword.
 >                       // not int& y = r.
 > ```
 
-##### ###REMARK###
+##### ###REMARK.23###
 
 If pointers are used in `auto` initializations, low level `const` is not lost but top level `const`
 is lost.
@@ -170,7 +170,7 @@ is lost.
   auto       p = ptr;     // As if it is int* p = ptr, so auto = int*.
   ```
 
-##### ###REMARK###
+##### ###REMARK.24###
 
 - Can also be for function pointers.
 
@@ -216,7 +216,7 @@ auto&& r1 = x;      // As if it is int&  r1 = x, so auto = int&.
 auto&& r2 = 10;     // As if it is int&& r2 = 10, so auto = int.
 ```
 
-##### ###REMARK###
+##### ###REMARK.25###
 
 `auto` keyword can be used in comma seprated list declarations but deduction for `auto` for all the
 variables must be the same.

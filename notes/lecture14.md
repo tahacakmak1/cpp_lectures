@@ -192,7 +192,7 @@ public:
     static data members, they should not.
 - Pointers to static member functions are defined the same way as pointers to global functions.
 
-##### ###REMARK###
+##### ###REMARK.85###
 
 > ```cpp
 > class Myclass {
@@ -299,7 +299,7 @@ Friend declaration can be used to;
     }; // class B
     ```
 
-##### ###REMARK###
+##### ###REMARK.86###
 
 > - `friend` functions can be defined in the class, BUT THEY STILL ARE GLOBAL FUNCTIONS.
 > - These kind of `friend` functions are called hidden friend functions and they are frequently used.
@@ -314,7 +314,7 @@ Friend declaration can be used to;
 > }; // class Myclass
 > ```
 >
-> ##### ###REMARK###
+> ##### ###REMARK.87###
 > > Hidden friend functions can be defined in the public, private and protected sections of a class.
 > > Since they are not member functions, they do not get affected by the access modifiers.
 > >

@@ -72,7 +72,7 @@ decltype(a)    b;                   // Here a is an identifier, so decltype(a) =
 decltype(a[0]) c = a[1];            // Here a[0] is an L val. expr., so decltype(a[0]) = int&.
 ```
 
-##### ###REMARK###
+##### ###REMARK.26###
 
 ```cpp
 int           x;
@@ -80,7 +80,7 @@ decltype(x)   a;                    // Here x is an identifier, so decltype(x) =
 decltype((x)) b;                    // Here (x) is an L val. expre., so decltype((x)) = int&.
 ```
 
-##### ###REMARK###
+##### ###REMARK.27###
 
 Operand of the decltype is unevaluated context. operand of the sizeof is also unevaluated.
 
@@ -95,7 +95,7 @@ int main()
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.28###
 
 In auto top level const is lost, but in decltype it is not.
 
@@ -109,7 +109,7 @@ decltype(x) y = 10;         // As if it is int const y = 10, so decltype(x) = in
 Parameter (Formal Parameter)  
 Argument  (Actual Parameter)
 
-##### ###REMARK###
+##### ###REMARK.29###
 
 > ```cpp
 > int foo(int x);             // Here x is a parameter of the function foo.
@@ -121,7 +121,7 @@ Argument  (Actual Parameter)
 > func(x, y);                 // func(x, y, 10);
 > ```
 
-##### ###REMARK###
+##### ###REMARK.30###
 
 > ```cpp
 > int func(int, int = 5, int);    // Syntax error. Every following argument after a default argument
@@ -132,7 +132,7 @@ Argument  (Actual Parameter)
 >                               // So calling func as func(1) would mean func(1, 5, 10).
 > ```
 
-##### ###REMARK###
+##### ###REMARK.31###
 
 > Default arguments do not have to be a constant expression.
 >
@@ -142,7 +142,7 @@ Argument  (Actual Parameter)
 > f2();                           // f2(f1()) ==> f2(f1(0))
 > ```
 
-##### ###REMARK###
+##### ###REMARK.32###
 
 > Declaration of default arguments both in the function declaration and in the function definition
 > causes syntax error.
@@ -174,7 +174,7 @@ Argument  (Actual Parameter)
 > // this is also well-formed
 > ```
 
-##### ###REMARK###
+##### ###REMARK.33###
 
 > ```cpp
 > int func(int, int, int = 10);
@@ -263,7 +263,7 @@ enum class Colour2 : unsigned char { WHITE, GREY, BLACK, GREEN };   // enum clas
     int x = static_cast<int>(mycolour);  // Is correct, because the casting is done explicitly.
     ```
 
-##### ###REMARK###
+##### ###REMARK.34###
 
 > Using enum declaration can grant access to the elements of a scoped enum without scope resolution
 > operator. This is available with C++20.
@@ -276,12 +276,12 @@ enum class Colour2 : unsigned char { WHITE, GREY, BLACK, GREEN };   // enum clas
 > Colour c2 = GREEN;
 > ```
 
-##### ###REMARK###
+##### ###REMARK.35###
 
 > If you use two "`using enum`" declarations in the same scope, you would create an error if those
 > two scoped enums have a name clash. Compiler checks this on the compile time.
 
-##### ###REMARK###
+##### ###REMARK.36###
 
 > Can also be used like this
 >

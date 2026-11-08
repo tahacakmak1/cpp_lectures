@@ -198,7 +198,7 @@ There are three ways to use a name in the namespace without qualifying.
         }
         ```
 
-    ##### ###REMARK###
+    ##### ###REMARK.97###
 
     > As a general rule keep the scopes of using declarations and using namespace declarations as
     > tight as possible to prevent errors. Safest way is always to use the qualifiers.
@@ -222,7 +222,7 @@ int main() {
 }
 ```
 
-##### ###REMARK###
+##### ###REMARK.98###
 
 > If a name that is part of an argument of a function call has a `type` that is declared in a
 > namespace, then the function will be searched in that namespace as well. Notice that we specified
@@ -298,7 +298,7 @@ int main() {
 
 - Since it is still a namespace, they are cumulative as well.
 
-###### ###REMARK###
+###### ###REMARK.99###
 
 > With modern C++ there is an opportunity to define nested namespaces in a different way.
 >

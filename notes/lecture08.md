@@ -58,7 +58,7 @@ foo(10);    // IMPORTANT. foo(10) calls foo(int&&) but bar(x) calls bar(int&) be
             // value expression.
 ```
 
-##### ###REMARK###
+##### ###REMARK.40###
 
 > `const` keyword with `typealiases` create top level `const`.
 >
@@ -76,7 +76,7 @@ foo(10);    // IMPORTANT. foo(10) calls foo(int&&) but bar(x) calls bar(int&) be
 > iptr const ptr = &x;  // Here const iptr means int* const ptr = &x;
 > ```
 
-##### ###REMARK###
+##### ###REMARK.41###
 
 > For function overloads with multiple parameters, the rule is;  
 > It must have at least one parameter better than the other overloads, and the remaining parameters
@@ -99,7 +99,7 @@ allowed in any one translation unit (some of these may have multiple declaration
 definition is allowed).  
 Programs in violation of ODR are ill-formed.
 
-##### ###REMARK###
+##### ###REMARK.42###
 
 > Some objects do not defy the ODR when defined in different header files if and only if they are
 > defined exactly the same token-by-token;
@@ -125,7 +125,7 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
                     // This expansion is not always done and cannot be forced. Compiler decides it.
 ```
 
-##### ###REMARK###
+##### ###REMARK.43###
 
 > - Inline functions and inlined functions are different things.
 > - `inline` keyword lets us define the function in the header file.
@@ -137,7 +137,7 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
     the complete types.
 > - Member functions are inline functions even if the keyword is not used.
 
-##### ###REMARK###
+##### ###REMARK.44###
 
 > Things that are in the header file but do not defile the ODR;
 >
@@ -150,11 +150,11 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
 >   - Alias Templates
 >   - Variable Templates
 
-##### ###REMARK###
+##### ###REMARK.45###
 
 > When used in global scope, `static` keyword creates internal linkage.
 
-##### ###REMARK###
+##### ###REMARK.46###
 
 > ###### Incomplete Types
 >

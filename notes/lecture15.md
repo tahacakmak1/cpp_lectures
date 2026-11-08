@@ -105,23 +105,25 @@ There are two types of operator functions;
   - `operator=` must have `T&` with the same logic.
   - Sign operators must have `T`.
 
-##### ###REMARK###
+##### ###REMARK.88###
 > `const` correctness is important in operator overloading.
+>
 > ```cpp
 > class Myclass {
 > public:
 >     // Since the addition does not change the valueo of *this, it must be const.
 >     Myclass operator+(Myclass const& other) const { return { _x + other._x, _y + other._y }; }
-> 
+>
 >     // But the assignment operator will change the value of *this, so it cannot be const.
 >     Myclass& operator=(Myclass const& other) {
 >         _x = other._x;
 >         _y = other._y;
 >         return *this;
 >     }
-> 
+>
 >     int _x, _y;
 > }; // class Myclass
+> ```
 
 ##### Then Why Do We Have Global Operator Functions?
 
@@ -167,7 +169,7 @@ There are two types of operator functions;
 2. If the operation changes the class instance, as a general rule it should be a member.
 3. Unary and asymmetric binary operators, should be members. Again, as a general rule.
 
-    ##### ###REMARK###
+    ##### ###REMARK.89###
 
     > Existence of two operators in a compound operator does not imply the existence of the compound
     > operator itself.
@@ -183,7 +185,7 @@ There are two types of operator functions;
     >
     > Having these two operators does not imply `<=` can be used.
 
-    ##### ###REMARK###
+    ##### ###REMARK.90###
 
     > If you are overloading `<<` and `>>` for input/output for a class, include `iosfwd` instead of
     > `iostream` if you are defining the operators in the implementation (cpp) file. If you are
@@ -236,7 +238,7 @@ There are two types of operator functions;
     > }
     > ```
 
-    ##### ###REMARK###
+    ##### ###REMARK.91###
 
     > When overloading comparison operators, the most common practice is defining `==` and `<`
     > operators and, using them in other overloads. Since they are symmetric binary operators, they
@@ -260,7 +262,7 @@ There are two types of operator functions;
     > }
     > ```
     >
-    > ##### ###REMARK###
+    > ##### ###REMARK.92###
     >
     > > With C++20, if you overload the `==` operator, compiler will default the `!=`. Meaning you
     > > will not have to overload `!=` operator. With C++20 there is also `<=>` operator.
@@ -318,7 +320,7 @@ These operator functions will be studied separately.
 - Must be a member function.
 - Must return an L-Value reference.
 
-##### ###REMARK###
+##### ###REMARK.93###
 
 > For Array-Like Classes there are two overloads of `[]` operator. One for `const` objects and one
 > for non-const objects.  

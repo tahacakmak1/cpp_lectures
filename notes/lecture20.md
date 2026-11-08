@@ -16,7 +16,7 @@ greater then the number of remaining characters. To ensure this `std::string::np
     This function reserves the space for the string, it doesn't increase it's size, but it's
     capacity.
 
-##### ###REMARK###
+##### ###REMARK.109###
 
 > - Just because it is reserved, it doesn't mean that a position that lies in that capacity is
 >   accessible. This applies for `std::vector` as well.
@@ -46,13 +46,13 @@ greater then the number of remaining characters. To ensure this `std::string::np
 >   std::cout << *++iter << '\n';               // e
 >   ```
 >
-> ##### ###REMARK###
+> ##### ###REMARK.110###
 > >
 > > - `begin()` returns the index to the first element.
 > > - `end()` returns the index that comes after the last element. Values like these are typically
 > >     named as `Sentinel` in programming.
 
-##### ###REMARK###
+##### ###REMARK.111###
 
 > Some operations for strings, like reversing a string, are not part of the string class, but it is
 > in the `algorithm` as global functions. Reason for this is that these kind of functions are used
@@ -130,7 +130,7 @@ std::cout << '|' << str << '|';           // || is the output
     str = std::string{};
     ```
 
-##### ###REMARK###
+##### ###REMARK.112###
 
 > While taking input for a string, `std::cin >> str;` will interpret spaces as separator.
 >
@@ -158,7 +158,7 @@ std::cout << '|' << str << '|';           // || is the output
 > std::cout << '|' << str2 << '|';   // |hello|
 > ```
 
-##### ###REMARK###
+##### ###REMARK.113###
 > When a substring of any given `std::string` is needed, using `str.substr(pos1, pos2)` can be used
 > but, this causes the copying of the whole substring. If the substring is too long, this operation
 > gets expensive.  
@@ -192,7 +192,7 @@ std::cout << '|' << str << '|';           // || is the output
 > swap(s1, s2);
 > ```
 
-##### ###REMARK###
+##### ###REMARK.114###
 
 > Forshadowing for `attributes`.  
 > In scenarios where the return value of the function must be used, an `[[nodiscard]]` attribute

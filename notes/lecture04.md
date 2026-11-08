@@ -35,7 +35,7 @@ Compiler tries to produce longest tokens.
         `y` is an identifier and is the fourth token.  
     So `x+++y` becomes `x++ + y`.  
 
-##### ###REMARK###
+##### ###REMARK.14###
 
 > After declaration of an array, `a[5]` and `int 5[a]` are the same thing, because `[]` is a pointer
 > operator.  
@@ -73,7 +73,7 @@ int* p = &a[5];         // Is a VALID pointer. The end of an array is always a V
 
 - If the object that the pointer points to is dead, than the pointer is invalid.
 
-    ##### ###REMARK###
+    ##### ###REMARK.15###
     >
     > ```c
     > #include <stdio.h>
@@ -98,7 +98,7 @@ int* p = &a[5];         // Is a VALID pointer. The end of an array is always a V
 - `*` Indirection (Dereferencing) Operator
   - Yields the value of the object that the pointer points to
 
-###### ###REMARK###
+###### ###REMARK.16###
 
 > Pointer returning functions must never return the adress of automatic local variables.
 > They can return;

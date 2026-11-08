@@ -195,7 +195,7 @@ Classes that have overloded the `()` operator are called
 1. Functor Class
 2. Function Object Class
 
-##### ###REMARK###
+##### ###REMARK.94###
 
 > Operator functions cannot take default arguments, except the `operator()`.
 >
@@ -249,7 +249,7 @@ private:
 - It provides conversion from the class to a specified type. Not the other way around, that is
     achieved with conversion constructors.
 
-##### ###REMARK###
+##### ###REMARK.95###
 
 > If a conversion is done by one of the following sequences, than it is done by the compiler
 > implicitly.
@@ -293,7 +293,7 @@ private:
 > }
 > ```
 
-###### ###REMARK###
+###### ###REMARK.96###
 
 Operator overloading mechanism can also be used for enum types, but since enums are not classes
 their operator functions must be global operator functions.

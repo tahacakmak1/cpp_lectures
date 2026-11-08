@@ -2,7 +2,7 @@
 
 ## Type Casting
 
-##### ###REMARK###
+##### ###REMARK.37###
 
 > - TYPE CASTING DOES NOT CHANGE THE VARIABLE'S ACTUAL TYPE BUT CREATES A TEMPORARY OBJECT IN THAT
 >   TYPE TO USE.
@@ -75,7 +75,7 @@ Three necessities for function overloading;
 3. Function signatures must be different (Function Signature: number of parameters and the type of
     parameters of a function)
 
-##### ###REMARK###
+##### ###REMARK.38###
 
 > Overloaded functions can have different return types.
 >
@@ -85,7 +85,7 @@ Three necessities for function overloading;
 > // is a valid overload
 > ```
 
-##### ###REMARK###
+##### ###REMARK.39###
 
 > - Top level `const` does not cause different signatures. It just causes redeclaration.
 >

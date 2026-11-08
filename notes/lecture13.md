@@ -13,12 +13,12 @@
 Move members must leave the object they steal the resource from, in a valid state. An object whose
 resource is stolen, can be reused in an assignment to it.
 
-##### ###REMARK###
+##### ###REMARK.76###
 
 > Resource of a `const` object cannot be stolen (rules of the language prohibits this), nor should
 > you try to steal it.
 
-##### ###REMARK###
+##### ###REMARK.77###
 > `std::move()` is a `const` qualified function. So when the argument of move is a const, it also
 > returns `const`.
 >
@@ -43,7 +43,7 @@ resource is stolen, can be reused in an assignment to it.
 > }
 > ```
 
-##### ###REMARK###
+##### ###REMARK.78###
 
 > CHECK THE `Special Member Functions.jgp` BEFORE DEFINING SPECIAL MEMBER FUNCTIONS.  
 > To summarize;
@@ -77,7 +77,7 @@ resource is stolen, can be reused in an assignment to it.
 > ptr->~Myclass();            // Can be done, but must not.
 > ```
 
-#### ###REMARK####
+#### ###REMARK.79####
 
 > WHEN DEFINING COPY OR MOVE ASSIGNMENT, ALWAYS CHECK FOR SELF ASSIGNMENT, TO PREVENT DANGLING
 > POINTERS.
@@ -96,7 +96,7 @@ private:
 }; // class Myclass
 ```
 
-##### ###REMARK###
+##### ###REMARK.80###
 
 > Constructor Initializer List cannot be used in a delegating constructor.  
 > Calling a constructor must be the only thing that delegating constructor should do.
@@ -207,7 +207,7 @@ std::move(x).foo();             // INVALID
 std::move(x).bar();             // VALID
 ```
 
-##### ###REMARK###
+##### ###REMARK.81###
 
 > Member functions can be overloaded with reference qualifiers.
 
@@ -223,7 +223,7 @@ Myclass{} = x;  // This is not a syntax error, but it is illogical. To turn this
 Myclass& Myclass::operator=(Myclass const&) & = default;
 ```
 
-##### ###REMARK###
+##### ###REMARK.82###
 
 > If one of the overloads of a member function is reference qualified, then all overloads of that
 > function must be qualified.
@@ -242,7 +242,7 @@ Myclass x;
 x = 5;              // Implicit Conversion
 ```
 
-##### ###REMARK###
+##### ###REMARK.83###
 
 > This type of conversion is called User-Defined Conversion(UDC).  
 > Compiler can perform an implicit conversion in two ways;
@@ -318,7 +318,7 @@ x = 5;              // Implicit Conversion
 > 3. Explicit functions are omitted from viable functions list in function overloading resolution.
 > 4. Conversion constructors can have more than 1 parameters, but in practice this is rare.
 
-##### ###REMARK###
+##### ###REMARK.84###
 
 > 99% of the time we want conversion constructors to be `explicit`.
 

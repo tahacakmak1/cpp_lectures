@@ -136,7 +136,7 @@ int x{};    // Value    Initialization
 > int    ival{dval};     // This is a syntax error.
 > ```
 
-##### ###REMARK.5##
+##### ###REMARK.5###
 
 > Const variables cannot be default initialized.
 
