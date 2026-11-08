@@ -2,10 +2,8 @@
 
 - Syntax Error
 - Well-formed - Ill-formed
-- Valid code  - Invalid code
-- Legal code  - Illegal code
-
-  
+- Valid code - Invalid code
+- Legal code - Illegal code
 
 - Undefined Behavior (UB)
   - Unspecified Behavior
@@ -17,19 +15,19 @@ this does not happen.
 
 ## Diffrences About Types and Type Castings
 
-- _Bool in C is actually a signed int.
+- \_Bool in C is actually a signed int.
 - In C++ bool is an actual logic data type.
 - Size of bool is 1 byte.
 - There is implicit type conversion from arithmetic values to bool and from bool to arithmetic.
 
-    ```cpp
-    int  x     = 15;
-    int  y     = 0;
-    bool flag1 = x;     // flag1 is true
-    bool flag2 = y;     // flag2 is false
-    int  z     = flag1; // value of z is 1
-    int  t     = flag2; // value of t is 0
-    ```
+  ```cpp
+  int  x     = 15;
+  int  y     = 0;
+  bool flag1 = x;     // flag1 is true
+  bool flag2 = y;     // flag2 is false
+  int  z     = flag1; // value of z is 1
+  int  t     = flag2; // value of t is 0
+  ```
 
 ##### ###REMARK.1###
 
@@ -64,49 +62,49 @@ Data2 i;
 
 - In C constant variables do not have to be initialized, but in C++ they have to.
 - In C constant variables cannot be used in declarations like `int a[x]`. Applies if variable length
-    array is not used by the compiler.
+  array is not used by the compiler.
 - In C++ constant variables can be used in declarations like `int a[x]`. Applies if variable length
-    array is not used by the compiler.
+  array is not used by the compiler.
 
-    ```cpp
-    int get_size() { return 100; }
+  ```cpp
+  int get_size() { return 100; }
 
-    int main() {
-        int const size = 100;
-        int const ds = get_size();
-        // Both of them are constants but size can be used in array declaration but ds cannot.
-        // Again this is about the variable length array.
-    }
-    ```
+  int main() {
+      int const size = 100;
+      int const ds = get_size();
+      // Both of them are constants but size can be used in array declaration but ds cannot.
+      // Again this is about the variable length array.
+  }
+  ```
 
 - In C++ there is const, constexpr, consteval.
 - Internal linkage and external linkage is important.
 - In C there is implicit conversion from `T const*` to `T*` but in C++ this is illegal.
 
-    ```cpp
-    int* const ptr1;    // Top-level const, also called the right const because const is on the right of *.
-    int const* ptr2;    // Low-level const, also called the left  const because const is on the left  of *.
+  ```cpp
+  int* const ptr1;    // Top-level const, also called the right const because const is on the right of *.
+  int const* ptr2;    // Low-level const, also called the left  const because const is on the left  of *.
 
-    void foo(T* p);         // mutator or out param
-    void foo(T const* p);   // in param
-    ```
+  void foo(T* p);         // mutator or out param
+  void foo(T const* p);   // in param
+  ```
 
 ## Scope Leakage
 
 - Is the scenario where the variable is accessible from outside of it's intended use.
 
-    ```cpp
-    int i;
-    // code..
-    // code..
+  ```cpp
+  int i;
+  // code..
+  // code..
 
-    for(i = 0; i < 10; i++) {
-        // code..
-        // code..
-    }
-    // The variable i is only used in the above loop but it is accesible from outside of the loop.
-    // Since it is accesible from outside of the loop it is a scope leakage.
-    ```
+  for(i = 0; i < 10; i++) {
+      // code..
+      // code..
+  }
+  // The variable i is only used in the above loop but it is accesible from outside of the loop.
+  // Since it is accesible from outside of the loop it is a scope leakage.
+  ```
 
 - In C there is implicit conversion from `T` to `T*`, but in C++ there is not.
 - In C there is implicit conversion from `T1*` to `T2*`, but in C++ there is not.

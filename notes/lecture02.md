@@ -1,15 +1,15 @@
 # LECTURE 02
 
 In C char constants are 4 bytes, but in C++(they are named character literals) they are 1 byte.  
-In C `"jack"` is `char[5]`, 5 because it ends with `'\0'`, but in C++ it is `char const[5]`.  
+In C `"jack"` is `char[5]`, 5 because it ends with `'\0'`, but in C++ it is `char const[5]`.
 
 _*Array decay - array to pointer conversion*_: meaning array names act as pointers, except in
 `sizeof()` in C.  
 _*Unevaluated context*_, in C only happens in `sizeof`, but in C++ there are 7-8 instances.
 
-For int `a[10]`;  
+For int `a[10]`;
 
-- `a` has the type `int[10]` (also there is pointer decay)  
+- `a` has the type `int[10]` (also there is pointer decay)
 - `&a` has the type `int (*)[10]`.
 
 C++ also uses pointers but, compared to their usage in C it is much more sparse. Because C++ uses
@@ -47,21 +47,21 @@ p;  // here p is also an L value expression
 
 ### Some R value expressions in C, are L value expressions in C++
 
-|                  | C |C++                         |
-|------------------|---|:--------------------------:|
-|++x               | R |L                           |
-|--x               | R |L                           |
-|assignment        | R |L                           |
-|comma(,)          | R |(depending on the scenario)L|
-|ternary           | R |(depending on the scenario)L|
+|            | C   |             C++              |
+| ---------- | --- | :--------------------------: |
+| ++x        | R   |              L               |
+| --x        | R   |              L               |
+| assignment | R   |              L               |
+| comma(,)   | R   | (depending on the scenario)L |
+| ternary    | R   | (depending on the scenario)L |
 
 ## Value Categories in C++
 
 ### Primary Value Categories
 
-- PR value    (Pure R value)
-- L  value
-- X  value    (eXpired value)
+- PR value (Pure R value)
+- L value
+- X value (eXpired value)
 
 ### Combined Value Categories
 
@@ -84,16 +84,16 @@ p;  // here p is also an L value expression
 
 References are alternatives to pointers on a language level
 
-- Call by Reference   : Functions work on the object directly.
-- Call by Value       : Functions take a copy of the object and work on that copy.
+- Call by Reference : Functions work on the object directly.
+- Call by Value : Functions take a copy of the object and work on that copy.
 
 In C to use call by reference we use pointers, in C++ we can use references in addition to pointers.
 
 ### Reference Categories
 
-- L value     reference       (left  side reference)
-- R value     reference       (right side reference)
-- forwarding  reference       (universal  reference)
+- L value reference (left side reference)
+- R value reference (right side reference)
+- forwarding reference (universal reference)
 
 ```cpp
 int&   r = x;   // L value reference

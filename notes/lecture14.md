@@ -78,77 +78,77 @@ int Myclass::_x {10};
 - `static` keyword has to be used in declaration but not in definition.
 - Static data member can be of an incomplete type.
 
-    ```cpp
-    class Myclass1;             // Incomplete type
-    class Myclass2 {
-        Myclass1 _data1;        // This is a syntax error. non-static data members must be complete types.
-        static Myclass1 _data2; // This is not a syntax error because static data members
-                                // can be of an incomplete type.
-    }; // class Myclass2
-    ```
+  ```cpp
+  class Myclass1;             // Incomplete type
+  class Myclass2 {
+      Myclass1 _data1;        // This is a syntax error. non-static data members must be complete types.
+      static Myclass1 _data2; // This is not a syntax error because static data members
+                              // can be of an incomplete type.
+  }; // class Myclass2
+  ```
 
 - A class cannot contain a member with a type of itself, unless it is static.
 
-    ```cpp
-    class Myclass {
-        Myclass        _x;  // This is a syntax error because Myclass is not complete.
-        static Myclass _x;  // This is allowed, because static data members can be an incomplete type.
-    }; // class Myclass
-    ```
+  ```cpp
+  class Myclass {
+      Myclass        _x;  // This is a syntax error because Myclass is not complete.
+      static Myclass _x;  // This is allowed, because static data members can be an incomplete type.
+  }; // class Myclass
+  ```
 
 - If the static data member is a const integral type then you can define it in the class definition
-    (`enum`, `char`, `signed char`, `unsigned char`, `long, long long`, `bool` are also integral types).
+  (`enum`, `char`, `signed char`, `unsigned char`, `long, long long`, `bool` are also integral types).
 
-    ```cpp
-    class Myclass {
-        static int                 _x1 = 5;     // INVALID not const.
-        static double const        _x2 = 3.5;   // INVALID not an  integral type.
-        static int const           _x3 = 5;     // VALID const and integral type.
-        static long const          _x4 = 7;     // VALID const and integral type.
-        static long long const     _x5 = 8;     // VALID const and integral type.
-        static char const          _x6 = 0;     // VALID const and integral type.
-        static signed char const   _x7 = 9;     // VALID const and integral type.
-        static unsigned char const _x8 = 9;     // VALID const and integral type.
-    }; // class Myclass
-    ```
+  ```cpp
+  class Myclass {
+      static int                 _x1 = 5;     // INVALID not const.
+      static double const        _x2 = 3.5;   // INVALID not an  integral type.
+      static int const           _x3 = 5;     // VALID const and integral type.
+      static long const          _x4 = 7;     // VALID const and integral type.
+      static long long const     _x5 = 8;     // VALID const and integral type.
+      static char const          _x6 = 0;     // VALID const and integral type.
+      static signed char const   _x7 = 9;     // VALID const and integral type.
+      static unsigned char const _x8 = 9;     // VALID const and integral type.
+  }; // class Myclass
+  ```
 
 - Static data members and global variables can be defined with `inline` keyword. (C++17)
-    Inline variable:
+  Inline variable:
 
-    ```cpp
-    inline int _x = 5;  // This guarantees that in the link phase there will only be one _x.
-    // file1.cpp
-    inline int _x = 6;
-    // file2.cpp
-    inline int _x = 6;
-    // file3.cpp
-    inline int _x = 6;
-    // There will only be one _x. This is about ODR.
-    ```
+  ```cpp
+  inline int _x = 5;  // This guarantees that in the link phase there will only be one _x.
+  // file1.cpp
+  inline int _x = 6;
+  // file2.cpp
+  inline int _x = 6;
+  // file3.cpp
+  inline int _x = 6;
+  // There will only be one _x. This is about ODR.
+  ```
 
-    ```cpp
-    // Myclass.h
-    class Myclass {
-    public:
-        inline static int    _x1 = 5;   // If inline keyword is used, const and integral type rule
-        inline static double _x2 = 5.3; // is not necessary. So both are valid now.
-    }; // class Myclass
-    ```
+  ```cpp
+  // Myclass.h
+  class Myclass {
+  public:
+      inline static int    _x1 = 5;   // If inline keyword is used, const and integral type rule
+      inline static double _x2 = 5.3; // is not necessary. So both are valid now.
+  }; // class Myclass
+  ```
 
 - Since static data members not actually part of the instances, they cannot be initialized with
-    constructors.
+  constructors.
 
-    ```cpp
-    class Myclass {
-        int _x, _y;
-        static int _ival;
-    public:
-        Myclass(){}
-        Myclass(int x, int y) : _x{x}, _y{y} {}                     // VALID
-        Myclass(int x, int y, int z) : _x{x}, _y{y}, _ival{z} {}    // INVALID
-        Myclass() : _x{10}, _y{20}, _ival{30} {}                    // INVALID
-    }; // class Myclass
-    ```
+  ```cpp
+  class Myclass {
+      int _x, _y;
+      static int _ival;
+  public:
+      Myclass(){}
+      Myclass(int x, int y) : _x{x}, _y{y} {}                     // VALID
+      Myclass(int x, int y, int z) : _x{x}, _y{y}, _ival{z} {}    // INVALID
+      Myclass() : _x{10}, _y{20}, _ival{30} {}                    // INVALID
+  }; // class Myclass
+  ```
 
 ### Static Member Functions
 
@@ -161,35 +161,35 @@ public:
 ```
 
 - In the class scope but do not have a "this pointer". meaning they are called without an address of
-    an instance.
+  an instance.
 - Since they do not have a "this pointer", they cannot be const functions.
 - To call them, an instance is not required.
 
-    ```cpp
-    class Myclass {
-    public:
-        void foo();
-        static void bar();
-    }; // class Myclass
+  ```cpp
+  class Myclass {
+  public:
+      void foo();
+      static void bar();
+  }; // class Myclass
 
-    int main() {
-        Myclass::foo(); // Syntax error.
-        Myclass::bar(); // Valid.
-    }
-    ```
+  int main() {
+      Myclass::foo(); // Syntax error.
+      Myclass::bar(); // Valid.
+  }
+  ```
 
 - To summarize, they are not related to the instance itself but to the class, just like the static
-    data members.
+  data members.
 - Since they are members of the class, they can access the private members of the class.
 - Have access modifiers.
 - They can be defined as inline functions in the class.
 - The trick in PUBLIC and PRIVATE macros to determine the function's access modifier, can also be
-    used for static.
+  used for static.
 - Since they do not have a this pointer, they cannot use non-static data members of the class as
-    unqualified name, but static member functions can use unqualified names to access the static
-    data members of the class.
+  unqualified name, but static member functions can use unqualified names to access the static
+  data members of the class.
 - Just like static data members, they can be accessed using dot and arrow operators, but just like
-    static data members, they should not.
+  static data members, they should not.
 - Pointers to static member functions are defined the same way as pointers to global functions.
 
 ##### ###REMARK.85###
@@ -244,60 +244,60 @@ public:
 ### Friend Declarations
 
 - Private members of a class cannot be accessed except the class members. To give a global function
-    the privilege to access the private members of a class, we use the `friend` keyword.
+  the privilege to access the private members of a class, we use the `friend` keyword.
 - `friend` keyword works either all-in or none, it cannot be choosen which members it gives access
-    to. It grants access to all of the private members.
+  to. It grants access to all of the private members.
 - Friendship can also be granted to a class.
 
 Friend declaration can be used to;
 
 1. Grant private member access to a function in a namespace.
 
-    ```cpp
-    class Myclass {
-        void foo();
-        int  _x;
-    public:
-        friend void func(Myclass);
-    }; // class Myclass
-    void func(Myclass pm) {
-        Myclass m;
-        pm.foo();   // Without the friend declaration, would be an access control error.
-        pm._x;  // Without the friend declaration, would be an access control error.
-        m.foo();    // Without the friend declaration, would be an access control error.
-        m._x;   // Without the friend declaration, would be an access control error.
-    }
-    ```
+   ```cpp
+   class Myclass {
+       void foo();
+       int  _x;
+   public:
+       friend void func(Myclass);
+   }; // class Myclass
+   void func(Myclass pm) {
+       Myclass m;
+       pm.foo();   // Without the friend declaration, would be an access control error.
+       pm._x;  // Without the friend declaration, would be an access control error.
+       m.foo();    // Without the friend declaration, would be an access control error.
+       m._x;   // Without the friend declaration, would be an access control error.
+   }
+   ```
 
 2. Grant private member access to a member function of a different class.
 
-    ```cpp
-    class Myclass {
-        friend std::ostream& operator<<(std::ostream&, Myclass const&);
+   ```cpp
+   class Myclass {
+       friend std::ostream& operator<<(std::ostream&, Myclass const&);
 
-        int _x;
-    }; // class Myclass
+       int _x;
+   }; // class Myclass
 
-    std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
+   std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
 
-    // OR
+   // OR
 
-    class Myclass {
-        friend std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
+   class Myclass {
+       friend std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
 
-        int _x;
-    }; // class Myclass
-    ```
+       int _x;
+   }; // class Myclass
+   ```
 
 3. Grant private member access to every function of a different class.
 
-    ```cpp
-    class A;
+   ```cpp
+   class A;
 
-    class B {
-        friend class A; // With this expression class B grants friendship to class A.
-    }; // class B
-    ```
+   class B {
+       friend class A; // With this expression class B grants friendship to class A.
+   }; // class B
+   ```
 
 ##### ###REMARK.86###
 
@@ -315,6 +315,7 @@ Friend declaration can be used to;
 > ```
 >
 > ##### ###REMARK.87###
+>
 > > Hidden friend functions can be defined in the public, private and protected sections of a class.
 > > Since they are not member functions, they do not get affected by the access modifiers.
 > >
@@ -333,15 +334,15 @@ Friend declaration can be used to;
 > > ```
 
 - Friend declaration can be done in public and private sections of the class, and it would not have
-    any difference.
+  any difference.
 - The downside of friend declaration is that when a change made in the private section of a class,
-    friend functions of that class MUST be revisited.
+  friend functions of that class MUST be revisited.
 
 Some rules about friend declaration;
 
 1. `class A` granting friendship to `class B`, does not imply that `class B` grants a friendship to
-    `class A`.
+   `class A`.
 2. Friend of a friend is not a friend. Meaning friendship is not transitive. Meaning, `class A`
-    granting friendship to `class B`, and `class B` granting friendship to `class C` does not imply
-    that `class A` grants friendship to `class C`.
+   granting friendship to `class B`, and `class B` granting friendship to `class C` does not imply
+   that `class A` grants friendship to `class C`.
 3. Friends of base classes are not friends of derived classes.

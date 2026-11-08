@@ -48,20 +48,20 @@ Vpointer of `Audi` class will have the pointers to the `Audi::start()` and `Audi
 Can be used in two different ways.
 
 1. final class  
-    Prevents the class being used as a parent class in inheritence.
+   Prevents the class being used as a parent class in inheritence.
 
-    ```cpp
-    struct Base {};
+   ```cpp
+   struct Base {};
 
-    struct Der final : public Base {};
+   struct Der final : public Base {};
 
-    struct Dez : public Der {}; // INVALID. Der is a final class, cannot be inherited from.
+   struct Dez : public Der {}; // INVALID. Der is a final class, cannot be inherited from.
 
-    struct Random final {}; // VALID Can also be used in this way.
-    ```
+   struct Random final {}; // VALID Can also be used in this way.
+   ```
 
 2. final override  
-    Prevents the member function of a base class being overridden by a derived class.
+   Prevents the member function of a base class being overridden by a derived class.
 
 ```cpp
 struct Base {
@@ -82,7 +82,7 @@ of the derived class, same for the protected interface. In `private` inheritance
 to the private interface of the derived class.  
 There are some important properties of `private` inheritance
 
-1. Since the is-a relationship is not directly possible, upcasting is only possible in a member
+1.  Since the is-a relationship is not directly possible, upcasting is only possible in a member
     function of the derived class, or in a `friend` functions of the derived class.
 
     ```cpp
@@ -109,23 +109,23 @@ There are some important properties of `private` inheritance
     }
     ```
 
-2. `private` inheritance does not exactly represent a is-a relationship like `public` inheritance but,
-there still exists a base `class` inside the derived `class`. So, `private` inheritance is more
-similar to containment.
+2.  `private` inheritance does not exactly represent a is-a relationship like `public` inheritance but,
+    there still exists a base `class` inside the derived `class`. So, `private` inheritance is more
+    similar to containment.
 
-    ```cpp
-    class Base {
-    public:
-        void foo();
-    }; // class Base
+        ```cpp
+        class Base {
+        public:
+            void foo();
+        }; // class Base
 
-    class Der : private Base {
-    public:
-        void func() {
-            foo();
-        }
-    }; // class Der
-    ```
+        class Der : private Base {
+        public:
+            void func() {
+                foo();
+            }
+        }; // class Der
+        ```
 
 ### Comparison of Containment and `private` Inheritance
 
@@ -167,9 +167,9 @@ private:
 ```
 
 1. With `private` inheritance not every Der is a Base but some may be. With containment, no Myclass
-    can be a Base.
+   can be a Base.
 2. With containment, Myclass can have multiple instances of Base, but with `private` inheritance
-    there can only be one.
+   there can only be one.
 3. If Base has a `protected` section, Der can access it but Myclass cannot.
 4. If Base has `virtual` functions, Der can have overriding member functions but Myclass cannot.
 
@@ -178,7 +178,7 @@ private:
 1. To access the `protected` members of the base `class`.
 2. To `override` the `virtual` member functions of the base `class`.
 3. Because an abstract `class` cannot be instantiated, therefore cannot be used as a member of a
-    `class`.
+   `class`.
 4. To have restricted polymorphism.
 5. To have the advantages of Empty Base Optimization (EBO).
 
@@ -373,7 +373,7 @@ public:
 }; // class A
 
 class B {
-public: 
+public:
     B() {
         std::cout << "B ctor\n";
     }
@@ -387,6 +387,7 @@ int main() {
 ```
 
 The above piece of code will output
+
 > A ctor  
 > B ctor
 
@@ -511,5 +512,6 @@ int main() {
 ```
 
 The above code snippet will have the following output
+
 > Base(char const* c), c = MDer  
 > Base(char const* c), c = MDez

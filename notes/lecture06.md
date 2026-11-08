@@ -22,49 +22,50 @@ type.
 
 1. If the operand is an identifier, it gives out the type of the operand.
 
-    ```cpp
-    int x         = 5;
-    decltype(x) y = 10;             // As if it is int y = 10, decltype(x) = int.
-    int         x = 5;
-    using mytype  = decltype(x);    // As if it is using mytype = int, so decltype(x) = int.
+   ````cpp
+   int x         = 5;
+   decltype(x) y = 10;             // As if it is int y = 10, decltype(x) = int.
+   int         x = 5;
+   using mytype  = decltype(x);    // As if it is using mytype = int, so decltype(x) = int.
 
-    struct Data {
-        int a, b, c;
-    };
+   struct Data {
+       int a, b, c;
+   };
 
-    Data            d;
-    Data*           pd = &d;
-    decltype(d.a)   x;              // As if it is int x, so decltype(d.a) = int.
-    decltype(pd->a) y;
-        ```
+   Data            d;
+   Data*           pd = &d;
+   decltype(d.a)   x;              // As if it is int x, so decltype(d.a) = int.
+   decltype(pd->a) y;
+       ```
+
+   ````
 
 2. If the operand is an expression,
+   1. If it's a PR val. expr. then T.
+   2. If it's an L val. expr. then T&.
+   3. If it's an X val. expr. then T&&.
 
-    1. If it's a  PR val. expr. then T.
-    2. If it's an L  val. expr. then T&.
-    3. If it's an X  val. expr. then T&&.
+   ```cpp
+   int            x = 5;
+   decltype(x++)  y;           // As if it is int y, so decltype(x++) = int.
+   decltype(++x)  z   = x;     // As if it is int& z, so decltype(++x) = int&.
+   int            x   = 5;
+   int*           ptr = &x;
+   decltype(*ptr) r   = x;     // As if it is int& r, so decltype(*ptr) = int&.
+   int            f1();
+   int&           f2();
+   int&&          f3();
 
-    ```cpp
-    int            x = 5;
-    decltype(x++)  y;           // As if it is int y, so decltype(x++) = int.
-    decltype(++x)  z   = x;     // As if it is int& z, so decltype(++x) = int&.
-    int            x   = 5;
-    int*           ptr = &x;
-    decltype(*ptr) r   = x;     // As if it is int& r, so decltype(*ptr) = int&.
-    int            f1();
-    int&           f2();
-    int&&          f3();
-
-    int main() {
-    f1();                   // PR value
-    f2();                   // L  value
-    f3();                   // X  value
-    decltype(f1()) x = 5;   // As if it is int   x, so decltype(f1()) = int.
-    decltype(f2()) y = x;   // As if it is int&  y, so decltype(f2()) = int&.
-    decltype(f3()) z = 5;   // As if it is int&& z, so decltype(f3()) = int&&.
-    return 0;
-    }
-    ```
+   int main() {
+   f1();                   // PR value
+   f2();                   // L  value
+   f3();                   // X  value
+   decltype(f1()) x = 5;   // As if it is int   x, so decltype(f1()) = int.
+   decltype(f2()) y = x;   // As if it is int&  y, so decltype(f2()) = int&.
+   decltype(f3()) z = 5;   // As if it is int&& z, so decltype(f3()) = int&&.
+   return 0;
+   }
+   ```
 
 ```cpp
 int            a[5]{};
@@ -107,16 +108,16 @@ decltype(x) y = 10;         // As if it is int const y = 10, so decltype(x) = in
 ## Default Arguments of Functions
 
 Parameter (Formal Parameter)  
-Argument  (Actual Parameter)
+Argument (Actual Parameter)
 
 ##### ###REMARK.29###
 
 > ```cpp
 > int foo(int x);             // Here x is a parameter of the function foo.
 > foo(5);                     // Here 5 is the argument.
-> 
+>
 > int func(int, int, int = 10);
-> 
+>
 > func(x, y, z);              // func(x, y, z);
 > func(x, y);                 // func(x, y, 10);
 > ```
@@ -204,8 +205,8 @@ enum Colour2 : unsigned char { RED, GREEN, BLUE }; // enum Colour2
 ```
 
 - `underlying_type` is determined by the compiler. In C, `underlying_type` has to be `int`. In C++
-    it is dependent on `int`, it defaults to `int` but if `int` is not enough then it is chosen
-    accordingly by the compiler. Can also be specified explicitly in C++.
+  it is dependent on `int`, it defaults to `int` but if `int` is not enough then it is chosen
+  accordingly by the compiler. Can also be specified explicitly in C++.
 
 ```cpp
 enum Colour1 : unsigned char;
@@ -215,14 +216,14 @@ enum Colour2 : unsigned int { GREY, BLACK, MAGENTA }; // enum Colour2
 #### Problems of the Old Enum
 
 - Old enumerators cannot be used as an incomplete type, because `underlying_type` is dependent on
-    the compiler.
+  the compiler.
 - `underlying_type` cannot be specified by developer.
 - Implicit type casting from arithmetic types to enum type does not exist but it does from enum to
-    arithmetic types. THIS IS A HUGE PROBLEM. ONE OF THE MAIN REASONS THAT SCOPED ENUM EXISTS.
+  arithmetic types. THIS IS A HUGE PROBLEM. ONE OF THE MAIN REASONS THAT SCOPED ENUM EXISTS.
 - Implicit type casting between two different enum's also does not exist.
 - THEY DO NOT HAVE SCOPE. ONE OF THE MAIN REASONS THAT SCOPED ENUM EXISTS. When defined globally,
-    components of different enum's with same names would clash
-    (called name clashing / name masking / name hiding).
+  components of different enum's with same names would clash
+  (called name clashing / name masking / name hiding).
 
 ```cpp
 enum TrafficLight { RED, YELLOW, GREEN };
@@ -243,25 +244,25 @@ enum class Colour2 : unsigned char { WHITE, GREY, BLACK, GREEN };   // enum clas
 - It's `underlying_type` defaults to int, but can be specified by declaration or definition.
 - To access it's elements, scope resolution operator(`::`) must be used.
 
-    ```cpp
-    enum class Colour { WHITE, GREY, BLACK, GREEN };    // enum class Colour1
-    Colour temp = WHITE;            // Is a syntax error because white is not defined.
-    Colour temp = Colour::WHITE;    // Is the proper way.
-    auto c1 = GREY;                 // Is still a syntax error, same reason.
-    auto c2 = Colour::GREY;         // Is the proper way.
-    ```
+  ```cpp
+  enum class Colour { WHITE, GREY, BLACK, GREEN };    // enum class Colour1
+  Colour temp = WHITE;            // Is a syntax error because white is not defined.
+  Colour temp = Colour::WHITE;    // Is the proper way.
+  auto c1 = GREY;                 // Is still a syntax error, same reason.
+  auto c2 = Colour::GREY;         // Is the proper way.
+  ```
 
-    This prevents the name clashing problems, which was the aim.
+  This prevents the name clashing problems, which was the aim.
 
 - Implicit type casting from scoped enum to arithmetic types do not exist. explicit does.
 
-    ```cpp
-    enum class Colour { RED, GREEN, BLUE }; // enum class Colour
-    Colour mycolour{Colour::red};
-    int x = mycolour;       // Is a syntax error because implicit type casting does not exist for
-                            // scoped enums.
-    int x = static_cast<int>(mycolour);  // Is correct, because the casting is done explicitly.
-    ```
+  ```cpp
+  enum class Colour { RED, GREEN, BLUE }; // enum class Colour
+  Colour mycolour{Colour::red};
+  int x = mycolour;       // Is a syntax error because implicit type casting does not exist for
+                          // scoped enums.
+  int x = static_cast<int>(mycolour);  // Is correct, because the casting is done explicitly.
+  ```
 
 ##### ###REMARK.34###
 
@@ -291,7 +292,7 @@ enum class Colour2 : unsigned char { WHITE, GREY, BLACK, GREEN };   // enum clas
 > Colour c1 = RED;  // Is valid because of the "using Colour::RED".
 > Colour c2 = BLUE; // Is invalid because blue is undefined in this scope.
 >                   // It has to be Colour c2 = Colour::BLUE.
-> 
+>
 > using Colour::RED, Colour::BLUE;
 > Colour c1 = RED;  // Is valid because of the "using Colour::RED".
 > Colour c2 = BLUE; // Is valid because of the "using Colour::BLUE".

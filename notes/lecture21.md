@@ -37,11 +37,11 @@ public:
 
 - Base `class` must be a complete type.
 - If the type of derivation is not specified the default type for derivation is `private`, if the
-derived type is a `class`.  If the derived type is `struct` then the default type for derivation
-is `public`.
+  derived type is a `class`. If the derived type is `struct` then the default type for derivation
+  is `public`.
 - Type of the inheritance does not mean that only members in that section of the base `class` will
-be inherited. All the members of the base `class` will be inherited. But this does not allow the
-derived `class` to access to the private members  of the base `class`.
+  be inherited. All the members of the base `class` will be inherited. But this does not allow the
+  derived `class` to access to the private members of the base `class`.
 
 ```cpp
 class Base {
@@ -162,6 +162,7 @@ int main() {
 ```
 
 Will have the output of
+
 > Base default ctor called
 >
 > Base default ctor called  
@@ -172,50 +173,51 @@ Will have the output of
 > Base dtor called
 
 - Even if the default constructor of the base class is not called inside the default constructor of
-the derived class, the compiler will automatically do so.
+  the derived class, the compiler will automatically do so.
 - When composition and inheritance are used together, call order of the classes will be as follows;
-    1. Default constructor of the base class
-    2. Default constructor of the member class
-    3. Default constructor of the derived class
+  1. Default constructor of the base class
+  2. Default constructor of the member class
+  3. Default constructor of the derived class
 
-    ```cpp
-    class Member {
-    public:
-        Member() { std::cout << "Member default ctor\n"; }
+  ```cpp
+  class Member {
+  public:
+      Member() { std::cout << "Member default ctor\n"; }
 
-        ~Member() { std::cout << "Member dtor\n"; }
-    }; // class Member
+      ~Member() { std::cout << "Member dtor\n"; }
+  }; // class Member
 
-    class Base {
-    public:
-        Base() { std::cout << "Base default ctor\n"; }
+  class Base {
+  public:
+      Base() { std::cout << "Base default ctor\n"; }
 
-        ~Base() { std::cout << "Base dtor\n"; }
-    }; // class Base
+      ~Base() { std::cout << "Base dtor\n"; }
+  }; // class Base
 
-    class Der : public Base {
-    public:
-        Der() { std::cout << "Der default ctor\n"; }
+  class Der : public Base {
+  public:
+      Der() { std::cout << "Der default ctor\n"; }
 
-        ~Der() { std::cout << "Der dtor\n"; }
-    private:
-        Member _x;
-    }; // class Der
+      ~Der() { std::cout << "Der dtor\n"; }
+  private:
+      Member _x;
+  }; // class Der
 
-    int main() {
-        Der myder;
-        std::cout << "\n";
-    }
-    ```
+  int main() {
+      Der myder;
+      std::cout << "\n";
+  }
+  ```
 
-    Will have the following output;
-    > Base default ctor  
-    > Member default ctor  
-    > Der default ctor
-    >
-    > Der dtor  
-    > Member dtor  
-    > Base dtor
+  Will have the following output;
+
+  > Base default ctor  
+  > Member default ctor  
+  > Der default ctor
+  >
+  > Der dtor  
+  > Member dtor  
+  > Base dtor
 
 #### What Happens if the base class does not have a default constructor?
 
@@ -241,6 +243,7 @@ int main() { Der myder; }
 ```
 
 Will have the following outpu;
+
 > Base(int x) x = 0  
 > Member default ctor  
 > Der default ctor
@@ -256,21 +259,21 @@ Will have the following outpu;
 > - Derived classes can call the constructors of their direct base class, but not the constructors
 >   of their indirect base class(es).
 >
->    ```cpp
->    class Base {}; // class Base
+>   ```cpp
+>   class Base {}; // class Base
 >
->    class Der : public Base {
->    public:
->        Der() {}
->    }; // class Der
+>   class Der : public Base {
+>   public:
+>       Der() {}
+>   }; // class Der
 >
->    class Dez : public Der {
->    public:
->        Dez() : Der() {}        // VALID
+>   class Dez : public Der {
+>   public:
+>       Dez() : Der() {}        // VALID
 >
->        Dez() : Base() {}       // INVALID
->    }; // class Dez
->    ```
+>       Dez() : Base() {}       // INVALID
+>   }; // class Dez
+>   ```
 
 ### Special Member Functions in Inheritance
 
@@ -327,6 +330,7 @@ int main() {
 ```
 
 The code block above will have the following output
+
 > Base default ctor  
 > Der default ctor  
 > Der copy ctor  
@@ -336,7 +340,7 @@ This behaviour wil be observed with all of the special member functions (Copy Me
 
 ##### ###REMARK.118###
 
-> This behaviour will also be observed if the functions are defined by the compiler.  
+> This behaviour will also be observed if the functions are defined by the compiler.
 
 ### `using` Declarations Inside a Class
 
@@ -361,7 +365,7 @@ int main() {
 }
 ```
 
-In the code above, both calls will go to the ```void Der::func(double)``` inside the `Der` class.
+In the code above, both calls will go to the `void Der::func(double)` inside the `Der` class.
 To make sure that the `d.func(12);` calls the `void Base::func(int)`, we can either use scope
 resolution operator `::` or we can inject the name `Base::func` inside the derived class.
 
@@ -443,11 +447,11 @@ public:
 Member functions of a base class can have one of the three possible categories.
 
 1. Said function can provide the derived classes with both an interface and an implementation.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 2. Said function can provide the derived classes with both an interface and a default implementation.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
 3. Said function can provide the derived classes only with an interface.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
 
 ```cpp
 class Airplane {

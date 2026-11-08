@@ -6,9 +6,9 @@
 
 > - If a `class` has a `virtual` or a pure `virtual` function, it's a polymorphic class.
 > - If a `class` has or inherits a pure `virtual` function but does not define an implementation for
-it, then that class is an abstract `class`. If a `class` is not abstract, then it is a concrete
-`class`. Difference between abstract and concrete classes is that creating an instance from an
-abstract `class` is not permitted. Trying to do so is a syntax error.
+>   it, then that class is an abstract `class`. If a `class` is not abstract, then it is a concrete
+>   `class`. Difference between abstract and concrete classes is that creating an instance from an
+>   abstract `class` is not permitted. Trying to do so is a syntax error.
 
 ##### ###REMARK.121###
 
@@ -110,10 +110,12 @@ public:
 ```
 
 ##### ###REMARK.123###
+
 > C++ is a statically typed language but it also supports dynamic typing to a certain extent, for
 > instance NVI (Non-Virtual Interface).
 
 ##### ###REMARK.124###
+
 > Function Overriding doesn't get affected by access modifiers. Meaning a derived `class` can
 > override a `private` or a `protected` `virtual` function of it's base `class`. This is because
 > access control is a compile time mechanism. As an addition, from Assembly perspective, access
@@ -218,6 +220,7 @@ int main() {
 ```
 
 Becase `~Base()` is NOT overridden, this code snippet will have the following output
+
 > Base dtor
 
 ```cpp
@@ -239,6 +242,7 @@ int main() {
 ```
 
 Because `~Base()` is overridden, this code snippet will have the following output
+
 > Der dtor  
 > Base dtor
 

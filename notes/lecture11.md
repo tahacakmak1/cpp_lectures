@@ -42,14 +42,14 @@ Constructors
 - They do not have a return type.
 - They are non-static member functions of the class, meaning they can and do use `this` pointer.
 - Cannot be a `static` member function.
-- Cannot be a `const`  member function.
+- Cannot be a `const` member function.
 - Cannot be a global function.
 - Can be overloaded.
 - Does not have to be a public member function of the class, can be private or protected.
 - `.` or `->` cannot be used to call a constructor.
 - A constructor is the default constructor if either of the following are true;
-    1. it does not have any parameters
-    2. every parameter of the constructor have default values
+  1. it does not have any parameters
+  2. every parameter of the constructor have default values
 
 Destructors
 
@@ -57,7 +57,7 @@ Destructors
 - They do not have a return type.
 - They are non-static member functions of the class, meaning they can and do use `this` pointer.
 - Cannot be a static member function.
-- Cannot be a const  member function.
+- Cannot be a const member function.
 - Cannot be a global function.
 - Cannot be overloaded.
 - Cannot have a parameter.
@@ -66,7 +66,7 @@ Destructors
 
 ### Special Member Functions
 
-Definitions of these functions can be written by the compiler under certain circumstances (called defaulting).  
+Definitions of these functions can be written by the compiler under certain circumstances (called defaulting).
 
 Can happen in two different ways;
 
@@ -78,9 +78,9 @@ There are 6 special member functions;
 - Default constructor
 - Destructor
 - Copy constructor
-- Move constructor             (added with C++11)
+- Move constructor (added with C++11)
 - Copy Assignment
-- Move Assignment       (added with C++11)
+- Move Assignment (added with C++11)
 - Copy Members
   - Copy constructor
   - Copy Assignment
@@ -91,15 +91,15 @@ There are 6 special member functions;
 ##### ###REMARK.62###
 
 > - Global objects are constructed before the main function and destroyed after the main function.
->       If the number of global objects is  more than one, then they are constructed by their
-    >   declaration order. The first object to be constructed is the last object to be destroyed.
+>   If the number of global objects is more than one, then they are constructed by their
+>   declaration order. The first object to be constructed is the last object to be destroyed.
 > - Order of construction of global object instances from different source files is compiler dependent.
 > - Static local class instances will not be constructed if the function is not called. Therefore
 >   will not be destroyed either. They will be constructed when the function is called and will be
 >   destroyed after the main ends.
->      ##### ###REMARK.63### about static local object instances
->     > Only the first call to that function will result with instance creation, following calls
->     > will not create it again.
+>   ##### ###REMARK.63### about static local object instances
+>   > Only the first call to that function will result with instance creation, following calls
+>   > will not create it again.
 > - Non-static local variables are constructed when their scope begins, and are destroyed at the end
 >   of their scope.
 > - Initializing a reference to an object instance does not call the constructor.
@@ -191,12 +191,12 @@ int main() {
 
 > Special member functions can have one of the following states;
 >
-> 1. Not  Declared
+> 1. Not Declared
 > 2. User Declared
 >    1. User Declared - Defined
 >    2. User Declared - Defaulted
 >    3. User Declared - Deleted
-> 3. Implicitly Declared                    // Defined by the compiler.
+> 3. Implicitly Declared // Defined by the compiler.
 >    1. Implicitly Declared - Defaulted
 >    2. Implicitly Declared - Deleted
 

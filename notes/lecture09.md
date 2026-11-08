@@ -86,7 +86,7 @@ A `class` is a user defined type.
   - Static Data Members
 - Member Functions
   - Non-Static Member Function
-  - Static Member Function  
+  - Static Member Function
 - Type Members
 
 `class` have access control;

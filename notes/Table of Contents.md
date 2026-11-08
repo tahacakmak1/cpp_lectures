@@ -195,6 +195,11 @@
 ## Lecture 24
 
 - Exception Handling
+  - Problems Specific to Using Return Value of a Function
   - `throw` Statement
   - `try` Block
   - `catch` Block
+  - Deeper Look into `throw` Statement
+  - Uncaught Exceptions
+    - How to use `set_terminate()`
+  - Syntax of `try` and `catch` Blocks

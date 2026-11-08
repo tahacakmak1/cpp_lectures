@@ -19,6 +19,7 @@ resource is stolen, can be reused in an assignment to it.
 > you try to steal it.
 
 ##### ###REMARK.77###
+
 > `std::move()` is a `const` qualified function. So when the argument of move is a const, it also
 > returns `const`.
 >
@@ -136,10 +137,11 @@ int main() {
 ```
 
 This code snippet will have the following output;
+
 > main starts here  
-> default constructor this =    // address goes here  
-> Myclass foo() this =          // same address as before goes here  
-> destructor this =             // same address as before goes here  
+> default constructor this = // address goes here  
+> Myclass foo() this = // same address as before goes here  
+> destructor this = // same address as before goes here  
 > main continues
 
 BUT, binding it to an r value expression like,
@@ -154,10 +156,11 @@ int main() {
 ```
 
 Would have the following output;
+
 > main starts here  
-> a = 3 b = 5 this =        // address  
+> a = 3 b = 5 this = // address  
 > main continues  
-> destructor this =         // same address as before
+> destructor this = // same address as before
 
 So binding a temp object to an r value expression extends the life of that temp object, untill the
 end of that reference's scope. This is called life extension.
@@ -187,7 +190,7 @@ BUT there are such cases;
 
 1. We want to disable the calling of functions for R value expression class instances.
 2. We want to disable the calling of functions for R value expression and L value expression class
-    instances.
+   instances.
 3. We want to define different implementations.
 
 ```cpp
@@ -248,19 +251,19 @@ x = 5;              // Implicit Conversion
 > Compiler can perform an implicit conversion in two ways;
 >
 > 1. Standard Conversion + User-Defined Conversion
-> 2. User-Defined Conversion + Standard Conversion  
+> 2. User-Defined Conversion + Standard Conversion
 >
 > Both are implicit conversions, but compiler cannot perform an implicit conversion in the form of;  
 > User-Defined Conversion + User-Defined Conversion.
 >
 > ```cpp
 > class A {};
-> 
+>
 > class B {
 > public:
 >     B(A);
 > }; // class B
-> 
+>
 > class C {
 > public:
 >     C(B);
@@ -288,7 +291,7 @@ x = 5;              // Implicit Conversion
 > Some important rules about `explicit`;
 >
 > 1. If it's defined in class definition (inline definition), `explicit` keyword does not have to be
-> in the definition.
+>    in the definition.
 >
 >    ```cpp
 >    class Myclass {
@@ -302,7 +305,7 @@ x = 5;              // Implicit Conversion
 >    ```
 >
 > 2. If copy initialization requires an implicit conversion, explicit conversion constructor will
-> cause a syntax error.
+>    cause a syntax error.
 >
 >    ```cpp
 >    class Myclass {
@@ -357,12 +360,14 @@ int main() {
 ```
 
 Expected output for this code snippet is
+
 > Myclass default constructor  
 > Myclass copyctor  
 > Myclass default constructor  
 > Myclass copyctor
 
 BUT it actually is
+
 > Myclass default constructor  
 > Myclass default constructor
 

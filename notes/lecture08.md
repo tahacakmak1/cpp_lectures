@@ -86,7 +86,7 @@ foo(10);    // IMPORTANT. foo(10) calls foo(int&&) but bar(x) calls bar(int&) be
 > void f(int, double, long);
 > void f(char, int, double);
 > void f(long, unsigned int, float);
-> 
+>
 > f(12, 4L, 3);       // This line will call void f(int, double, long).
 > f(2.3, true, 12);   // This line will call void f(char, int, double).
 > f(34L, 3.4L, 12);   // This line will call void f(long, unsigned int, float).
@@ -116,7 +116,7 @@ Programs in violation of ODR are ill-formed.
 
 - Inline function and inline expansion are two different things and must not be confused.
 - Inline expansion is the act done by the compiler which consists of switching the body of the
-    function with it's call place.
+  function with it's call place.
 
 ```cpp
 int func(int x) { return x * x; }
@@ -130,11 +130,15 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
 > - Inline functions and inlined functions are different things.
 > - `inline` keyword lets us define the function in the header file.
 > - `inline` keyword requests this function to be inlined by the compiler, but compiler does not
+
     have to comply.
+
 > - `inline` keyword does not affect the inline expansion.
 > - `inline` keyword does not defile the ODR.
 > - Defining a function in a header file requires the inclusion of other header files that contain
+
     the complete types.
+
 > - Member functions are inline functions even if the keyword is not used.
 
 ##### ###REMARK.44###
@@ -160,26 +164,26 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
 >
 > ```cpp
 > struct Tah;
-> 
+>
 > Tah  f1(Tah);
 > Tah* f2(Tah&);
-> 
+>
 > typedef Tah* TahPtr;
 > using TahRef = Tah&;
-> 
+>
 > extern Tah Tahx;
 > extern Tah arr[];
-> 
+>
 > struct X {
 >     Tah* _ptr;
 >     Tah& _ref;
 > }; // struct X
-> 
+>
 > class Yasin {
 >     static Tah var;
 > }; // struct Yasin
-> 
+>
 > inline void foo() { Tah* ptr = nullptr; }
-> 
+>
 > // These are all legal.
 > ```

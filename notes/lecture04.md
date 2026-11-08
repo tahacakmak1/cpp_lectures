@@ -8,8 +8,8 @@
 - If ranks and signs are both different, operation will be performed on higher unsigned rank.
   - `unsigned long + int` => Operation will be performed on `unsigned long`.
   - `long + unsigned int` => If the higher rank can store all the values in lower unsigned rank,  
-                               then the operation will be performed on the higher rank,  
-                               else it will be performed on the higher rank.
+     then the operation will be performed on the higher rank,  
+     else it will be performed on the higher rank.
 - If ranks are the same but one of them is signed and the other one is unsigned, operation will be performed on unsigned.
   - `unsigned long + long` => Operation will be performed on `unsigned long`.
 
@@ -28,12 +28,12 @@
 ## Maximal Munch
 
 Compiler tries to produce longest tokens.  
-    `x+++y` would mean `x++ + y` because,  
-        `x` is an identifier, `x+` is meaningless so `x` is the first token,  
-        `+` is an operator, `++` is an operator, `+++` is meaningless so the second token is `++`,  
-        `+` is an operator, `+y` is meaningless so the third token is `+`,  
-        `y` is an identifier and is the fourth token.  
-    So `x+++y` becomes `x++ + y`.  
+ `x+++y` would mean `x++ + y` because,  
+ `x` is an identifier, `x+` is meaningless so `x` is the first token,  
+ `+` is an operator, `++` is an operator, `+++` is meaningless so the second token is `++`,  
+ `+` is an operator, `+y` is meaningless so the third token is `+`,  
+ `y` is an identifier and is the fourth token.  
+ So `x+++y` becomes `x++ + y`.
 
 ##### ###REMARK.14###
 
@@ -56,7 +56,7 @@ Compiler tries to produce longest tokens.
 - `T*` is the type of address of `T` data type. e.g. `int*`, `double*`, etc.
 - Pointers can be L value or R value. Pointer variable name can be used for L value type pointer.
 - Every object pointer no matter the data type it points to, has the same size, but function pointer
-    and object pointer does not have to have the same size.
+  and object pointer does not have to have the same size.
 
 ```c
 int* p;     // pointer to int or p points to 'insert variable name here'
@@ -73,22 +73,22 @@ int* p = &a[5];         // Is a VALID pointer. The end of an array is always a V
 
 - If the object that the pointer points to is dead, than the pointer is invalid.
 
-    ##### ###REMARK.15###
-    >
-    > ```c
-    > #include <stdio.h>
-    > int main(void) {
-    >     int* p1 = nullptr;    // Is a VALID pointer
-    >     int* p2;
-    >     p2;           // Here p2 is a WILD pointer.
-    >     if (true) {
-    >         int x = 10;
-    >         p2    = &x;
-    >         p2;       // Here p2 is a VALID pointer.
-    >     }
-    >     p2;   // Here p2 is a dangling pointer. Dangling pointers are INVALID pointers.
-    > }
-    > ```
+  ##### ###REMARK.15###
+
+  > ```c
+  > #include <stdio.h>
+  > int main(void) {
+  >     int* p1 = nullptr;    // Is a VALID pointer
+  >     int* p2;
+  >     p2;           // Here p2 is a WILD pointer.
+  >     if (true) {
+  >         int x = 10;
+  >         p2    = &x;
+  >         p2;       // Here p2 is a VALID pointer.
+  >     }
+  >     p2;   // Here p2 is a dangling pointer. Dangling pointers are INVALID pointers.
+  > }
+  > ```
 
 ### Pointer Operators
 

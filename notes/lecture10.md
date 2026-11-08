@@ -51,6 +51,7 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 >
 >    > If the class is a derived class, before moving to namespace scope, it will move to base base
 >    > class scope. This is about inheritance.
+>
 > 5. Namespace scope
 >
 > #### Name lookup happens only once, if the identifier is not found, compiler does not repeat the name lookup
@@ -176,7 +177,7 @@ Non-static member functions can belong to one of the two categories;
 > class Myclass {
 > public:
 >     void foo() {}
-> 
+>
 >     void func() const {
 >         foo();      // This here is a syntax error because, func takes "this" as const,
 >                     // foo does not. In C++ there is no implicit conversion from
@@ -188,7 +189,7 @@ Non-static member functions can belong to one of the two categories;
 ##### ###REMARK.60###
 
 > - `const` member functions cannot call non-`const` member functions, but non-`const` member
-functions can call `const` member functions.
+>   functions can call `const` member functions.
 > - A `const` instance of a class can only call `const` member functions.
 > - `const` instance calling a non-`const` member function is a syntax error.
 > - Using `this` in a `const` member function to change the value of that instance is a syntax error.

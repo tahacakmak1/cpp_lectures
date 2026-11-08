@@ -2,9 +2,9 @@
 
 ## `std::string`
 
-Another use for `std::string::npos` is for the substring functions.  
+Another use for `std::string::npos` is for the substring functions.
 
-##### `std::string& some_function(std::string str, size_t idx, size_t n);`  
+##### `std::string& some_function(std::string str, size_t idx, size_t n);`
 
 This function returns the substring of `n` many characters starting from `idx` in `str`.  
 If `n` is greater then the remaining length of the `str`, then it includes all the characters in
@@ -13,8 +13,8 @@ If the aim is to return the substring starting from `idx` till the end, then `n`
 greater then the number of remaining characters. To ensure this `std::string::npos` can be used.
 
 - `std::string::reserve()`
-    This function reserves the space for the string, it doesn't increase it's size, but it's
-    capacity.
+  This function reserves the space for the string, it doesn't increase it's size, but it's
+  capacity.
 
 ##### ###REMARK.109###
 
@@ -33,12 +33,12 @@ greater then the number of remaining characters. To ensure this `std::string::np
 >
 >   ```cpp
 >   std::string str(300'000, 'A');
->   
+>
 >   std::cout << "len = " << str.length() << '\n';      // len = 300000
 >   std::cout << "cap = " << str.capacity() << '\n';    // cap = 300000
->   
+>
 >   str.erase(1);       // will erase starting from index 1 till the end.
->   
+>
 >   std::cout << "len = " << str.length() << '\n';      // len = 1
 >   std::cout << "cap = " << str.capacity() << '\n';    // cap = 300000
 >   str = "hello world";
@@ -47,10 +47,10 @@ greater then the number of remaining characters. To ensure this `std::string::np
 >   ```
 >
 > ##### ###REMARK.110###
-> >
+>
 > > - `begin()` returns the index to the first element.
 > > - `end()` returns the index that comes after the last element. Values like these are typically
-> >     named as `Sentinel` in programming.
+> >   named as `Sentinel` in programming.
 
 ##### ###REMARK.111###
 
@@ -70,7 +70,7 @@ str.erase(str.begin());
 std::cout << '|' << str << '|';           // |ello world| is the output
 
 str = "hello world";
-str.erase(0U, 1U);          
+str.erase(0U, 1U);
 std::cout << '|' << str << '|';           // |ello world| is the output
 
 str = "hello world";
@@ -78,57 +78,57 @@ str.erase(0U);
 std::cout << '|' << str << '|';           // || is the output
 ```
 
-`insert()` funtions is another example for this, it supports both iterators and indexes.  
+`insert()` funtions is another example for this, it supports both iterators and indexes.
 
 `std::string::erase()` Can be used in three different ways;
 
 1. `constexpr` since C++20  
-    `basic_string& erase(size_type index = 0, size_type count = std::string::npos)`  
+   `basic_string& erase(size_type index = 0, size_type count = std::string::npos)`
 
-    ```cpp
-    std::string str{"hello world"};
-    str.erase();
-    std::cout << '|' << str << '|'; // || is the output
-    str{"hello world"};
-    str.erase(1);
-    std::cout << '|' << str << '|'; // |h| is the output
-    ```
+   ```cpp
+   std::string str{"hello world"};
+   str.erase();
+   std::cout << '|' << str << '|'; // || is the output
+   str{"hello world"};
+   str.erase(1);
+   std::cout << '|' << str << '|'; // |h| is the output
+   ```
 
 2. since C++11, `constexpr` since C++20  
-    `iterator erase(const_iterator position)`  
+   `iterator erase(const_iterator position)`
 
-    ```cpp
-    std::string str{"hello world"};
-    str.erase(str.begin());
-    std::cout << '|' << str << '|'; // |ello world| is the output
-    ```
+   ```cpp
+   std::string str{"hello world"};
+   str.erase(str.begin());
+   std::cout << '|' << str << '|'; // |ello world| is the output
+   ```
 
 3. since C++11, `constexpr` since C++20  
-    `iterator erase(const_iterator first, const_iterator last)`
+   `iterator erase(const_iterator first, const_iterator last)`
 
-    ```cpp
-    std::string str{"hello world"};
-    str.erase(str.begin(), str.begin() + 2);
-    std::cout << '|' << str << '|';           // |llo world| is the output
-    ```
+   ```cpp
+   std::string str{"hello world"};
+   str.erase(str.begin(), str.begin() + 2);
+   std::cout << '|' << str << '|';           // |llo world| is the output
+   ```
 
 4. `noexcept` since C++11, `constexpr` since C++20  
-        std::string str{"hello world"};
-        str.clear();
-        std::cout << '|' << str << '|';           // || is the output
+    std::string str{"hello world"};
+   str.clear();
+   std::cout << '|' << str << '|'; // || is the output
 
 5. other ways to empty a `std::string`
 
-    ```cpp
-    std::string str{"hello world"};
-    str.erase(str.begin(), str.end());
-    str.erase();
-    str.clear();
-    str.resize(0);
-    str = "";
-    str = {};
-    str = std::string{};
-    ```
+   ```cpp
+   std::string str{"hello world"};
+   str.erase(str.begin(), str.end());
+   str.erase();
+   str.clear();
+   str.resize(0);
+   str = "";
+   str = {};
+   str = std::string{};
+   ```
 
 ##### ###REMARK.112###
 
@@ -159,6 +159,7 @@ std::cout << '|' << str << '|';           // || is the output
 > ```
 
 ##### ###REMARK.113###
+
 > When a substring of any given `std::string` is needed, using `str.substr(pos1, pos2)` can be used
 > but, this causes the copying of the whole substring. If the substring is too long, this operation
 > gets expensive.  

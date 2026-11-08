@@ -19,25 +19,25 @@
 
 > `sizeof(short)` <= `sizeof(int)` <= `sizeof(long)` <= `sizeof(long long)`
 
-`float`        (4 bytes)  
-`double`       (8 bytes)  
+`float` (4 bytes)  
+`double` (8 bytes)  
 `long double`
 
-4.5  means `double`
+4.5 means `double`
 4.5F means `float`
 
-|Types                   |Suffix                                                                   |
-|------------------------|-------------------------------------------------------------------------|
-|unsigned                |U                                                                        |
-|long                    |L                                                                        |
-|float                   |F    (has to contain . , e.g. 34F is a syntax error, correct way is 34.F)|
-|unsigned long           |UL  or LU                                                                |
-|unsigned long long      |ULL or LLU                                                               |
+| Types              | Suffix                                                                 |
+| ------------------ | ---------------------------------------------------------------------- |
+| unsigned           | U                                                                      |
+| long               | L                                                                      |
+| float              | F (has to contain . , e.g. 34F is a syntax error, correct way is 34.F) |
+| unsigned long      | UL or LU                                                               |
+| unsigned long long | ULL or LLU                                                             |
 
 ##### ###REMARK.7###
 
 > - When `signed` or `unsigned` used without any type keywords like `signed x` or `unsigned x`, it
->     automatically becomes `signed int x` and `unsigned int x` respectively.
+>   automatically becomes `signed int x` and `unsigned int x` respectively.
 > - Using scientific notation in real numbers eliminates the necessity of `.`.
 >
 >   ```c
@@ -45,17 +45,17 @@
 >   ```
 >
 > - If you exceed the value limits of `int` or `float`, variable type automatically changes to the
->     respective bigger types, depending on which type can contain that value.
+>   respective bigger types, depending on which type can contain that value.
 > - To make reading large numbers easier, `'` (digit separator) can be used.  
 >   `int x = 784'123;` would mean `int x = 784123;` but it is much easier to read the number. This
 >   is not exclusive to decimals.
 
-|C                   |C++             |                  |
-|--------------------|----------------|------------------|
-|Decimal             |Decimal         |41 (default)      |
-|Octal               |Octal           |041               |
-|Hexadecimal         |Hexadecimal     |0x41              |
-|                    |Binary          |0b1001            |
+| C           | C++         |              |
+| ----------- | ----------- | ------------ |
+| Decimal     | Decimal     | 41 (default) |
+| Octal       | Octal       | 041          |
+| Hexadecimal | Hexadecimal | 0x41         |
+|             | Binary      | 0b1001       |
 
 Default type of variables are int.
 
@@ -97,7 +97,7 @@ or R, GL (secondary val cats)).
 ##### ###REMARK.9###
 
 > Priority operator does not change the value category.  
->`x = 9;` and `(((((((((x))))))))) = 9;` are the same thing.
+> `x = 9;` and `(((((((((x))))))))) = 9;` are the same thing.
 
 ## constexpr
 
@@ -123,59 +123,59 @@ or R, GL (secondary val cats)).
 - By Operand(s)
   - Unary
   - Binary
-  - Ternary    (the ternary/conditional operator)
+  - Ternary (the ternary/conditional operator)
 - By Position
-  - Prefix     `*ptr` or `++x` or `--x` etc.
-  - Postfix    `x++` or `x--` etc.
-  - Infix      `a + b` or `a * b` etc.
+  - Prefix `*ptr` or `++x` or `--x` etc.
+  - Postfix `x++` or `x--` etc.
+  - Infix `a + b` or `a * b` etc.
 
 ### Operator Precedence in C
 
 For more details check
 [CppReference C Operator Precedence](https://en.cppreference.com/w/c/language/operator_precedence)
 
-|Precedence|Operator|Description|Associativity|
-|:--------:|--------|-----------|-------------|
-|1|`++` `--`[^1]<br>`()`<br>`[]`<br>`.`<br>`->`<br>`(type){list}`|Suffix/postfix incerement and decrement<br>Function call<br>Array subscripting<br>Structure and union member access<br>Structure and union member access through pointer<br>Compound literal|Left-to-right|
-|2|`++` `--`[^1]<br>`+` `-`<br>`!` `~`<br>`(type)`<br>`*`<br>`&`<br>`sizeof` [^2]<br>`_Alignof`|Prefix increment and decrement<br>Unary plus and minus<br>Logical `NOT` and bitwise `NOT`<br>Cast<br>Indirection (dereference)<br>Address-of<br>Size-of<br>Alignment requirement|Right-to-left|
-|3|`*` `/` `%`|Multiplication, division, and remainder|Left-to-right|
-|4|`+` `-`|Addition and subtraction|Left-to-right|
-|5|`<<` `>>`[^3]|Bitwise left shift and right shift|Left-to-right|
-|6|`<` `<=`<br>`>` `>=`|Relational operators for less than and less than or equal to respectively<br>Relational operators for greater than and greater than or equal to respectively|Left-to-right|
-|7|`==` `!=`|For relational equal and not equal|Left-to-right|
-|8|`&`|Bitwise `AND`|Left-to-right|
-|9|`^`|Bitwise `XOR`|Left-to-right|
-|10|`\|`|Bitwise `OR`|Left-to-right|
-|11|`&&`|Logical `AND`[^4]|Left-to-right|
-|12|`\|\|`|Logical `OR`[^4]|Left-to-right|
-|13|`?:`[^5]|Ternary conditional|Right-to-left|
-|14|`=`<br>`+=` `-=`<br>`*=` `/=` `%=`<br>`<<=` `>>=`<br>`&=` `^=` `\|=`[^6]|Simple assignment<br>Assignment by sum and difference<br>Assignment by product, quotient and remainder<br>Assignment by bitwise left shift and bitwise right shift<br>Assignment by bitwise `AND`, `XOR`, and `OR`|Right-to-left|
-|15|`,`[^7]|Comma|Left-to-right|
+| Precedence | Operator                                                                                     | Description                                                                                                                                                                                                        | Associativity |
+| :--------: | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
+|     1      | `++` `--`[^1]<br>`()`<br>`[]`<br>`.`<br>`->`<br>`(type){list}`                               | Suffix/postfix incerement and decrement<br>Function call<br>Array subscripting<br>Structure and union member access<br>Structure and union member access through pointer<br>Compound literal                       | Left-to-right |
+|     2      | `++` `--`[^1]<br>`+` `-`<br>`!` `~`<br>`(type)`<br>`*`<br>`&`<br>`sizeof` [^2]<br>`_Alignof` | Prefix increment and decrement<br>Unary plus and minus<br>Logical `NOT` and bitwise `NOT`<br>Cast<br>Indirection (dereference)<br>Address-of<br>Size-of<br>Alignment requirement                                   | Right-to-left |
+|     3      | `*` `/` `%`                                                                                  | Multiplication, division, and remainder                                                                                                                                                                            | Left-to-right |
+|     4      | `+` `-`                                                                                      | Addition and subtraction                                                                                                                                                                                           | Left-to-right |
+|     5      | `<<` `>>`[^3]                                                                                | Bitwise left shift and right shift                                                                                                                                                                                 | Left-to-right |
+|     6      | `<` `<=`<br>`>` `>=`                                                                         | Relational operators for less than and less than or equal to respectively<br>Relational operators for greater than and greater than or equal to respectively                                                       | Left-to-right |
+|     7      | `==` `!=`                                                                                    | For relational equal and not equal                                                                                                                                                                                 | Left-to-right |
+|     8      | `&`                                                                                          | Bitwise `AND`                                                                                                                                                                                                      | Left-to-right |
+|     9      | `^`                                                                                          | Bitwise `XOR`                                                                                                                                                                                                      | Left-to-right |
+|     10     | `\|`                                                                                         | Bitwise `OR`                                                                                                                                                                                                       | Left-to-right |
+|     11     | `&&`                                                                                         | Logical `AND`[^4]                                                                                                                                                                                                  | Left-to-right |
+|     12     | `\|\|`                                                                                       | Logical `OR`[^4]                                                                                                                                                                                                   | Left-to-right |
+|     13     | `?:`[^5]                                                                                     | Ternary conditional                                                                                                                                                                                                | Right-to-left |
+|     14     | `=`<br>`+=` `-=`<br>`*=` `/=` `%=`<br>`<<=` `>>=`<br>`&=` `^=` `\|=`[^6]                     | Simple assignment<br>Assignment by sum and difference<br>Assignment by product, quotient and remainder<br>Assignment by bitwise left shift and bitwise right shift<br>Assignment by bitwise `AND`, `XOR`, and `OR` | Right-to-left |
+|     15     | `,`[^7]                                                                                      | Comma                                                                                                                                                                                                              | Left-to-right |
 
 ### Operator Precedence in C++
 
 For more details check
 [CppReference C++ Operator Precedence](https://en.cppreference.com/w/cpp/language/operator_precedence)
 
-|Precedence|Operator|Description|Associativity|
-|----------|--------|-----------|-------------|
-|1|`a::b`|Scope resolution|Left-to-right|
-|2|`a++` `a--`[^1]<br>`type(a)`<br>`type{a}`<br>`a()`<br>`a[]`<br>`a.b` `a->b`|Suffix/postfix increment and decrement<br>Functional cast<br>Function call<br>Subscript<br>Member access|Left-to-right|
-|3|`++a` `--a`[^1]<br>`+a` `-a`<br>`!a` `~a`<br>`(type)a`<br>`*a`<br>`&a`<br>`sizeof`[^2]<br>`co_await`<br>`new` `new[]`<br>`delete` `delete[]`|Prefix increment and decrement<br>Unary plus and minus<br>Logical `NOT` and bitwise `NOT`<br>C-style cast<br>Indirection<br>(dereference)<br>Address-of<br>Size-of<br>await-expression<br>Dynamic memory allocation<br>Dynamic memory deallocation|Right-to-left|
-|4|`a.*b` `a->*b`|Pointer to member|Left-to-right|
-|5|`a * b` `a / b` `a % b`|Multiplication, division, and remainder|Left-to-right|
-|6|`a + b` `a - b`|Addition and subtraction|Left-to-right|
-|7|`a << b` `a >> b`[^3]|Bitwise left shift and right shift|Left-to-right|
-|8|`a <=> b`|Three-way comparison operator (C++20)|Left-to-right|
-|9|`a < b` `a <= b`<br>`a > b` `a >= b`|Relational operators|Left-to-right|
-|10|`==` `!=`|Equality operators|Left-to-right|
-|11|`a & b`|Bitwise `AND`|Left-to-right|
-|12|`a ^ b`|Bitwise `XOR`|Left-to-right|
-|13|`a \| b`|Bitwise `OR`|Left-to-right|
-|14|`a && b`[^4]|Logical `AND`|Left-to-right|
-|15|`a \|\| b`[^4]|Logical `OR`|Left-to-right|
-|16|`a ? b : c`[^5]<br>`throw`<br>`co_yield`<br>`a = b`[^6]<br>`a += b` `a -= b`<br>`a *= b` `a /= b` `a %= b`<br>`a <<= b` `a >>= b`<br>`a &= b` `a ^= b` `a \|= b`|Ternary conditional<br>`throw operator`<br>`yield expression`(C++20)<br>Direct assignment<br>Compound assignment by sum and difference<br>Compound assignment by product, quotient, and remainder<br>Compound assignment by bitwise left shift and right shift<br>Compound assignment by bitwise `AND`, `XOR`, and `OR`|Right-to-left|
-|17|`,`[^7]|Comma operator|Left-to-right|
+| Precedence | Operator                                                                                                                                                         | Description                                                                                                                                                                                                                                                                                                             | Associativity |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| 1          | `a::b`                                                                                                                                                           | Scope resolution                                                                                                                                                                                                                                                                                                        | Left-to-right |
+| 2          | `a++` `a--`[^1]<br>`type(a)`<br>`type{a}`<br>`a()`<br>`a[]`<br>`a.b` `a->b`                                                                                      | Suffix/postfix increment and decrement<br>Functional cast<br>Function call<br>Subscript<br>Member access                                                                                                                                                                                                                | Left-to-right |
+| 3          | `++a` `--a`[^1]<br>`+a` `-a`<br>`!a` `~a`<br>`(type)a`<br>`*a`<br>`&a`<br>`sizeof`[^2]<br>`co_await`<br>`new` `new[]`<br>`delete` `delete[]`                     | Prefix increment and decrement<br>Unary plus and minus<br>Logical `NOT` and bitwise `NOT`<br>C-style cast<br>Indirection<br>(dereference)<br>Address-of<br>Size-of<br>await-expression<br>Dynamic memory allocation<br>Dynamic memory deallocation                                                                      | Right-to-left |
+| 4          | `a.*b` `a->*b`                                                                                                                                                   | Pointer to member                                                                                                                                                                                                                                                                                                       | Left-to-right |
+| 5          | `a * b` `a / b` `a % b`                                                                                                                                          | Multiplication, division, and remainder                                                                                                                                                                                                                                                                                 | Left-to-right |
+| 6          | `a + b` `a - b`                                                                                                                                                  | Addition and subtraction                                                                                                                                                                                                                                                                                                | Left-to-right |
+| 7          | `a << b` `a >> b`[^3]                                                                                                                                            | Bitwise left shift and right shift                                                                                                                                                                                                                                                                                      | Left-to-right |
+| 8          | `a <=> b`                                                                                                                                                        | Three-way comparison operator (C++20)                                                                                                                                                                                                                                                                                   | Left-to-right |
+| 9          | `a < b` `a <= b`<br>`a > b` `a >= b`                                                                                                                             | Relational operators                                                                                                                                                                                                                                                                                                    | Left-to-right |
+| 10         | `==` `!=`                                                                                                                                                        | Equality operators                                                                                                                                                                                                                                                                                                      | Left-to-right |
+| 11         | `a & b`                                                                                                                                                          | Bitwise `AND`                                                                                                                                                                                                                                                                                                           | Left-to-right |
+| 12         | `a ^ b`                                                                                                                                                          | Bitwise `XOR`                                                                                                                                                                                                                                                                                                           | Left-to-right |
+| 13         | `a \| b`                                                                                                                                                         | Bitwise `OR`                                                                                                                                                                                                                                                                                                            | Left-to-right |
+| 14         | `a && b`[^4]                                                                                                                                                     | Logical `AND`                                                                                                                                                                                                                                                                                                           | Left-to-right |
+| 15         | `a \|\| b`[^4]                                                                                                                                                   | Logical `OR`                                                                                                                                                                                                                                                                                                            | Left-to-right |
+| 16         | `a ? b : c`[^5]<br>`throw`<br>`co_yield`<br>`a = b`[^6]<br>`a += b` `a -= b`<br>`a *= b` `a /= b` `a %= b`<br>`a <<= b` `a >>= b`<br>`a &= b` `a ^= b` `a \|= b` | Ternary conditional<br>`throw operator`<br>`yield expression`(C++20)<br>Direct assignment<br>Compound assignment by sum and difference<br>Compound assignment by product, quotient, and remainder<br>Compound assignment by bitwise left shift and right shift<br>Compound assignment by bitwise `AND`, `XOR`, and `OR` | Right-to-left |
+| 17         | `,`[^7]                                                                                                                                                          | Comma operator                                                                                                                                                                                                                                                                                                          | Left-to-right |
 
 ##### ###REMARK.11###
 
@@ -231,7 +231,7 @@ int main(void) {
 
     z = (x, y);
     printf("z = %zu\n", z);     // This will output         z = 20
-        
+
     return 0;
 }
 ```
@@ -244,47 +244,44 @@ int main(void) {
     int x = 10;
     int y = x++;    // In this, y will be 10, and x will be increased to 11.
     int x = 10;
-    int y = ++x;    // In this, y will be 11, and x will be increased to 11.         
+    int y = ++x;    // In this, y will be 11, and x will be increased to 11.
                     // In both examples x has the value 11 because of the side effect but, in the
                     // first example it happens after y is initialized.
     ```
 
 [^2]:
-
     1. `sizeof`
     2. `sizeof` is a keyword and is an operator, not a function.
     3. `sizeof` is a compile time operator, which means expressions generated by `sizeof` are
-        `constexpr`, so they can be used in array declarations.
+       `constexpr`, so they can be used in array declarations.
     4. Value generated by `sizeof` has the value type `size_t` (it can be `unsigned int`,
-        `unsigned long`, `unsigned long long`).
+       `unsigned long`, `unsigned long long`).
     5. Operand of `sizeof` operator is unevaluated context.
     6. `()` used in `sizeof` are not part of the operator, they are only necessary when the operand
-        is a typename.
+       is a typename.
 
-        ```c
-        sizeof 5;
-        sizeof(int);
-        sizeof(double);
-        ```
+       ```c
+       sizeof 5;
+       sizeof(int);
+       sizeof(double);
+       ```
 
-[^3]:
-    Bitshift Operators  
+[^3]: Bitshift Operators
 
     1. Value of the right operand of bitshift operators must be smaller than the number of bits of
-        the left operand.
+       the left operand.
     2. Value of the right operand must be non-negative.
     3. Left operand will be promoted.
     4. Left operand must be positive (in C).
     5. Whether it's an arithmetic bitshift or logic bitshift, is implementation defined (meaning it
-        depends on the compiler).
+       depends on the compiler).
 
 [^4]:
     Short Circuit Behavior;  
     for `&&` if the left operand is false, right operand is not calculated.  
-    for `||` if the left operand is true,  right operand is not calculated.
+    for `||` if the left operand is true, right operand is not calculated.
 
-[^5]:
-    Ternary Operators
+[^5]: Ternary Operators
 
     ```c
     // assignments

@@ -183,12 +183,12 @@ func();
 
 Here `func` can be one of the following;
 
-|                                                                 |C  |C++|
-|-----------------------------------------------------------------|:-:|:-:|
-|`func` can be a function name                                    |yes|yes|
-|`func` can be a function pointer                                 |yes|yes|
-|`func` can be a functional macro(almost never used in C++)       |yes|yes|
-|`func` can be an object instance which overloaded the () operator|no |yes|
+|                                                                   |  C  | C++ |
+| ----------------------------------------------------------------- | :-: | :-: |
+| `func` can be a function name                                     | yes | yes |
+| `func` can be a function pointer                                  | yes | yes |
+| `func` can be a functional macro(almost never used in C++)        | yes | yes |
+| `func` can be an object instance which overloaded the () operator | no  | yes |
 
 Classes that have overloded the `()` operator are called
 
@@ -231,23 +231,23 @@ private:
 ```
 
 - Notice that we do not specify a return value, but we actually do. Since writing it as
-    `double operator double()` would be meaningless.
+  `double operator double()` would be meaningless.
 - This is a user defined conversion (UDC). Compiler can perform this implicitly when it is
-    necessary, to prevent that we declare it using `explicit` keyword.
+  necessary, to prevent that we declare it using `explicit` keyword.
 - Without this definition, we cannot perform explicit typecasting, or the compiler cannot perform
-    implicit typecasting.
+  implicit typecasting.
 - Can be overloaded.
 - Target type can be another class.
 - Since they do not change the instance, it is a good practice to define them as const member
-    functions.
+  functions.
 - Can be called by it's name,
 
-    ```cpp
-    int x = m.operator int();
-    ```
+  ```cpp
+  int x = m.operator int();
+  ```
 
 - It provides conversion from the class to a specified type. Not the other way around, that is
-    achieved with conversion constructors.
+  achieved with conversion constructors.
 
 ##### ###REMARK.95###
 
@@ -255,7 +255,7 @@ private:
 > implicitly.
 >
 > 1. Standard Conversion + UDC
-> 2. UDC + SC  
+> 2. UDC + SC
 >
 > #### BUT NEVER UDC + UDC.
 
@@ -285,7 +285,7 @@ private:
 > public:
 >     explicit operator bool() const {}
 > }; // class Myclass
-> 
+>
 > int main() {
 >     Myclass m;
 >     int x = m;    // This becomes INVALID because compiler cannot implicitly typecast to bool.
@@ -331,98 +331,100 @@ int main() {
 
 - They exist to prevent name clashing.
 
-    ```cpp
-    namespace ns1 {
-    int x = 5;
-    } // namespace ns1
+  ```cpp
+  namespace ns1 {
+  int x = 5;
+  } // namespace ns1
 
-    namespace ns2 {
-    void x();
-    } // namespace ns2
-    ```
+  namespace ns2 {
+  void x();
+  } // namespace ns2
+  ```
 
 - Scope resolution operator is used to access the names inside of a namespace.
 
-    ```cpp
-    namespace ns {
-    int x = 5;
-    } // namespace ns
+  ```cpp
+  namespace ns {
+  int x = 5;
+  } // namespace ns
 
-    int a = x;      // This is INVALID.
-    int b = ns::x;  // This is VALID.
-    ```
+  int a = x;      // This is INVALID.
+  int b = ns::x;  // This is VALID.
+  ```
 
 - It is not neccessary to use qualified expressions to acces to a name inside of a namespace, from
-    that same namespace.
+  that same namespace.
 
-    ```cpp
-    namespace ns {
-    int x = 5;
-    int a = x;      // This is VALID.
-    int b = ns::x;  // This is also VALID, but unnecessary.
-    }
-    ```
+  ```cpp
+  namespace ns {
+  int x = 5;
+  int a = x;      // This is VALID.
+  int b = ns::x;  // This is also VALID, but unnecessary.
+  }
+  ```
 
 - Can be nested.
-    ```cpp
-    namespace ns1 {
-    namespace ns2 {
-    int x;
-    } // namespace ns2
-    } // namespace ns1
-    ns1::ns2::x;    // To access the x inside the ns2 namespace which is inside the ns1 namespace.
-    ```
+
+  ```cpp
+  namespace ns1 {
+  namespace ns2 {
+  int x;
+  } // namespace ns2
+  } // namespace ns1
+  ns1::ns2::x;    // To access the x inside the ns2 namespace which is inside the ns1 namespace.
+  ```
 
 - They are still part of the global scope.
 - They do not have access modifiers.
 - They can only be in global scope or in another namespace.
 - Namespace declarations are cumulative. Thanks to this having multiple header files using the
-    same namespace (`std::vector`, `std::string`, etc) is possible.
+  same namespace (`std::vector`, `std::string`, etc) is possible.
 
-    ```cpp
-    namespace ns {
-    int a, b, c;
-    } // namespace ns
+  ```cpp
+  namespace ns {
+  int a, b, c;
+  } // namespace ns
 
-    namespace ns
-    {
-    double x, y;
-    } // namespace ns
-    ```
+  namespace ns
+  {
+  double x, y;
+  } // namespace ns
+  ```
 
-    Is the same with
+  Is the same with
 
-    ```cpp
-    namespace ns1 {
-    int a, b, c;
-    double x, y;
-    } // namespace ns
-    ```
+  ```cpp
+  namespace ns1 {
+  int a, b, c;
+  double x, y;
+  } // namespace ns
+  ```
 
-    This can be extended through different files i.e. a namespace can start in the header file and
-    continue in the implementation (.cpp) file. This let's us access the names in the namespace
-    without using qualifiers.
+  This can be extended through different files i.e. a namespace can start in the header file and
+  continue in the implementation (.cpp) file. This let's us access the names in the namespace
+  without using qualifiers.
+
 - In functions that belong to a namespace, after the qualifier of the function name, it is not
-    necessary to use qualifiers for other names in that namespace.
+  necessary to use qualifiers for other names in that namespace.
 
-    ```cpp
-    namespace ns {
-    class Myclass{};
-    void func(Myclass x);
-    Myclass func(Myclass x);
-    } // namespace ns
+  ```cpp
+  namespace ns {
+  class Myclass{};
+  void func(Myclass x);
+  Myclass func(Myclass x);
+  } // namespace ns
 
-    void ns::func(ns::MyClassx) {}  // These two declarations are the same.
-    void ns::func(Myclass x) {}     // These two declarations are the same.
-    ```
+  void ns::func(ns::MyClassx) {}  // These two declarations are the same.
+  void ns::func(Myclass x) {}     // These two declarations are the same.
+  ```
 
-    But this rule does not apply to the return type.
+  But this rule does not apply to the return type.
 
-    ```cpp
-    Myclass ns::func(Myclass x) {}  // This is a syntax error.
-    ```
+  ```cpp
+  Myclass ns::func(Myclass x) {}  // This is a syntax error.
+  ```
 
-    There are two ways to get around this;
-    1. `auto ns::func(Myclass x) -> Myclass {}` This is trailing return type, most commonly used in
-    generic programming.
-    2. `ns::Myclass ns::func(Myclass x) {}`
+  There are two ways to get around this;
+  1. `auto ns::func(Myclass x) -> Myclass {}` This is trailing return type, most commonly used in
+     generic programming.
+  2. `ns::Myclass ns::func(Myclass x) {}`

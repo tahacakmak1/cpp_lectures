@@ -7,7 +7,7 @@ Default constructor that has been defaulted by the compiler is the;
 - Non-Static
 - Public
 - Inline  
-function of the class.
+  function of the class.
 
 ##### ###REMARK.73###
 
@@ -166,7 +166,7 @@ In old C++, these three functions were related to each other,
 
 - Destructor
 - Copy constructor
-- Copy Assignment  
+- Copy Assignment
 
 That's why these three were usually called Big 3. In modern C++, with the addition of move members,
 they are referred to as Big 5. The reason it is called as is, if you define one of them then you
@@ -201,7 +201,7 @@ If copy assignment operator is implicitly defined by the compiler, then it is
 
 - Non-Static
 - Public
-- Inline  
+- Inline
 
 function of the class.
 
