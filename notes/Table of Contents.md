@@ -203,3 +203,16 @@
   - Uncaught Exceptions
     - How to use `set_terminate()`
   - Syntax of `try` and `catch` Blocks
+  - Stack Unwinding
+
+## Lecture 25
+
+- Exception Handling
+  - Rethrow Statement
+    - Why `throw` Instead of `throw ex`?
+  - Throwing Exceptions in Constructors
+  - Destructor and Exception Relationship
+  - operator `noexcept`
+  - `noexcept` Specifier
+  - Function `try` Block
+  - Exception Dispatcher Idiom

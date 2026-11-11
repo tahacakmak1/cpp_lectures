@@ -80,7 +80,7 @@ Can exist in two different ways;
 ##### ###REMARK.130###
 
 > Both the C++ and STL has the following built-in exception classes.
-> ![alt text](image-2.png)
+> ![alt text](hierarchy_of_standard_exceptions.png)
 
 ##### ###REMARK.131###
 
@@ -262,9 +262,9 @@ int main() {
 
 Above code snippet will have the following output
 
-> 2
-> DivideByZeroError ctor() called
-> DivideByZeroError
+> 2  
+> DivideByZeroError ctor() called  
+> DivideByZeroError  
 > DivideByZeroError dtor() called
 
 - There is a way to catch all exceptions without distinguishing the type.
@@ -320,3 +320,82 @@ Above code snippet will have the following output
   The above code snippet will have the output
 
   > Exception caught in f1(), catch(...)
+
+### Stack Unwinding
+
+`try`-`catch` guarantees the destruction of automatic lifetime instances. In the code snippet below,
+if `f1()` were to be called without a `try`-`catch`, the `throw` statement in `f4()` would end up
+calling `std::terminate()` and `std::abort()` and the program would terminate without releasing the
+acquired resources. In short, `try`-`catch` guarantees the RAII.
+
+```cpp
+#include <iostream>
+
+class Resource {
+public:
+    Resource(int val) : _x{val} { std::cout << "Resource acquired, _x = " << _x << '\n'; }
+
+    ~Resource() { std::cout << "Resource released, _x = " << _x << '\n'; }
+
+private:
+    int _x;
+}; // class Resource
+
+void f4() {
+    Resource r{4};
+    throw 1;
+}
+
+void f3() {
+    Resource r{3};
+    f4();
+}
+
+void f2() {
+    Resource r{2};
+    f3();
+}
+
+void f1() {
+    Resource r{1};
+    f2();
+}
+
+int main() {
+    try {
+        f1();
+    }
+    catch (int const&) {
+        std::cout << "Exception caught\n";
+    }
+    std::cout << "Main continues\n";
+}
+```
+
+Above code snippet will have the following output
+
+> Resource acquired, \_x = 1  
+> Resource acquired, \_x = 2  
+> Resource acquired, \_x = 3  
+> Resource acquired, \_x = 4  
+> Resource released, \_x = 4  
+> Resource released, \_x = 3  
+> Resource released, \_x = 2  
+> Resource released, \_x = 1  
+> Exception caught  
+> Main continues
+
+Without a `try`-`catch` block it would have the following output
+
+> Resource acquired, \_x = 1  
+> Resource acquired, \_x = 2  
+> Resource acquired, \_x = 3  
+> Resource acquired, \_x = 4  
+> terminate called after throwing an instance of 'int'  
+> Aborted (core dumped)
+
+##### ###REMARK.133###
+
+> `try`-`catch` guarantees the destruction of automatic lifetime instances but not dynamically
+> created objects. When an exception occurs, this must be kept in mind on deciding how the program
+> should contiunue.

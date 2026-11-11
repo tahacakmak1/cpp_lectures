@@ -33,7 +33,7 @@ resource is stolen, can be reused in an assignment to it.
 >     Myclass(Myclass&&) {
 >         std::cout << "move constructor\n";
 >     }
-> }; // class MyCMyclasslass
+> }; // class MyClass
 >
 > int main() {
 >     Myclass x;
@@ -46,8 +46,7 @@ resource is stolen, can be reused in an assignment to it.
 
 ##### ###REMARK.78###
 
-> CHECK THE `Special Member Functions.jgp` BEFORE DEFINING SPECIAL MEMBER FUNCTIONS.  
-> To summarize;
+> ![alt text](special_member_functions.png)
 >
 > - If any of the destructor / copy constructor / copy assignment is declared, then move members are
 >   not declared.

@@ -1,39 +1,43 @@
-// Lecture 24
 #include <iostream>
 
+class Resource {
+public:
+    Resource(int val) : _x{val} { std::cout << "Resource acquired, _x = " << _x << '\n'; }
+
+    ~Resource() { std::cout << "Resource released, _x = " << _x << '\n'; }
+
+private:
+    int _x;
+}; // class Resource
+
+void f4() {
+    Resource r{4};
+    throw 1;
+}
+
 void f3() {
-    try {
-        throw 10;
-    }
-    catch (double const&) {
-        std::cout << "Exception caught in f3(), catch(double const&)\n";
-    }
+    Resource r{3};
+    f4();
 }
 
 void f2() {
-    try {
-        f3();
-    }
-    catch (float const&) {
-        std::cout << "Exception caught in f2(), catch(float const&)\n";
-    }
+    Resource r{2};
+    f3();
 }
 
 void f1() {
-    try {
-        f2();
-    }
-    catch (...) {
-        std::cout << "Exception caught in f1(), catch(...)\n";
-    }
-}
-
-void myabort() {
-    std::cout << "myabort() is called\n";
-    std::exit(EXIT_FAILURE);
+    Resource r{1};
+    f2();
 }
 
 int main() {
-    std::set_terminate(myabort);
-    f1();
+    Resource* ptr = new Resource{5};
+    try {
+        f1();
+    }
+    catch (int const&) {
+        std::cout << "Exception caught\n";
+    }
+    delete ptr;
+    std::cout << "Main continues\n";
 }

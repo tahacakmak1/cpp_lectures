@@ -430,7 +430,7 @@ int main() {
 }
 ```
 
-![alt text](image.png)
+![alt text](diamond_formation.png)
 
 Because both Der1 and Der2 have a Base object inside, MDer will have 2 Base objects, one inside
 Der1 and one inside Der2.
