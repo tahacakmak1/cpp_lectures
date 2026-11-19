@@ -1,24 +1,32 @@
 #include <iostream>
 
-void func() { throw std::out_of_range{"out of range error"}; }
+class Member {
+public:
+    Member() { std::cout << "Member ctor\n"; }
 
-void foo() {
-    try {
-        func();
+    ~Member() { std::cout << "Member dtor\n"; }
+}; // class Member
+
+class Myclass {
+public:
+    Myclass() {
+        std::cout << "Myclass ctor\n";
+        throw std::out_of_range{"error"};
     }
-    catch (std::out_of_range const& ex) {
-        std::cout << "Exception caught in foo: " << ex.what() << '\n';
-        std::cout << &ex << '\n';
-        throw;
-    }
-}
+
+    ~Myclass() { std::cout << "Myclass ctor\n"; }
+
+private:
+    Member _x;
+}; // class Myclass
+
+void foo() { Myclass x; }
 
 int main() {
     try {
         foo();
     }
-    catch (std::out_of_range const& ex) {
-        std::cout << "Exception caught in main: " << ex.what() << '\n';
-        std::cout << &ex << '\n';
+    catch (std::exception const& ex) {
+        std::cout << "exception caught in main: " << ex.what() << '\n';
     }
 }

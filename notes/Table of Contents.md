@@ -80,10 +80,10 @@
     - `mutable` Keyword
   - Constructors and Destructors
   - Special Member Functions
-  - `new operator`        // FORESHADOW
-  - `operator new()`      // FORESHADOW
-  - `delete Operator`     // FORESHADOW
-  - `operator delete()`   // FORESHADOW
+  - `new operator` // FORESHADOW
+  - `operator new()` // FORESHADOW
+  - `delete Operator` // FORESHADOW
+  - `operator delete()` // FORESHADOW
   - Constructor Initializer List
   - Default Member Initializer
 
@@ -100,7 +100,7 @@
 - Classes
   - Special Member Functions
     - Move Members
-  - placement `new`             // FORESHADOW
+  - placement `new` // FORESHADOW
   - Delegating Constructor
   - Temporary Objects
   - Reference Qualifiers
@@ -122,9 +122,9 @@
   - General Rules of Operator Overloading
   - Advices on Operator Overloading
   - Index Operator Overloading
-  - Array-Like Classes        // FORESHADOW
-  - Pointer-Like Classes      // FORESHADOW
-  - Smart Pointers            // FORESHADOW
+  - Array-Like Classes // FORESHADOW
+  - Pointer-Like Classes // FORESHADOW
+  - Smart Pointers // FORESHADOW
 
 ## Lecture16
 
@@ -210,9 +210,9 @@
 - Exception Handling
   - Rethrow Statement
     - Why `throw` Instead of `throw ex`?
+  - Exception Dispatcher Idiom
   - Throwing Exceptions in Constructors
   - Destructor and Exception Relationship
   - operator `noexcept`
   - `noexcept` Specifier
   - Function `try` Block
-  - Exception Dispatcher Idiom
