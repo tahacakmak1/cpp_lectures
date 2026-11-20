@@ -130,7 +130,7 @@ an uncaught exception. Depending on the `set_terminate()`, `std::abort()` may be
 The advantage of this idiom is all the exception handling is done in the same place. It also reduces
 repetition.
 
-### Throwing Exceptions in Constructors
+### Constructors and Exceptions
 
 When a constructor fails to create an object it must return an exception. If it doesn't, the object
 is created but not actually. These objects are called Zombie Objects.
@@ -230,4 +230,31 @@ The output of that scenario would be the following
 > when the `delete` is used on it's pointer the destructor won't be called but the
 > `operator delete()` will be called.
 
-### Destructor and Exception Relationship
+### Destructors and Exceptions
+
+Under no circumstances destructors shall send exceptions.  
+
+There is a difference between the terms
+
+- Throw an exception
+- Send an exception
+
+```cpp
+void func() {
+    try {
+        throw expr;
+    }
+    catch (...) {
+        //.. code goes here
+    }
+}
+```
+
+In the above code snippet, does the `func()` throw an exception, yes it does. Does the exception
+leave the scope of `func()`, no it does not. This is the difference between throwing and sending an exception. Sending an exception is also called emitting an exception or propagating an exception.
+
+If a destructor called during the stack unwinding throws an exception, `std::terminate()` is called.
+This is the reason why destructors should never emit (propagate) exceptions.  
+Destructors can throw an exception, but the exception must be handled locally in the destructor.
+
+### `noexcept` Specifier

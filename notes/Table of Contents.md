@@ -211,8 +211,8 @@
   - Rethrow Statement
     - Why `throw` Instead of `throw ex`?
   - Exception Dispatcher Idiom
-  - Throwing Exceptions in Constructors
-  - Destructor and Exception Relationship
-  - operator `noexcept`
+  - Constructors and Exceptions
+  - Destructors and Exceptions
   - `noexcept` Specifier
+  - operator `noexcept`
   - Function `try` Block
