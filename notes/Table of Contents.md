@@ -209,11 +209,18 @@
 
 - Exception Handling
   - Rethrow Statement
-    - Why `throw` Instead of `throw ex`?
+    - Why `throw` Instead of `throw expr`?
   - Exception Dispatcher Idiom
   - Constructors and Exceptions
   - Destructors and Exceptions
   - `noexcept` Keyword
-    - `noexcep` Specifier
+    - `noexcept` Specifier
     - operator `noexcept`
     - Importance of `noexcept` Specifier
+
+## Lecture 26
+
+- Exception Handling
+  - Function `try` Block
+  - Functions Generally Suitable for `noexcept`
+- Templates

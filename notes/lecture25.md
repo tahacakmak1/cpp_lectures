@@ -38,13 +38,13 @@ The above code snippet will have the following output
 > Exception caught in main: out of range error  
 > &ex = 0x62c29e1cd330
 
-#### Why `throw` Instead of `throw ex`?
+#### Why `throw` Instead of `throw expr`?
 
 1. As stated before, when an exception is thrown, an exception object is created by the compiler. By
    using `throw` that very same object is thrown again. Not a copy of it, directly itself. This
    saves a call to copy constructor.
 
-2. Using `throw ex` might cause object slicing, which may result in loss of information about the
+2. Using `throw expr` might cause object slicing, which may result in loss of information about the
    exception.
 
 #### Some Important Reminders for Rethrow Statements
@@ -366,7 +366,7 @@ int main() {
 The above code snippet will have the following output
 
 > terminate called after throwing an instance of 'std::bad_alloc'  
-> &nbsp;&nbsp;&nbsp;&nbsp;what():  std::bad_alloc  
+> &nbsp;&nbsp;&nbsp;&nbsp;what(): std::bad_alloc  
 > Aborted (core dumped)
 
 There are other impacts of the `noexcept` specifier, function pointers and inheritance.
@@ -389,7 +389,7 @@ There are other impacts of the `noexcept` specifier, function pointers and inher
   So, a function pointer with a `noexcept` specifier can only point to a no-throw function.
 
 - Inheritance  
-  There is a famous rule for inheritance, "promise no less, require no more". This is about the 
+  There is a famous rule for inheritance, "promise no less, require no more". This is about the
   functions of the base class and the derived class overriding those functions.
 
   ```cpp
