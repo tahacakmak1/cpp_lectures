@@ -80,9 +80,9 @@
     - `mutable` Keyword
   - Constructors and Destructors
   - Special Member Functions
-  - `new operator` // FORESHADOW
+  - `new` Operator // FORESHADOW
   - `operator new()` // FORESHADOW
-  - `delete Operator` // FORESHADOW
+  - `delete` Operator // FORESHADOW
   - `operator delete()` // FORESHADOW
   - Constructor Initializer List
   - Default Member Initializer
@@ -213,6 +213,7 @@
   - Exception Dispatcher Idiom
   - Constructors and Exceptions
   - Destructors and Exceptions
-  - `noexcept` Specifier
-  - operator `noexcept`
-  - Function `try` Block
+  - `noexcept` Keyword
+    - `noexcep` Specifier
+    - operator `noexcept`
+    - Importance of `noexcept` Specifier

@@ -1,32 +1,24 @@
-#include <iostream>
-
-class Member {
+class Base {
 public:
-    Member() { std::cout << "Member ctor\n"; }
+    virtual void foo() noexcept {}
 
-    ~Member() { std::cout << "Member dtor\n"; }
-}; // class Member
+    virtual void bar() noexcept {}
 
-class Myclass {
+    virtual void baz() {}
+}; // class Base
+
+class Der : public Base {
 public:
-    Myclass() {
-        std::cout << "Myclass ctor\n";
-        throw std::out_of_range{"error"};
-    }
+    // void foo() override {} // INVALID
 
-    ~Myclass() { std::cout << "Myclass ctor\n"; }
+    void bar() noexcept override {} // VALID
 
-private:
-    Member _x;
-}; // class Myclass
+    void baz() override {} // VALID
+}; // class Der
 
-void foo() { Myclass x; }
-
-int main() {
-    try {
-        foo();
-    }
-    catch (std::exception const& ex) {
-        std::cout << "exception caught in main: " << ex.what() << '\n';
-    }
+void func(Base& r) {
+    r.foo();
+    r.bar();
 }
+
+int main() {}

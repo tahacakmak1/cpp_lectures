@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cstddef>
+#include <iostream>
 #include <new>
 #include <type_traits>
 
@@ -36,26 +36,18 @@ public:
 // }
 
 template<class T, std::size_t N>
-struct vec
-{
+struct vec {
     vec() : _size(0U) {}
 
-    std::size_t size() const
-    {
-        return _size;
-    }
+    std::size_t size() const { return _size; }
 
-    void push_back(T value)
-    {
+    void push_back(T value) {
         _storage[sizeof(T) * _size] = value;
         // new (&_storage[sizeof(T) * _size]) T(value);
         ++_size;
     }
 
-    T& operator [] (std::size_t index)
-    {
-        return *reinterpret_cast<T*>(&_storage[index * sizeof(T)]);
-    }
+    T& operator[](std::size_t index) { return *reinterpret_cast<T*>(&_storage[index * sizeof(T)]); }
 
     alignas(T) std::byte _storage[sizeof(T) * N];
     std::size_t _size;
@@ -64,26 +56,23 @@ struct vec
 struct A {
     A(int8_t val) : _x{val} {}
 
-    operator std::byte() const {
-        return static_cast<std::byte>(_x);
-    }
+    operator std::byte() const { return static_cast<std::byte>(_x); }
 
     friend std::ostream& operator<<(std::ostream& out, A const& val) {
         out << static_cast<int16_t>(val._x);
         return out;
     }
+
 private:
     int8_t _x;
 }; // struct A
 
 int main() {
     vec<A, 5> vector;
-    for(int8_t i = 0; i < 5; i++)
-    {
+    for (int8_t i = 0; i < 5; i++) {
         vector.push_back(i);
     }
-    for(int i = 0; i < 5; i++)
-    {
+    for (int i = 0; i < 5; i++) {
         std::cout << vector[i] << '\n';
     }
 }
