@@ -4,7 +4,6 @@
 - Well-formed - Ill-formed
 - Valid code - Invalid code
 - Legal code - Illegal code
-
 - Undefined Behavior (UB)
   - Unspecified Behavior
     - Implementation Defined
@@ -15,9 +14,9 @@ this does not happen.
 
 ## Diffrences About Types and Type Castings
 
-- \_Bool in C is actually a signed int.
-- In C++ bool is an actual logic data type.
-- Size of bool is 1 byte.
+- `_Bool` in C is actually a signed int.
+- In C++ `bool` is an actual logic data type.
+- Size of `bool` is 1 byte.
 - There is implicit type conversion from arithmetic values to bool and from bool to arithmetic.
 
   ```cpp
@@ -31,7 +30,7 @@ this does not happen.
 
 ##### ###REMARK.1###
 
-> There is implicit conversion from pointer to bool but not from bool to pointer.
+> There is implicit conversion from pointer to `bool` but not from `bool` to pointer.
 
 ##### ###REMARK.2###
 
@@ -41,14 +40,14 @@ this does not happen.
 struct Data1
 {
     int a,b;
-}; // struct Data1
+};
 
 struct Data1 i;
 
 typedef struct
 {
     int a,b;
-}Data2; // struct Data2
+}Data2;
 
 Data2 i;
 ```
