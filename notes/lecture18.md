@@ -13,11 +13,11 @@
 >     class Nested {
 >         void foo(); // VALID
 >         void bar(); // VALID
->     }; // class Nested
+>     };
 >
 >     void Nested::bar() { return; } // INVALID
 >
-> }; // class Myclass
+> };
 >
 > void Myclass::Nested::foo() { return; } // VALID
 > ```
@@ -36,7 +36,7 @@
   private:
       std::string _str;
       Date        _date;
-  }; // class Myclass
+  };
 
   // Myclass.h
   class Myclass {
@@ -45,7 +45,7 @@
   private:
       class Pimple;
       Pimple* _p;
-  }; // class Myclass
+  };
 
   // Myclass.cpp
   #include "Date.h"class Myclass
@@ -54,7 +54,7 @@
   private:
       class Pimple;
       Pimple* _p;
-  }; // class Myclass
+  };
 
   // Myclass.cpp
   #include <string>
@@ -71,7 +71,7 @@
   private:
       std::string _str;
       Date _date;
-  }; // class Myclass:Pimple
+  };:Pimple
 
   void Myclass::foo()
   {
@@ -85,7 +85,7 @@
       friend void Myclass::foo();
       std::string _str;
       Date        _date;
-  }; // class Myclass::Pimple
+  };::Pimple
 
   void Myclass::foo() {
       pimple->_str;  // Since _str and _date are private members of
@@ -103,7 +103,7 @@
   private:
       class Pimple;
       Pimple* _p;
-  }; // class Myclass
+  };
 
   // Myclass.cpp
   #include "Date.h"
@@ -121,7 +121,7 @@
   private:
       std::string _str;
       Date        _date;
-  }; // class Myclass:Pimple
+  };:Pimple
 
   void Myclass::foo() { _p->foo(); }
   ```
@@ -140,7 +140,7 @@
       ~Myclass();
       class Pimple;
       Pimple* _p;
-  }; // class Myclass
+  };
 
   // Myclass.cpp
   #include "Myclass.h"
@@ -152,7 +152,7 @@
   private:
       std::string _str;
       Date        _date;
-  }; // class Myclass::Pimpla
+  };::Pimpla
 
   Myclass::Myclass() : _p{new Pimple} {}
 
@@ -176,12 +176,12 @@ composition models a "has-a" relationship between two objects, e.g. a car "has-a
 >     void foo() {}
 >
 >     void bar() {}
-> }; // class Member
+> };
 >
 > class Owner {
 > private:
 >     Member _x;
-> }; // class Owner
+> };
 >
 > int main() {
 >     Owner a;
@@ -202,7 +202,7 @@ composition models a "has-a" relationship between two objects, e.g. a car "has-a
 >     void foo() {}
 >
 >     void bar() {}
-> }; // class Member
+> };
 >
 > class Owner {
 > public:
@@ -215,7 +215,7 @@ composition models a "has-a" relationship between two objects, e.g. a car "has-a
 >
 > private:
 >     Member _x;
-> }; // class Owner
+> };
 >
 > int main() {
 >     Owner a;
@@ -237,7 +237,7 @@ composition models a "has-a" relationship between two objects, e.g. a car "has-a
 > >   public:
 > >       Member() { std::cout << "Member default constructor\n"; }
 > >       Member(Member const&) { std::cout << "Member copy constructor\n"; }
-> >   }; // class Member
+> >   };
 > >
 > >   class A {
 > >   public:
@@ -247,11 +247,11 @@ composition models a "has-a" relationship between two objects, e.g. a car "has-a
 > >
 > >   private:
 > >       Member _x;
-> >   }; // class A
+> >   };
 > >
 > >   class B {
 > >       Member _x;
-> >   }; // class B
+> >   };
 > >
 > >   int main() {
 > >       A a1;

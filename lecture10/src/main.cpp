@@ -13,7 +13,7 @@ public:
         std::cout << "Hello World!\n";
         return;
     }
-}; // class Myclass
+};
 
 class Car {
 public:
@@ -45,7 +45,7 @@ private:
     char const* _make;
     char const* _model;
     int         _year;
-}; // class Car
+};
 
 class Ptr {
 public:
@@ -63,7 +63,7 @@ public:
         std::cout << "f3, this = " << this << '\n';
         return this;
     }
-}; // class Ptr
+};
 
 void f1(int x = 5) { std::cout << x * x << '\n'; }
 

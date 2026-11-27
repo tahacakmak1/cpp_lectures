@@ -10,11 +10,11 @@ class MyClass1 {
         void foo(); // VALID
         void bar(); // VALID
 
-    }; // class Nested
+    };
 
     // void Nested::bar() { return; } // INVALID
 
-}; // class Myclass
+};
 
 void MyClass1::Nested::foo() { return; } // VALID
 
@@ -23,7 +23,7 @@ public:
     Member() { std::cout << "Member default constructor\n"; }
 
     Member(Member const&) { std::cout << "Member copy constructor\n"; }
-}; // class Member
+};
 
 class A {
 public:
@@ -33,7 +33,7 @@ public:
 
 private:
     Member _x;
-}; // class A
+};
 
 class B {
 public:
@@ -41,7 +41,7 @@ public:
 
 private:
     Member _x;
-}; // class B
+};
 
 int main() {
     Myclass mc1, mc2;

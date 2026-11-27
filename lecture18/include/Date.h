@@ -12,6 +12,6 @@ public:
 
 private:
     int _d, _m, _y;
-}; // class Date
+};
 
 #endif // GUARD_EC237AFF_C170_4346_9A8A_FB682EE584B8

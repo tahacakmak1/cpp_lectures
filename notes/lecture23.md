@@ -86,7 +86,7 @@ There are some important properties of `private` inheritance
     function of the derived class, or in a `friend` functions of the derived class.
 
     ```cpp
-    class Base {}; // class Base
+    class Base {};
 
     class Der : private Base {
         void foo() {
@@ -100,7 +100,7 @@ There are some important properties of `private` inheritance
             Base* baseptr = &myder; // VALID
             Base& baseref = myder;  // VALID
         }
-    }; // class Der
+    };
 
     int main() {
         Der myder;
@@ -117,14 +117,14 @@ There are some important properties of `private` inheritance
         class Base {
         public:
             void foo();
-        }; // class Base
+        };
 
         class Der : private Base {
         public:
             void func() {
                 foo();
             }
-        }; // class Der
+        };
         ```
 
 ### Comparison of Containment and `private` Inheritance
@@ -138,7 +138,7 @@ public:
     virtual void vf();
     void foo();
     void bar();
-}; // class Base
+};
 
 class Der : private Base {
 public:
@@ -150,7 +150,7 @@ public:
         foo(); // VALID
         pro(); // VALID, #3
     }
-}; // class Der
+};
 
 class Myclass {
 public:
@@ -163,7 +163,7 @@ public:
 
 private:
     Base _b;
-}; // class Myclass
+};
 ```
 
 1. With `private` inheritance not every Der is a Base but some may be. With containment, no Myclass
@@ -192,12 +192,12 @@ class Base {};
 
 class Der : private Base {
     int _x;
-}; // class Der
+};
 
 class Myclass {
     int _x;
     Base _y;
-}; // class Myclass
+};
 ```
 
 Depending on the system and compiler settings, size of these `class`es may vary, but Myclass will
@@ -208,14 +208,14 @@ have a higher storage need then Der. This extra need for storage happens due to 
 This is the idiom of having only selected functions to have upcasting for the derived `class`.
 
 ```cpp
-class Base {}; // class Base
+class Base {};
 
 class Der : private Base {
     friend void foo(Base&) {
         Der myder;
         Base& baseref = myder; // VALID
     }
-}; // class Der
+};
 
 void bar(Base&);
 void baz(Base&);
@@ -239,19 +239,19 @@ inherited members to the `private` interface of the derived `class`, they are ad
 class Base {
 protected:
     void foo();
-}; // class Base
+};
 
 class Der : protected Base {
     void bar() {
         foo();
     }
-}; // class Der
+};
 
 class Dez : public Der {
     void baz() {
         foo();          // If Der were to be privately inherited, this line would be INVALID.
     }
-}; // class Dez
+};
 ```
 
 ## Multiple Inheritance
@@ -263,7 +263,7 @@ public:
     void Xbar();
 
     virtual void foo();
-}; // class BaseX
+};X
 
 class BaseY {
 public:
@@ -271,19 +271,19 @@ public:
     void Ybar();
 
     virtual void bar();
-}; // class BaseY
+};Y
 
 class BaseZ {
 public:
     void Zfoo();
     void Zbar();
-}; // class BaseZ
+};Z
 
 class BaseT {
 public:
     void Tfoo();
     void Tbar();
-}; // class BaseT
+};T
 
 class Der : public BaseX, public BaseY, private BaseZ, protected BaseT {
 public:
@@ -311,12 +311,12 @@ One of the most important things in Multiple Inheritance is name collision.
 class A {
 public:
     void foo(int) {}
-}; // class A
+};
 
 class B {
 public:
     void foo(double) {}
-}; // class B
+};
 
 class C : public A, public B {
     void func() {
@@ -326,7 +326,7 @@ class C : public A, public B {
         A::foo(12);     // VALID
         B::foo(1.2);    // VALID
     }
-}; // class C
+};
 
 int main() {
     C cx;
@@ -343,18 +343,18 @@ int main() {
 class A {
 public:
     void foo(int) {}
-}; // class A
+};
 
 class B {
 public:
     void foo(double) {}
-}; // class B
+};
 
 class C : public A, public B {
 public:
     using A::foo;
     using B::foo;
-}; // class C
+};
 
 int main() {
     C cx;
@@ -370,16 +370,16 @@ public:
     A() {
         std::cout << "A ctor\n";
     }
-}; // class A
+};
 
 class B {
 public:
     B() {
         std::cout << "B ctor\n";
     }
-}; // class B
+};
 
-class C : public A, public B {}; // class C
+class C : public A, public B {};
 
 int main() {
     C cx;
@@ -399,11 +399,11 @@ This is because the initialization of the inherited classes are defined by the i
 class Base {
 public:
     void foo() {}
-}; // class Base
+};
 
-class Der1 : public Base {}; // class Der1
+class Der1 : public Base {};1
 
-class Der2 : public Base {}; // class Der2
+class Der2 : public Base {};2
 
 class MDer : public Der1, public Der2 {
     void func() {
@@ -412,7 +412,7 @@ class MDer : public Der1, public Der2 {
         Der1::foo();    // VALID
         Der2::foo();    // VALID
     }
-}; // class MDer
+};
 
 void func(Base&) {}
 
@@ -430,7 +430,7 @@ int main() {
 }
 ```
 
-![alt text](diamond_formation.png)
+![alt text](misc/diamond_formation.png)
 
 Because both Der1 and Der2 have a Base object inside, MDer will have 2 Base objects, one inside
 Der1 and one inside Der2.
@@ -445,11 +445,11 @@ public:
     void foo() {
         std::cout << "foo()\n";
     }
-}; // class Base
+};
 
-class Der1 : virtual public Base {}; // class Der1
+class Der1 : virtual public Base {};1
 
-class Der2 : virtual public Base {}; // class Der2
+class Der2 : virtual public Base {};2
 
 class MDer : public Der1, public Der2 {
     void func() {
@@ -457,7 +457,7 @@ class MDer : public Der1, public Der2 {
         Der1::foo();    // INVALID
         Der2::foo();    // INVALID
     }
-}; // class MDer
+};
 
 void func(Base&) {}
 
@@ -481,29 +481,29 @@ directly inherited.
 class Base {
 public:
     Base(char const* c) { std::cout << "Base(char const* c), c = " << c << '\n'; }
-}; // class Base
+};
 
 class Der1 : virtual public Base {
 public:
     Der1() : Base("Der1") {}
-}; // class Der1
+};1
 
 class Der2 : virtual public Base {
 public:
     Der2() : Base("Der2") {}
-}; // class Der2
+};2
 
 class MDer
 : public Der1
 , public Der2 {
 public:
     MDer() : Base("MDer") {}
-}; // class MDer
+};
 
 class MDez : public MDer {
 public:
     MDez() : Base("MDez") {}
-}; // class MDez
+};
 
 int main() {
     MDer myder;

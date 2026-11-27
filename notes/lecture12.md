@@ -26,7 +26,7 @@ Default constructor that has been defaulted by the compiler is the;
 > public:
 > private:
 >     const int _x;
-> }; // class Myclass
+> };
 > ```
 >
 > Here default constructor is `deleted`, because `int const` cannot be default initialized.  
@@ -37,11 +37,11 @@ Default constructor that has been defaulted by the compiler is the;
 > ```cpp
 > class Foo {
 >     Foo();
-> }; // class Foo
+> };
 >
 > class Myclass {
 >     Foo _x;
-> }; // class Myclass
+> };
 >
 > int main() {
 >     Myclass m1;
@@ -129,7 +129,7 @@ function of the class.
 > private:
 >     std::size_t _len{};
 >     char*       _p{};
-> }; // class String
+> };
 >
 > void func(String s) {
 >     std::cout << "func called\n";
@@ -189,7 +189,7 @@ public:
     }
 private:
     int _x, _y;
-}; // class Myclass
+};
 
 Myclass x{};
 Myclass y{};
@@ -239,5 +239,5 @@ public:
 
     Myclass& operator=(Myclass const&);     // Copy Assignment
     Myclass& operator=(Myclass&&);          // Move Assignment
-}; // class Myclass
+};
 ```

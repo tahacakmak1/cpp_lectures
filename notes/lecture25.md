@@ -93,11 +93,11 @@ The above code snippet will have the following output
 ### Exception Dispatcher Idiom
 
 ```cpp
-class Myexception1 {}; // class Myexception1
+class Myexception1 {};1
 
-class Myexception2 {}; // class Myexception2
+class Myexception2 {};2
 
-class Myexception3 {}; // class Myexception3
+class Myexception3 {};3
 
 void handle_exception() {
     try {
@@ -150,7 +150,7 @@ public:
     ~Myclass() {
         std::cout << "~Myclass()\n";
     }
-}; // class Myclass
+};
 
 void foo() { Myclass x; }
 
@@ -183,7 +183,7 @@ public:
     }
 
     ~Member() { std::cout << "Member dtor\n"; }
-}; // class Member
+};
 
 class Myclass {
 public:
@@ -193,7 +193,7 @@ public:
 
 private:
     Member _x;
-}; // class Myclass
+};
 
 void foo() { Myclass x; }
 
@@ -400,7 +400,7 @@ There are other impacts of the `noexcept` specifier, function pointers and inher
       virtual void bar() noexcept {}
 
       virtual void baz() {}
-  }; // class Base
+  };
 
   class Der : public Base {
   public:
@@ -409,7 +409,7 @@ There are other impacts of the `noexcept` specifier, function pointers and inher
       void bar() noexcept override {} // VALID
 
       void baz() override {} // VALID
-  }; // class Der
+  };
 
   void func(Base& r) {
       r.foo();

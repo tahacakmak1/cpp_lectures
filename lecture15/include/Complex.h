@@ -83,7 +83,7 @@ public:
 
 private:
     double _x, _y;
-}; // class Complex
+};
 
 Complex operator*(Complex const&, Complex const&);
 Complex operator-(Complex const&, Complex const&);

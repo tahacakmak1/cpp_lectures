@@ -105,7 +105,7 @@
   >     Myclass(std::initializer_list<int>){
   >         std::cout << "std::initializer_list<int>" << '\n';
   >     }
-  > }; // class Myclass
+  > };
   >
   > int main(){
   >     Myclass a(5);       // Outputs int

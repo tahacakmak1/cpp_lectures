@@ -20,7 +20,7 @@ public:
     static int foo() { return 777; }
 
     int _x, _y;
-}; // class Myclass
+};
 
 int get_mx() {
     Myclass x{3, 5};
@@ -41,13 +41,13 @@ public:
     static Complex create_polar(double angle, double distance) {
         return Complex(angle, distance, 0);
     }
-}; // class Complex
+};
 
 class A;
 
 class B {
     friend class A;
-}; // class B
+};
 
 int main() {
     Myclass m1{10, 20};

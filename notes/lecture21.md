@@ -14,25 +14,25 @@ class Base {
 public:
     void f1();
     void f2();
-}; // class Base
+};
 
 // public inheritance
 class Derived1 : public Base {
 public:
     void f3();
-}; // class Derived1
+};ived1
 
 // private inheritance
 class Derived2 : private Base {
 public:
     void f3();
-}; // class Derived2
+};ived2
 
 // protected inheritance
 class Derived3 : protected Base {
 public:
     void f3();
-}; // class Derived3
+};ived3
 ```
 
 - Base `class` must be a complete type.
@@ -47,12 +47,12 @@ public:
 class Base {
 public:
     int foo;
-}; // class Base
+};
 
 class Der : public Base {
 public:
     void foo(int, int);
-}; // class Der
+};
 
 int main() {
     Der myder;
@@ -99,11 +99,11 @@ class. This means, a function that takes an instance of a base class, can also t
 the derived class.
 
 ```cpp
-class Base {}; // class Base
+class Base {};
 
-class Der : public Base {}; // class Der
+class Der : public Base {};
 
-class Dez : public Der {}; // class Dez
+class Dez : public Der {};
 
 void foo(Base var) {}
 
@@ -144,14 +144,14 @@ public:
     Base() { std::cout << "Base default ctor called\n"; }
 
     ~Base() { std::cout << "Base dtor called\n"; }
-}; // class Base
+};
 
 class Der : public Base {
 public:
     Der() { std::cout << "Der default ctor called\n"; }
 
     ~Der() { std::cout << "Der dtor called\n"; }
-}; // class Der
+};
 
 int main() {
     Base mybase;
@@ -185,14 +185,14 @@ Will have the output of
       Member() { std::cout << "Member default ctor\n"; }
 
       ~Member() { std::cout << "Member dtor\n"; }
-  }; // class Member
+  };
 
   class Base {
   public:
       Base() { std::cout << "Base default ctor\n"; }
 
       ~Base() { std::cout << "Base dtor\n"; }
-  }; // class Base
+  };
 
   class Der : public Base {
   public:
@@ -201,7 +201,7 @@ Will have the output of
       ~Der() { std::cout << "Der dtor\n"; }
   private:
       Member _x;
-  }; // class Der
+  };
 
   int main() {
       Der myder;
@@ -230,14 +230,14 @@ public:
     Base(int x) { std::cout << "Base(int x) x = " << x << "\n"; }
 
     ~Base() { std::cout << "Base dtor\n"; }
-}; // class Base
+};
 
 class Der : public Base {
 public:
     Der() : Base(0) { std::cout << "Der default ctor\n"; }
 
     ~Der() { std::cout << "Der dtor\n"; }
-}; // class Der
+};
 
 int main() { Der myder; }
 ```
@@ -260,19 +260,19 @@ Will have the following outpu;
 >   of their indirect base class(es).
 >
 >   ```cpp
->   class Base {}; // class Base
+>   class Base {};
 >
 >   class Der : public Base {
 >   public:
 >       Der() {}
->   }; // class Der
+>   };
 >
 >   class Dez : public Der {
 >   public:
 >       Dez() : Der() {}        // VALID
 >
 >       Dez() : Base() {}       // INVALID
->   }; // class Dez
+>   };
 >   ```
 
 ### Special Member Functions in Inheritance
@@ -300,7 +300,7 @@ class Base {
         std::cout << "Base move assignement\n";
         return *this;
     }
-}; // class Base
+};
 
 class Der : public Base {
     public:
@@ -321,7 +321,7 @@ class Der : public Base {
         Base::operator=(std::move(other));
         return *this;
     }
-}; // class Der
+};
 
 int main() {
     Der d1;
@@ -351,12 +351,12 @@ other in the derived class, how do we make sure we call the one from the base cl
 class Base {
 public:
     void func(int);
-}; // class Base
+};
 
 class Der : public Base {
 public:
     void func(double);
-}; // class Der
+};
 
 int main() {
     Der d;
@@ -373,13 +373,13 @@ resolution operator `::` or we can inject the name `Base::func` inside the deriv
 class Base {
 public:
     void func(int);
-}; // class Base
+};
 
 class Der : public Base {
 public:
     using Base::func;
     void func(double);
-}; // class Der
+};
 
 int main() {
     Der d;
@@ -399,16 +399,16 @@ class Base {
 public:
 protected:
     void func(int);
-}; // class Base
+};
 
 class Der : public Base {
 public:
     using Base::func;
-}; // class Der
+};
 
 class Dez : public Base {
     using Base::func;
-}; // class Dez
+};
 
 int main() {
     Der d1;
@@ -429,13 +429,13 @@ public:
     Base(int);
     Base(int, int);
     Base(double);
-}; // class Base
+};
 
 class Der : public Base {
 public:
     using Base::Base;   // With this declaration, all constructors of the base class will
                         // be inherited by Der.
-}; // class Der
+};
 ```
 
 ##### ###REMARK.119###
@@ -459,5 +459,5 @@ public:
     void take_off();            // 1st category
     virtual void fly();         // 2nd category
     virtual void land() = 0;    // 3rd category, also called pure virtual function
-}; // class Airplane
+};
 ```

@@ -15,7 +15,7 @@ struct ValCat<T&> {
 template<typename T>
 struct ValCat<T&&> {
     static constexpr char const* p = "X value";
-}; // class ValCat<T&&>
+};Cat<T&&>
 
 #define print_val_cat(expr) \
     std::cout << "Value category of '" #expr "' is " << ValCat<decltype(expr)>::p << '\n';

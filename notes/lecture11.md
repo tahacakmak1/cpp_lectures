@@ -19,7 +19,7 @@ public:
 private:
     int _dd, _mm, _yy;
     mutable int _debug;
-}; // class Myclass
+};
 
 int main() {
     Myclass const m;
@@ -108,7 +108,7 @@ There are 6 special member functions;
 > class Myclass {
 >     Myclass();
 >     ~Myclass();
-> }; // class Myclass
+> };
 > int main() {
 >     Myclass  x;         // Will     call the constructor.
 >     Myclass& r1_x = x;  // Will not call the constructor.
@@ -129,7 +129,7 @@ class Myclass {
 public:
     Myclass() {}
     Myclass(int x) { std::cout << "Myclass(int x) x = " << x << '\n'; }
-}; // class Myclass
+};
 int main() {
     Myclass x1;         // Default initialization. Will call the default constructor.
     Myclass x2(10);     // Direct initialization. Will call Myclass(int).
@@ -215,7 +215,7 @@ public:
     }
 private:
     int _x, _y, _z;
-}; // class Myclass
+};
 ```
 
 ##### ###REMARK.69###
@@ -230,7 +230,7 @@ private:
 >     Myclass() : _x{10} {} // Because _x is initialized but _y is not, _y will be default initialized.
 > private:
 >     int _x, _y;
-> }; // class Myclass
+> };
 > ```
 
 ##### ###REMARK.70###
@@ -256,7 +256,7 @@ private:
     int _x {20};            // Default Member Initializer. Could also be used with "="
                             // (e.g. int _x = 20) but () cannot be used.
     int _y;
-}; // class Myclass
+};
 ```
 
 ##### ###REMARK.72###

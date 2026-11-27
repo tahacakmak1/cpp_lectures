@@ -13,7 +13,7 @@ public:
     void  lock() override;
     Audi* clone() override;
     void  print(std::ostream& os) const override;
-}; // class Audi
+};
 } // namespace car
 
 #endif // GUARD_B9E02025_B40D_4FF8_B69F_27DFAD9F8455

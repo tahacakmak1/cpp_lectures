@@ -10,7 +10,7 @@ class Myclass {
     void foo(); // Member Function
 
     struct Data {}; // Member Type
-}; // class Myclass
+};
 ```
 
 Static data members of classes are the elements of the class, not the instance. They can be accessed
@@ -23,7 +23,7 @@ why they are usually referred to as elements of the class, instead of the instan
 class Myclass {
 public:
     static int _x;
-}; // class Myclass
+};
 
 int main() {
     Myclass  m1;
@@ -49,7 +49,7 @@ the global scope, e.g. for `.cpp` definition
 class Myclass {
 public:
     static int _x;
-}; // class Myclass
+};
 
 // Myclass.cpp
 //#include "Myclass.h"
@@ -67,7 +67,7 @@ e.g. for global scope definition
 class Myclass {
 public:
         static int _x;
-}; // class Myclass
+};
 int Myclass::_x;
 int Myclass::_x = 10;
 int Myclass::_x(10);
@@ -84,7 +84,7 @@ int Myclass::_x {10};
       Myclass1 _data1;        // This is a syntax error. non-static data members must be complete types.
       static Myclass1 _data2; // This is not a syntax error because static data members
                               // can be of an incomplete type.
-  }; // class Myclass2
+  };2
   ```
 
 - A class cannot contain a member with a type of itself, unless it is static.
@@ -93,7 +93,7 @@ int Myclass::_x {10};
   class Myclass {
       Myclass        _x;  // This is a syntax error because Myclass is not complete.
       static Myclass _x;  // This is allowed, because static data members can be an incomplete type.
-  }; // class Myclass
+  };
   ```
 
 - If the static data member is a const integral type then you can define it in the class definition
@@ -109,7 +109,7 @@ int Myclass::_x {10};
       static char const          _x6 = 0;     // VALID const and integral type.
       static signed char const   _x7 = 9;     // VALID const and integral type.
       static unsigned char const _x8 = 9;     // VALID const and integral type.
-  }; // class Myclass
+  };
   ```
 
 - Static data members and global variables can be defined with `inline` keyword. (C++17)
@@ -132,7 +132,7 @@ int Myclass::_x {10};
   public:
       inline static int    _x1 = 5;   // If inline keyword is used, const and integral type rule
       inline static double _x2 = 5.3; // is not necessary. So both are valid now.
-  }; // class Myclass
+  };
   ```
 
 - Since static data members not actually part of the instances, they cannot be initialized with
@@ -147,7 +147,7 @@ int Myclass::_x {10};
       Myclass(int x, int y) : _x{x}, _y{y} {}                     // VALID
       Myclass(int x, int y, int z) : _x{x}, _y{y}, _ival{z} {}    // INVALID
       Myclass() : _x{10}, _y{20}, _ival{30} {}                    // INVALID
-  }; // class Myclass
+  };
   ```
 
 ### Static Member Functions
@@ -157,7 +157,7 @@ class Myclass {
 public:
     void foo();         // Non-static member function.
     static void bar();  // Static member function.
-}; // class Myclass
+};
 ```
 
 - In the class scope but do not have a "this pointer". meaning they are called without an address of
@@ -170,7 +170,7 @@ public:
   public:
       void foo();
       static void bar();
-  }; // class Myclass
+  };
 
   int main() {
       Myclass::foo(); // Syntax error.
@@ -200,7 +200,7 @@ public:
 >     static int foo() { return 777; }
 >
 >     static int _x;
-> }; // class Myclass
+> };
 >
 > int foo() { return 5; }
 >
@@ -236,7 +236,7 @@ public:
     static Complex create_cartesian(double x, double y) { return Complex(x, y); }
 
     static Complex create_polar(double angle, double distance) { return Complex(angle, distance, 0); }
-}; // class Complex
+};
 ```
 
 ### Static Global Functions
@@ -259,7 +259,7 @@ Friend declaration can be used to;
        int  _x;
    public:
        friend void func(Myclass);
-   }; // class Myclass
+   };
    void func(Myclass pm) {
        Myclass m;
        pm.foo();   // Without the friend declaration, would be an access control error.
@@ -276,7 +276,7 @@ Friend declaration can be used to;
        friend std::ostream& operator<<(std::ostream&, Myclass const&);
 
        int _x;
-   }; // class Myclass
+   };
 
    std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
 
@@ -286,7 +286,7 @@ Friend declaration can be used to;
        friend std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << m._x; }
 
        int _x;
-   }; // class Myclass
+   };
    ```
 
 3. Grant private member access to every function of a different class.
@@ -296,7 +296,7 @@ Friend declaration can be used to;
 
    class B {
        friend class A; // With this expression class B grants friendship to class A.
-   }; // class B
+   };
    ```
 
 ##### ###REMARK.86###
@@ -311,7 +311,7 @@ Friend declaration can be used to;
 > public:
 >     // This functions is still a global funtion.
 >     friend void func(Myclass x) { return x._x; }
-> }; // class Myclass
+> };
 > ```
 >
 > ##### ###REMARK.87###
@@ -327,7 +327,7 @@ Friend declaration can be used to;
 > >     friend void bar() { std::cout << "bar()\n"; }
 > > private:
 > >     friend void baz() { std::cout << "baz()\n"; }
-> > }; // class Myclass
+> > };
 > > void foo();            // VALID
 > > void bar();            // VALID
 > > void baz();            // VALID

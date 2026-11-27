@@ -32,7 +32,7 @@ public:
 
 private:
     int _val;
-}; // class Counter
+};
 
 class CounterPtr {
 public:
@@ -56,7 +56,7 @@ public:
 
 private:
     Counter* _ptr;
-}; // class CounterPtr
+};Ptr
 
 template<typename T>
 class SmartPtr {
@@ -81,7 +81,7 @@ public:
 
 private:
     T* _ptr;
-}; // class SmartPtr
+};
 
 class Yasin {
 public:
@@ -95,7 +95,7 @@ public:
 
 private:
     double _x;
-}; // class Yasin
+};
 
 namespace yas {
 enum class Colour { BLUE, BLACK, GREEN }; // enum class Colour

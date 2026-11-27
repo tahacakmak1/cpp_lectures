@@ -6,14 +6,14 @@ public:
     Member() { std::cout << "Member default ctor\n"; }
 
     ~Member() { std::cout << "Member dtor\n"; }
-}; // class Member
+};
 
 class Base {
 public:
     Base(int x) { std::cout << "Base(int x) x = " << x << "\n"; }
 
     ~Base() { std::cout << "Base dtor\n"; }
-}; // class Base
+};
 
 class Der : public Base {
 public:
@@ -23,12 +23,12 @@ public:
 
 private:
     Member _x;
-}; // class Der
+};
 
 class Dez : public Der {
 public:
     Dez() { std::cout << "Dez created\n"; }
-}; // class Dez
+};
 
 void foo(Base var) {}
 

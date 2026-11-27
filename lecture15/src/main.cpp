@@ -41,7 +41,7 @@ public:
 
 private:
     int _x, _y;
-}; // class Myclass
+};
 
 class Name {
 public:
@@ -55,7 +55,7 @@ public:
 
 private:
     char* mp;
-}; // class Name
+};
 
 static Myclass stemp1;
 Myclass        stemp2;

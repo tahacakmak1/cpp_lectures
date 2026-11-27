@@ -12,14 +12,14 @@ public:
     void foo();
 
     void bar();
-}; // class A
+};
 
 class Ptr {
 public:
     A& operator*();
 
     A* operator->();
-}; // class Ptr
+};
 
 int main() {
     Ptr p;
@@ -57,7 +57,7 @@ public:
 
 private:
     int _val;
-}; // class Counter
+};
 
 class CounterPtr {
 public:
@@ -82,7 +82,7 @@ public:
 
 private:
     Counter* _ptr;
-}; // class CounterPtr
+};Ptr
 
 int main() {
     std::cout << "main started\n";
@@ -127,7 +127,7 @@ public:
 
 private:
     T* _ptr;
-}; // class SmartPtr
+};
 
 int main() {
     std::cout << "main started\n";
@@ -156,13 +156,13 @@ class A {
 public:
     void foo();
     void bar();
-}; // class A
+};
 
 class Ptr {
 public:
     A& operator*();
     A* operator->();
-}; // class Ptr
+};
 
 int main() {
     Ptr p;
@@ -206,7 +206,7 @@ Classes that have overloded the `()` operator are called
 >         std::cout << "Myclass::operator()(int x = 10) called.\n";
 >         return x * x;
 >     }
-> }; // class Myclass
+> };
 >
 > int main() {
 >     Myclass test;
@@ -227,7 +227,7 @@ public:
 
 private:
     double _x;
-}; // class Myclass
+};
 ```
 
 - Notice that we do not specify a return value, but we actually do. Since writing it as
@@ -269,7 +269,7 @@ private:
 > class Myclass {
 > public:
 >     operator bool() const {}
-> }; // class Myclass
+> };
 >
 > int main() {
 >     Myclass m;
@@ -284,7 +284,7 @@ private:
 > class Myclass {
 > public:
 >     explicit operator bool() const {}
-> }; // class Myclass
+> };
 >
 > int main() {
 >     Myclass m;

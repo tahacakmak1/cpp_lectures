@@ -91,8 +91,8 @@ Most widely used statement form is expression statement.
 ### Expression Statement
 
 If you put a `;` at the end of an expression it becomes an expression statement. e.g. `x = 5;`.  
-Every expression has a data type(int, double, ...) and a value category (PR, X, L (primary val cats)
-or R, GL (secondary val cats)).
+Every expression has a data type(int, double, ...) and a value category (PR, X, L (primary value
+categories) or R, GL (secondary value categories)).
 
 ##### ###REMARK.9###
 
@@ -116,7 +116,7 @@ or R, GL (secondary val cats)).
 > - Case label expressions in `switch`.
 > - Bitfield member
 >
-> In C++ importance of constepxr is much greater than in C.
+> In C++ importance of constant expressions is much greater than in C.
 
 ## Operators
 
@@ -136,7 +136,7 @@ For more details check
 
 | Precedence | Operator                                                                                     | Description                                                                                                                                                                                                        | Associativity |
 | :--------: | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
-|     1      | `++` `--`[^1]<br>`()`<br>`[]`<br>`.`<br>`->`<br>`(type){list}`                               | Suffix/postfix incerement and decrement<br>Function call<br>Array subscripting<br>Structure and union member access<br>Structure and union member access through pointer<br>Compound literal                       | Left-to-right |
+|     1      | `++` `--`[^1]<br>`()`<br>`[]`<br>`.`<br>`->`<br>`(type){list}`                               | Suffix/postfix incerement and decrement<br>Function call<br>Array subscripting<br>Structure and union member access<br>Structure and union member access through pointer<br>Compound literal<br><br>               | Left-to-right |
 |     2      | `++` `--`[^1]<br>`+` `-`<br>`!` `~`<br>`(type)`<br>`*`<br>`&`<br>`sizeof` [^2]<br>`_Alignof` | Prefix increment and decrement<br>Unary plus and minus<br>Logical `NOT` and bitwise `NOT`<br>Cast<br>Indirection (dereference)<br>Address-of<br>Size-of<br>Alignment requirement                                   | Right-to-left |
 |     3      | `*` `/` `%`                                                                                  | Multiplication, division, and remainder                                                                                                                                                                            | Left-to-right |
 |     4      | `+` `-`                                                                                      | Addition and subtraction                                                                                                                                                                                           | Left-to-right |
@@ -160,7 +160,7 @@ For more details check
 | Precedence | Operator                                                                                                                                                         | Description                                                                                                                                                                                                                                                                                                             | Associativity |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | 1          | `a::b`                                                                                                                                                           | Scope resolution                                                                                                                                                                                                                                                                                                        | Left-to-right |
-| 2          | `a++` `a--`[^1]<br>`type(a)`<br>`type{a}`<br>`a()`<br>`a[]`<br>`a.b` `a->b`                                                                                      | Suffix/postfix increment and decrement<br>Functional cast<br>Function call<br>Subscript<br>Member access                                                                                                                                                                                                                | Left-to-right |
+| 2          | `a++` `a--`[^1]<br>`type(a)` `type{a}`<br>`a()`<br>`a[]`<br>`a.b` `a->b`                                                                                         | Suffix/postfix increment and decrement<br>Functional cast<br>Function call<br>Subscript<br>Member access                                                                                                                                                                                                                | Left-to-right |
 | 3          | `++a` `--a`[^1]<br>`+a` `-a`<br>`!a` `~a`<br>`(type)a`<br>`*a`<br>`&a`<br>`sizeof`[^2]<br>`co_await`<br>`new` `new[]`<br>`delete` `delete[]`                     | Prefix increment and decrement<br>Unary plus and minus<br>Logical `NOT` and bitwise `NOT`<br>C-style cast<br>Indirection<br>(dereference)<br>Address-of<br>Size-of<br>await-expression<br>Dynamic memory allocation<br>Dynamic memory deallocation                                                                      | Right-to-left |
 | 4          | `a.*b` `a->*b`                                                                                                                                                   | Pointer to member                                                                                                                                                                                                                                                                                                       | Left-to-right |
 | 5          | `a * b` `a / b` `a % b`                                                                                                                                          | Multiplication, division, and remainder                                                                                                                                                                                                                                                                                 | Left-to-right |
@@ -181,7 +181,7 @@ For more details check
 
 > Yielded value, generated value, return value are the same thing.
 
-## Sequence Point(also called sequencing in C++)
+## Sequence Point (also called sequencing in C++)
 
 Expressions causing a side effect before this point, must be completed after this point
 
@@ -250,6 +250,7 @@ int main(void) {
     ```
 
 [^2]:
+
     1. `sizeof`
     2. `sizeof` is a keyword and is an operator, not a function.
     3. `sizeof` is a compile time operator, which means expressions generated by `sizeof` are

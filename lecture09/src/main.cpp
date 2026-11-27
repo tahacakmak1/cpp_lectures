@@ -19,7 +19,7 @@ public:
     }
 
     int _a, _b;
-}; // class Myclass
+};
 
 int main() {
     Myclass mc;

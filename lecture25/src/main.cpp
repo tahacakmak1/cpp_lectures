@@ -5,7 +5,7 @@ public:
     virtual void bar() noexcept {}
 
     virtual void baz() {}
-}; // class Base
+};
 
 class Der : public Base {
 public:
@@ -14,7 +14,7 @@ public:
     void bar() noexcept override {} // VALID
 
     void baz() override {} // VALID
-}; // class Der
+};
 
 void func(Base& r) {
     r.foo();

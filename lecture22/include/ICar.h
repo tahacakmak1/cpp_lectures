@@ -24,6 +24,6 @@ public:
         return os;
     }
 
-}; // class ICar
+};
 } // namespace car
 #endif // GUARD_ED45D3BD_EA8B_4BE2_912B_AF36A9C23A2F

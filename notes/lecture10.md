@@ -10,7 +10,7 @@
 class Myclass {
 public:
     void foo();
-}; // class Myclass
+};
 #endif
 ```
 
@@ -93,7 +93,7 @@ public:
         //code
         return *this;
     }
-}; // class Myclass
+};
 
 int main() {
     Myclass m;
@@ -122,7 +122,7 @@ public:
         //.. code
         return this;
     }
-}; // class Myclass
+};
 
 int main() {
     Myclass m;
@@ -162,7 +162,7 @@ public:
                         // the instance const.
 private:
     int _x;
-}; // class Myclass
+};
 ```
 
 In this example `set()` is mutator, and `get()` is accessor.  
@@ -183,7 +183,7 @@ Non-static member functions can belong to one of the two categories;
 >                     // foo does not. In C++ there is no implicit conversion from
 >                     // T const* to T*. Therefore this line creates an error.
 >     }
-> }; // class Myclass
+> };
 > ```
 
 ##### ###REMARK.60###

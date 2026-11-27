@@ -122,7 +122,7 @@ There are two types of operator functions;
 >     }
 >
 >     int _x, _y;
-> }; // class Myclass
+> };
 > ```
 
 ##### Then Why Do We Have Global Operator Functions?
@@ -159,7 +159,7 @@ There are two types of operator functions;
    > class Myclass {
    > public:
    >     Myclass operator+(int) const&;
-   > }; // class Myclass
+   > };
    >
    > Myclass operator+(Myclass const&, int);
    >
@@ -180,7 +180,7 @@ There are two types of operator functions;
    >     Myclass& operator=(Myclass const&);
    >
    >     bool operator<(Myclass const&) const;
-   > }; // class Myclass
+   > };
    > ```
    >
    > Having these two operators does not imply `<=` can be used.
@@ -198,7 +198,7 @@ There are two types of operator functions;
    > class Myclass {
    > public:
    >     friend std::ostream& operator<<(std::ostream&, Myclass const&);
-   > }; // class Myclass
+   > };
    >
    > // Myclass.cpp
    > #include <iostream>
@@ -219,7 +219,7 @@ There are two types of operator functions;
    >         //.. code goes here
    >         return out;
    >     }
-   > }; // class Myclass
+   > };
    > ```
    >
    > or
@@ -230,7 +230,7 @@ There are two types of operator functions;
    > class Myclass {
    > public:
    >     friend inline std::ostream& operator<<(std::ostream& out, Myclass const& m);
-   > }; // class Myclass
+   > };
    >
    > std::ostream& operator<<(std::ostream& out, Myclass const& m) {
    >     //.. code goes here
@@ -280,7 +280,7 @@ There are two types of operator functions;
            _val += t._val;
            return *this;
        }
-   }; // class T
+   };
    inline T operator+(T const& lhs, T const& rhs) {
        return T{lhs} += rhs;
    }
@@ -305,7 +305,7 @@ There are two types of operator functions;
            ++*this;
            return return_val;
        }
-   }; // class T
+   };
    ```
 
 These operator functions will be studied separately.
@@ -348,7 +348,7 @@ These operator functions will be studied separately.
 >     }
 > private:
 >     char* mp;
-> }; // class Name
+> };
 >
 > int main() {
 >     Name const myname{"jack"};

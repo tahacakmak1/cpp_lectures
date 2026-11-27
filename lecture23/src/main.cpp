@@ -14,12 +14,12 @@ public:
 class Der : private Base {
     void vf() override;
     // int _x;
-}; // class Der
+};
 
 class Myclass {
     Base _y;
     // uint64_t _x;
-}; // class Myclass
+};
 
 struct Shape {
     virtual double      get_area() const          = 0;
@@ -78,16 +78,16 @@ Shape* create_random_shape() {
 class A {
 public:
     A() { std::cout << "A ctor\n"; }
-}; // class A
+};
 
 class B {
 public:
     B() { std::cout << "B ctor\n"; }
-}; // class B
+};
 
 class C
 : public A
-, public B {}; // class C
+, public B {};
 
 int main() {
     // std::cout << sizeof(car::ICar) << '\n';

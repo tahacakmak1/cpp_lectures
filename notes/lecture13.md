@@ -33,7 +33,7 @@ resource is stolen, can be reused in an assignment to it.
 >     Myclass(Myclass&&) {
 >         std::cout << "move constructor\n";
 >     }
-> }; // class MyClass
+> };
 >
 > int main() {
 >     Myclass x;
@@ -46,7 +46,7 @@ resource is stolen, can be reused in an assignment to it.
 
 ##### ###REMARK.78###
 
-> ![alt text](special_member_functions.png)
+> ![alt text](misc/special_member_functions.png)
 >
 > - If any of the destructor / copy constructor / copy assignment is declared, then move members are
 >   not declared.
@@ -93,7 +93,7 @@ public:
     Myclass(int x, int y, int z) : _x{x} , _y{y}, _z{z} {}
 private:
     int _x, _y, _z;
-}; // class Myclass
+};
 ```
 
 ##### ###REMARK.80###
@@ -124,7 +124,7 @@ public:
 private:
     int _x{}, _y{};
 
-}; // class Myclass
+};
 
 int main() {
     std::cout << "main starts here\n";
@@ -173,7 +173,7 @@ class Myclass {
 public:
     void foo() {};
     void bar() {};
-}; // class Myclass
+};
 
 int main() {
     Myclass mx;
@@ -238,7 +238,7 @@ public:
     Myclass();      // Default constructor
     Myclass(T);     // Also constructor but, ctors with one parameter are usually called conversion
                     // constructors. Because it creates an implicit conversion from T to Myclass.
-}; // class Myclass
+};
 
 Myclass x;
 x = 5;              // Implicit Conversion
@@ -261,12 +261,12 @@ x = 5;              // Implicit Conversion
 > class B {
 > public:
 >     B(A);
-> }; // class B
+> };
 >
 > class C {
 > public:
 >     C(B);
-> }; // class C
+> };
 >
 > A ax;
 > B bx  = ax;   // VALID, compiler performs UDC implicitly.
@@ -284,7 +284,7 @@ x = 5;              // Implicit Conversion
 > public:
 >     Myclass();
 >     explicit Myclass(T);
-> }; // class Myclass
+> };
 > ```
 >
 > Some important rules about `explicit`;
@@ -297,7 +297,7 @@ x = 5;              // Implicit Conversion
 >    public:
 >        Myclass();
 >        explicit Myclass(T);
->    }; // class Myclass
+>    };
 >
 >    Myclass::Myclass(T x){}                 // This is the correct way.
 >    explicit Myclass::Myclass(T x){}        // This is the wrong way.
@@ -311,7 +311,7 @@ x = 5;              // Implicit Conversion
 >    public:
 >        Myclass();
 >        explicit Myclass(int);
->    }; // class Myclass
+>    };
 >    int main() {
 >        Myclass m = 10;                 // This is a syntax error.
 >    }

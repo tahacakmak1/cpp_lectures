@@ -205,7 +205,7 @@ There are three ways to use a name in the namespace without qualifying.
 
 ```cpp
 namespace ns {
-class Data {}; // class Data
+class Data {};
 
 void foo(Data) {}
 
@@ -229,7 +229,7 @@ int main() {
 
 ```cpp
 namespace ns {
-class A {}; // class A
+class A {};
 
 void func(A) {}
 } // namespace ns
@@ -378,7 +378,7 @@ int main() {
   class Myclass {
       //.. code goes here
       //.. code goes here
-  }; // class Myclass
+  };
   } // namespace version_1
   #endif
 
@@ -387,7 +387,7 @@ int main() {
   class Myclass {
       //..different code goes here
       //..different code goes here
-  }; // class Myclass
+  };
   } // namespace version_2
   #endif
   } // namespace ns
@@ -452,8 +452,8 @@ return 0;
 
 ```cpp
 class Myclass {
-    class Nested {}; // class Nested
-}; // class Myclass
+    class Nested {};
+};
 ```
 
 - Name lookup for the names used inside of a member function and the name lookup for the names used
@@ -467,7 +467,7 @@ class Myclass {
 
   private:
       int _x;
-  }; // class Myclass
+  };
 
   void Myclass::foo() {
       bar();  // VALID
@@ -488,7 +488,7 @@ class Myclass {
       Word          _x; // INVALID
       Myclass::Word _y; // INVALID
       typedef int   Word;
-  }; // class Myclass
+  };
   ```
 
   ```cpp
@@ -497,7 +497,7 @@ class Myclass {
       static inline int _x = foo(); // INVALID, it would be VALID if foo were to be defined before _x.
 
       static int foo() { return 5; }
-  }; // class Myclass
+  };
   ```
 
 - Member functions of the enclosing type cannot access to the private part of the nested type. To be
@@ -507,10 +507,10 @@ class Myclass {
 
   ```cpp
   class Myclass {
-      class Nested {}; // class Nested
+      class Nested {};
   public:
       static Nested foo();
-  }; // class Myclass
+  };
 
   int main() {
       Myclass::Nested x = Myclass::foo(); // INVALID, access control.
@@ -525,10 +525,10 @@ class Myclass {
   ```cpp
   class Myclass {
   public:
-      class Nested {}; // class Nested
+      class Nested {};
 
       Nested foo(Nested);
-  }; // class Myclass
+  };
 
   Nested foo(Nested x) {  // Return type is invalid but parameter is VALID. Because return type of
                           // the function is not part of the class scpoe, therefore it must be

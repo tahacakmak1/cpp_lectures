@@ -80,7 +80,7 @@ Can exist in two different ways;
 ##### ###REMARK.130###
 
 > Both the C++ and STL has the following built-in exception classes.
-> ![alt text](hierarchy_of_standard_exceptions.png)
+> ![alt text](misc/hierarchy_of_standard_exceptions.png)
 
 ##### ###REMARK.131###
 
@@ -226,7 +226,7 @@ catch (int) {
 class ExceptionBase {
 public:
     virtual char const* what() const { return "Error\n"; }
-}; // class ExceptionBase
+};
 
 class MathException : public ExceptionBase {
 public:
@@ -240,7 +240,7 @@ public:
     ~DivideByZeroError() { std::cout << "DivideByZeroError dtor() called\n"; }
 
     char const* what() const override { return "DivideByZeroError\n"; }
-}; // class DivideByZeroError
+};
 
 int divide(int const a, int const b) {
     if (b == 0) {
@@ -339,7 +339,7 @@ public:
 
 private:
     int _x;
-}; // class Resource
+};
 
 void f4() {
     Resource r{4};

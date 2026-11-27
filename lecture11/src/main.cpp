@@ -6,7 +6,7 @@ public:
     Myclass() { std::cout << "default constructor, this = " << this << '\n'; }
 
     ~Myclass() { std::cout << "destructor,   this = " << this << '\n'; }
-}; // class Myclass
+};
 
 Myclass g1;
 Myclass g2;
@@ -27,7 +27,7 @@ public:
 
     int         _data, _temp1, _temp2;
     mutable int _debug;
-}; // class Yas
+};
 
 int main() {
     yas temp;

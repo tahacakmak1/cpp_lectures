@@ -8,7 +8,7 @@ public:
 
 private:
     int _x;
-}; // class Resource
+};
 
 void f4() {
     Resource r{4};

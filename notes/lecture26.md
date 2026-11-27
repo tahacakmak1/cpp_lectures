@@ -1,4 +1,4 @@
-# Lecture26
+# Lecture 26
 
 ## Exception Handling
 
@@ -56,7 +56,7 @@ public:
     catch (std::exception const& ex) {
         std::cout << "Exception caught, in Myclass::Myclass(): " << ex.what() << '\n';
     }
-}; // class Myclass
+};
 
 int main() {
     try {
@@ -87,7 +87,7 @@ exception will be rethrown. It will have the following output
 >    Myclass() = default;
 >
 >    Myclass(Myclass const&) { throw std::runtime_error("Myclass error\n"); }
-> }; // class Myclass
+> };
 >
 > void func(Myclass x) try { std::cout << "func()\n"; }
 >
@@ -240,7 +240,7 @@ class Myclass {
 public:
     template<typename T>
     T foo(T x);
-}; // class Myclass
+};
 ```
 
 ```cpp

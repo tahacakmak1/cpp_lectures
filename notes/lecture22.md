@@ -24,7 +24,7 @@ public:
     void foo() {}
 
     virtual void bar() {}
-}; // class Base
+};
 
 class Der : public Base {
 public:
@@ -32,7 +32,7 @@ public:
                             // having the same return type as Base::foo() would also be valid
 
     void bar() override {} // override
-}; // class Der
+};
 ```
 
 Virtual functions are member functions whose behavior can be overridden in derived classes. As
@@ -52,12 +52,12 @@ public:
     void foo() { func(); }
 
     virtual void func() { std::cout << "Base::func()\n"; }
-}; // class Base
+};
 
 class Der : public Base {
 public:
     void func() override { std::cout << "Der::func()\n"; }
-}; // class Der
+};
 
 int main() {
     Der   d;
@@ -96,17 +96,17 @@ int main() {
 class Base {
 public:
     virtual void func(int);
-}; // class Base
+};
 
 class Der : public Base {
 public:
     void func(int) override {} // override specifier makes this function a virtual function as well
-}; // class Der
+};
 
 class Dez : public Der {
 public:
     void func(int) override {}
-}; // class Dez
+};
 ```
 
 ##### ###REMARK.123###
@@ -125,12 +125,12 @@ public:
 class Base {
     public:
     virtual void func(uint16_t x = 10) { std::cout << "Base::func(uint16_t x) x = " << x << '\n'; }
-}; // class Base
+};
 
 class Der : public Base {
     public:
     virtual void func(uint16_t x = 20) { std::cout << "Der::func(uint16_t x) x = " << x << '\n'; }
-}; // class Der
+};
 
 int main() {
     Der   myder;
@@ -166,13 +166,13 @@ class Base {
 public:
     virtual Base* foo();
     virtual Base& bar();
-}; // class Base
+};
 
 class Der : public Base {
 public:
     Der* foo() override; // valid, even though return types don't match with the overridden function
     Der& bar() override; // valid, even though return types don't match with the overridden function
-}; // class Der
+};
 ```
 
 #### Virtual Constructor Idiom (Clone Idiom)
@@ -187,12 +187,12 @@ There are three functions that cannot be `virtual`
 class Car {
 public:
     virtual Car* clone() = 0;
-}; // class Car
+};
 
 class Mercedes : public Car {
 public:
     Mercedes* clone() override { return new Mercedes(*this); }
-}; // class Mercedes
+};
 ```
 
 To make the new instance of the `class` identical to the existing one, we call the copy constructor
@@ -205,12 +205,12 @@ by passing `*this` to the copy ctor. If we just want a new object without copyin
 class Base {
 public:
     ~Base() { std::cout << "Base dtor\n"; }
-}; // class Base
+};
 
 class Der : public Base {
 public:
     ~Der() { std::cout << "Der dtor\n"; }
-}; // class Der
+};
 
 int main() {
     Base* baseptr = new Der;
@@ -227,12 +227,12 @@ Becase `~Base()` is NOT overridden, this code snippet will have the following ou
 class Base {
 public:
     virtual ~Base() { std::cout << "Base dtor\n"; }
-}; // class Base
+};
 
 class Der : public Base {
 public:
     ~Der() override { std::cout << "Der dtor\n"; }
-}; // class Der
+};
 
 int main() {
     Base* baseptr = new Der;
@@ -268,7 +268,7 @@ public:
 
 private:
     virtual void print(std::ostream& os) const = 0;
-}; // class Car
+};
 
 std::ostream& operator<<(std::ostream& os, Car const& car) {
     car.print(os);
@@ -280,5 +280,5 @@ public:
     void start() override { std::cout << "Audi started\n"; }
 
     void print(std::ostream& os) const override { os << "This is an Audi\n"; }
-}; // class Audi
+};
 ```

@@ -37,7 +37,7 @@ public:
 
 private:
     int _year, _doorNumber;
-}; // class Car
+};
 
 class String {
 public:
@@ -101,7 +101,7 @@ public:
 private:
     std::size_t _len{};
     char*       _p{};
-}; // class String
+};
 
 class Myclass {
 public:
@@ -145,7 +145,7 @@ public:
 
 private:
     int _x, _y;
-}; // class Myclass
+};
 
 int main() {
     /*std::cout << "Hello World!\n";

@@ -20,7 +20,7 @@ public:
 
 private:
     int _x{}, _y{};
-}; // class MyClass1
+};1
 
 class String {
 public:
@@ -66,7 +66,7 @@ public:
 private:
     std::size_t _len{};
     char*       _p{};
-}; // class String
+};
 
 void func(String s) {
     std::cout << "func called\n";
