@@ -93,11 +93,11 @@ The above code snippet will have the following output
 ### Exception Dispatcher Idiom
 
 ```cpp
-class Myexception1 {};1
+class Myexception1 {};
 
-class Myexception2 {};2
+class Myexception2 {};
 
-class Myexception3 {};3
+class Myexception3 {};
 
 void handle_exception() {
     try {

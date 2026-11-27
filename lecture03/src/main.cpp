@@ -3,7 +3,7 @@
 
 struct Point {
     double _x, _y;
-}; // struct Point
+};
 
 std::ostream& operator<<(std::ostream& out, Point const p) {
     return (

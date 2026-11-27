@@ -25,7 +25,7 @@ struct Shape {
     virtual double      get_area() const          = 0;
     virtual double      get_circumference() const = 0;
     virtual std::string get_name() const          = 0;
-}; // struct Shape
+};
 
 struct Circle : public Shape {
     Circle(double const& radius) : _r{radius} {}
@@ -38,7 +38,7 @@ struct Circle : public Shape {
 
     static constexpr double PI = 3.1415926535;
     double                  _r;
-}; // struct Circle
+};
 
 struct Rectangle : public Shape {
     Rectangle(double const& a, double const& b) : _a{a}, _b{b}, _isSquare(a == b) {}
@@ -51,7 +51,7 @@ struct Rectangle : public Shape {
 
     double _a, _b;
     bool   _isSquare;
-}; // struct Rectangle
+};
 
 Shape* create_random_shape() {
     std::random_device                     rd;

@@ -84,7 +84,7 @@ int Myclass::_x {10};
       Myclass1 _data1;        // This is a syntax error. non-static data members must be complete types.
       static Myclass1 _data2; // This is not a syntax error because static data members
                               // can be of an incomplete type.
-  };2
+  };
   ```
 
 - A class cannot contain a member with a type of itself, unless it is static.

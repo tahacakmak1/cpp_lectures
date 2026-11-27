@@ -56,7 +56,7 @@ public:
 
 private:
     Counter* _ptr;
-};Ptr
+};
 
 template<typename T>
 class SmartPtr {

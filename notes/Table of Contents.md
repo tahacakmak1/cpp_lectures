@@ -224,3 +224,12 @@
   - Function `try` Block
   - Functions Generally Suitable for `noexcept`
 - Templates
+  - How Does the Compiler Determine the Type Parameter?
+  - Some Examples of Template Functions
+
+## Lecture 27
+
+- Templates
+  - Calculating the Size of an Array
+  - More Examples of Template Functions
+- Runtime Type Information (Identification) (RTTI)

@@ -11,12 +11,12 @@ public:
 class Der1 : virtual public Base {
 public:
     Der1() : Base("Der1") {}
-};1
+};
 
 class Der2 : virtual public Base {
 public:
     Der2() : Base("Der2") {}
-};2
+};
 
 class MDer
 : public Der1
@@ -65,7 +65,7 @@ struct A {
 
 private:
     int8_t _x;
-}; // struct A
+};
 
 int main() {
     vec<A, 5> vector;

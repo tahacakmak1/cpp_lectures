@@ -15,7 +15,7 @@ private:
     friend void Myclass::foo();
     std::string _str;
     Date        _date;
-};::Pimple
+};
 
 Myclass::Myclass() : _p{new Pimple} {}
 

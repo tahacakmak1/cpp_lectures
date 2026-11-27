@@ -20,7 +20,7 @@ public:
 
 private:
     int _x{}, _y{};
-};1
+};
 
 class String {
 public:

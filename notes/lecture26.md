@@ -74,7 +74,7 @@ exception will be rethrown. It will have the following output
 > Exception caught, in Myclass::Myclass(): std::bad_alloc  
 > Exception caught, in main(): std::bad_alloc
 
-##### REMARK.138###
+##### ###REMARK.138###
 
 > Function `try` blocks do not affect the initilization of it's parameters, e.g.
 >

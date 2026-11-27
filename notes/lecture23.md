@@ -14,12 +14,12 @@ virtual functions. This array is called `Virtual Function Table Pointer`, common
 struct ICar {
     virtual void start();
     virtual void stop();
-}; // struct ICar
+};
 
 struct Audi : public ICar {
     void start() override {}
     void stop() override {}
-}; // struct Audi
+};udi
 ```
 
 Vpointer of `ICar` class will have the pointers to the `ICar::start()` and `ICar::stop()` functions.  
@@ -67,12 +67,12 @@ Can be used in two different ways.
 struct Base {
     virtual void foo();
     virtual void bar() final;
-}; // struct Base
+};
 
 struct Der : public Base {
     void foo() override; // VALID
     void bar() override; // INVALID
-}; // struct Der
+};
 ```
 
 ## `private` Inheritance
@@ -401,9 +401,9 @@ public:
     void foo() {}
 };
 
-class Der1 : public Base {};1
+class Der1 : public Base {};
 
-class Der2 : public Base {};2
+class Der2 : public Base {};
 
 class MDer : public Der1, public Der2 {
     void func() {
@@ -447,9 +447,9 @@ public:
     }
 };
 
-class Der1 : virtual public Base {};1
+class Der1 : virtual public Base {};
 
-class Der2 : virtual public Base {};2
+class Der2 : virtual public Base {};
 
 class MDer : public Der1, public Der2 {
     void func() {
@@ -486,12 +486,12 @@ public:
 class Der1 : virtual public Base {
 public:
     Der1() : Base("Der1") {}
-};1
+};
 
 class Der2 : virtual public Base {
 public:
     Der2() : Base("Der2") {}
-};2
+};
 
 class MDer
 : public Der1

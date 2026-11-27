@@ -177,11 +177,11 @@ int a = func(5);    // Compiler expands this line to int a = 5 * 5.
 > struct X {
 >     Tah* _ptr;
 >     Tah& _ref;
-> }; // struct X
+> };
 >
 > class Yasin {
 >     static Tah var;
-> }; // struct Yasin
+> };
 >
 > inline void foo() { Tah* ptr = nullptr; }
 >
